@@ -5,6 +5,7 @@ import 'FirebaseCustom.dart';
 
 void main() {
   FirebaseHelper.initDatabase();
+
   runApp(MyApp());
 }
 
