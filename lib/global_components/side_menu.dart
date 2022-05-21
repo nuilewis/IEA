@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:water_project/Demo/DashBoard.dart';
+import 'package:water_project/screens/details_screen.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -21,7 +22,6 @@ class SideMenu extends StatelessWidget {
             svgSrc: "assets/icons/menu_dashbord.svg",
             press: () => selectedItem(context, 0),
           ),
-         
         ],
       ),
     );
@@ -31,11 +31,9 @@ class SideMenu extends StatelessWidget {
 void selectedItem(BuildContext context, int i) {
   switch (i) {
     case 0:
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => DashboardScreen(),
-      ));
-    
-      
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => DetailsScreen()),
+      );
   }
 }
 
