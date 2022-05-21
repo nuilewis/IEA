@@ -8,6 +8,6 @@ void main() {
   FirebaseHelper.initDatabase();
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Dashboard()
+      home: DashboardScreen()
   ));
 }

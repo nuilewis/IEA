@@ -36,9 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   toast:
   firebase:
+  flutter_svg:
   # firebase_db_web_unofficial:
   async_builder:
   firebase_database:
+  fl_chart:
 
 
 dev_dependencies:
