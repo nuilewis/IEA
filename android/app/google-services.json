@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "312993905854",
+    "firebase_url": "https://water-monitory-jjtronic-default-rtdb.firebaseio.com",
+    "project_id": "water-monitory-jjtronic",
+    "storage_bucket": "water-monitory-jjtronic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312993905854:android:cc97c542ba7b94d856f2ef",
+        "android_client_info": {
+          "package_name": "com.example.water_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "312993905854-h64e4uvis5oos4in95s2sdi2sttdf2vv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFq5T0FFL-8-FGuwtHHOw4RXSlC30IQCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "312993905854-h64e4uvis5oos4in95s2sdi2sttdf2vv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
