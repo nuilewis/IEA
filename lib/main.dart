@@ -1,9 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:water_project/Demo/DashBoard.dart';
-import 'package:water_project/screens/details_screen.dart';
+
+import 'package:water_project/screens/details_screen/details_screen.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'FirebaseCustom.dart';
+import 'package:water_project/theme.dart';
+
 import 'firebase_options.dart';
 
 void main() async {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: customLightTheme(context),
       debugShowCheckedModeBanner: false,
       home: const DetailsScreen(),
       routes: {DetailsScreen.id: (context) => const DetailsScreen()},
