@@ -19,6 +19,194 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+  ///Testting line chart data
+
+  LineChartData get sampleLineChartData1 => LineChartData(
+        lineTouchData: lineTouchData1,
+        gridData: gridData,
+        titlesData: titlesData1,
+        borderData: borderData,
+        lineBarsData: lineBarsData1,
+        minX: 0,
+        maxX: 14,
+        maxY: 4,
+        minY: 0,
+      );
+
+  // LineChartData get sampleData2 => LineChartData(
+  //       lineTouchData: lineTouchData2,
+  //       gridData: gridData,
+  //       titlesData: titlesData2,
+  //       borderData: borderData,
+  //       lineBarsData: lineBarsData2,
+  //       minX: 0,
+  //       maxX: 14,
+  //       maxY: 6,
+  //       minY: 0,
+  //     );
+
+  LineTouchData get lineTouchData1 => LineTouchData(
+        handleBuiltInTouches: true,
+        touchTooltipData: LineTouchTooltipData(
+          tooltipPadding: EdgeInsets.all(kDefaultPadding),
+          tooltipBgColor: kPurple,
+        ),
+      );
+
+  FlTitlesData get titlesData1 => FlTitlesData(
+        bottomTitles: AxisTitles(
+          sideTitles: bottomTitles,
+        ),
+        rightTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        topTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        leftTitles: AxisTitles(
+          sideTitles: leftTitles(),
+        ),
+      );
+
+  List<LineChartBarData> get lineBarsData1 => [
+        lineChartBarData1_1,
+        // lineChartBarData1_2,
+        // lineChartBarData1_3,
+      ];
+
+  LineTouchData get lineTouchData2 => LineTouchData(
+        enabled: false,
+      );
+
+  FlTitlesData get titlesData2 => FlTitlesData(
+        bottomTitles: AxisTitles(
+          sideTitles: bottomTitles,
+        ),
+        rightTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        topTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        leftTitles: AxisTitles(
+          sideTitles: leftTitles(),
+        ),
+      );
+
+  Widget leftTitleWidgets(double value, TitleMeta meta) {
+    const style = TextStyle(
+      color: Color(0xff75729e),
+      fontWeight: FontWeight.bold,
+      fontSize: 14,
+    );
+    String text;
+    switch (value.toInt()) {
+      case 1:
+        text = '1m';
+        break;
+      case 2:
+        text = '2m';
+        break;
+      case 3:
+        text = '3m';
+        break;
+      case 4:
+        text = '5m';
+        break;
+      case 5:
+        text = '6m';
+        break;
+      default:
+        return Container();
+    }
+
+    return Text(text, style: style, textAlign: TextAlign.center);
+  }
+
+  SideTitles leftTitles() => SideTitles(
+        getTitlesWidget: leftTitleWidgets,
+        showTitles: true,
+        interval: 1,
+        reservedSize: 40,
+      );
+
+  Widget bottomTitleWidgets(double value, TitleMeta meta, BuildContext context) {
+    const style = TextStyle(fontSize: 14, color: kDark60);
+    Widget text;
+    switch (value.toInt()) {
+      case 1:
+        text = const Text('00:00',style: style );
+        break;
+      case 2:
+        text = const Text('06:00',style: style, );
+        break;
+      case 3:
+        text = const Text('12:00',style: style, );
+        break;
+      default:
+        text = const Text('18:00');
+        break;
+    }
+
+    return SideTitleWidget(
+      axisSide: meta.axisSide,
+      space: 10,
+      child: text,
+    );
+  }
+
+  SideTitles get bottomTitles => SideTitles(
+        showTitles: true,
+        reservedSize: 32,
+        interval: 1,
+        getTitlesWidget: bottomTitleWidgets,
+      );
+
+  FlGridData gridData = FlGridData(
+      drawVerticalLine: false,
+      drawHorizontalLine: true,
+      horizontalInterval: 1,
+      getDrawingHorizontalLine: (value) {
+        return FlLine(
+          strokeWidth: 1,
+          color: kPurple20,
+        );
+      },
+      show: true);
+
+  FlBorderData get borderData => FlBorderData(
+        show: true,
+        border: const Border(
+          bottom: BorderSide(color: kDark60, width: 2),
+          left: BorderSide(color: Colors.transparent),
+          right: BorderSide(color: Colors.transparent),
+          top: BorderSide(color: Colors.transparent),
+        ),
+      );
+
+  LineChartBarData get lineChartBarData1_1 => LineChartBarData(
+        isCurved: true,
+        color: kPurple,
+        barWidth: 6,
+        isStrokeCapRound: true,
+        dotData: FlDotData(show: false),
+        belowBarData: BarAreaData(
+            show: true,
+            gradient: LinearGradient(
+                colors: [kPurple40, Colors.white.withOpacity(0)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter)),
+        spots: const [
+          FlSpot(0, 2),
+          FlSpot(3, 1.5),
+          FlSpot(5, 1.4),
+          FlSpot(7, 3.4),
+          FlSpot(10, 2),
+          FlSpot(12, 2.2),
+          FlSpot(13, 1.8),
+        ],
+      );
+
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
@@ -33,37 +221,38 @@ class _DetailsScreenState extends State<DetailsScreen> {
           flex: 9,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-        
             children: [
-              const SizedBox(height: kDefaultPadding2x,),
-              const Align(
-                alignment: Alignment.centerRight,
-                child: Header()),
-               Text(
-                    "Sensor 1",
-                    style: theme.textTheme.headline1!
-                        .copyWith(color: theme.primaryColor),
-                  ),
-          
-                  const SizedBox(height: kDefaultPadding*3,),
+              const SizedBox(
+                height: kDefaultPadding2x,
+              ),
+              const Align(alignment: Alignment.centerRight, child: Header()),
+              Text(
+                "Sensor 1",
+                style: theme.textTheme.headline1!
+                    .copyWith(color: theme.primaryColor),
+              ),
+              const SizedBox(
+                height: kDefaultPadding * 3,
+              ),
               SizedBox(
-                height: 300,
+                height: 160,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                
                   children: [
-                   
                     const SensorMetaData(),
-                        const SizedBox(width: kDefaultPadding2x),
+                    const SizedBox(width: kDefaultPadding2x),
+
                     ///Current Flow Rate
                     const DisplayFlowRate(),
-                        const SizedBox(width: kDefaultPadding2x,),
+                    const SizedBox(
+                      width: kDefaultPadding2x,
+                    ),
+
                     ///Normal or Abnormal
                     const FlowStatus(
-                      
                       isNormal: false,
                     ),
-                        const SizedBox(width: kDefaultPadding2x),
+                    const SizedBox(width: kDefaultPadding2x),
                     CustomButton(
                       onPressed: () {},
                       text: "Locate On Map",
@@ -76,7 +265,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               const SizedBox(height: kDefaultPadding2x),
               CustomCard(
                 bgColor: Colors.white,
-                shadowColor:  kPurple20,
+                shadowColor: kPurple20,
                 child: Column(
                   children: [
                     Row(
@@ -85,6 +274,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           title: "Today",
                           onSelected: true,
                         ),
+                        SizedBox(width: kDefaultPadding),
                         CategoryItem(title: "Weekly"),
                         SizedBox(width: kDefaultPadding),
                         CategoryItem(title: "Monthly"),
@@ -92,8 +282,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         CategoryItem(title: "Lifetime"),
                       ],
                     ),
-
-                    LineChart(LineChartData( minY: 0, maxY: 100, minX: 0, maxX: 100)),
+                    SizedBox(height: kDefaultPadding2x),
+                    SizedBox(
+                        height: 400, child: LineChart(sampleLineChartData1)),
                   ],
                 ),
               )
@@ -101,10 +292,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
           ),
         ),
         const Expanded(
-            flex: 1,
-            child: SizedBox(
-              height: double.infinity,
-            ),)
+          flex: 1,
+          child: SizedBox(
+            height: double.infinity,
+          ),
+        )
       ],
     );
   }

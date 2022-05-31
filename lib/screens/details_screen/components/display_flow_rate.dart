@@ -19,10 +19,10 @@ class DisplayFlowRate extends StatelessWidget {
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
+          //  mainAxisSize: MainAxisSize.min,
             children: [
               Text("Current Flow Rate", style: theme.textTheme.bodyText1!.copyWith(color: kPurple)),
-              SizedBox(height: kDefaultPadding),
+              const SizedBox(height: kDefaultPadding),
               RichText(
                 text: TextSpan(
                   children: [
@@ -39,15 +39,15 @@ class DisplayFlowRate extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(width: kDefaultPadding,),
+          const SizedBox(width: kDefaultPadding,),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
+           // mainAxisSize: MainAxisSize.min,
             children: [
               Text("Flow Velocity",
                   style:
                       theme.textTheme.bodyText1!.copyWith(color: kPurple)),
-                      SizedBox(height: kDefaultPadding),
+                      const SizedBox(height: kDefaultPadding),
               RichText(
                 text: TextSpan(
                   children: [

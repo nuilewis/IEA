@@ -43,7 +43,7 @@ class CustomMenuItem extends StatelessWidget {
                 color: isSelected! ? theme.primaryColor: theme.iconTheme.color,
                // height: 16,
               ),
-SizedBox(width: kDefaultPadding),
+const SizedBox(width: kDefaultPadding),
               Text(title, style: theme.textTheme.bodyText1!.copyWith(fontSize: 18, color: isSelected! ? theme.primaryColor : theme.iconTheme.color)),
             ],
           ),
