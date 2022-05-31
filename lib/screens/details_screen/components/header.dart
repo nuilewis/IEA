@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -12,14 +11,15 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           decoration: BoxDecoration(
               color: kPurple20,
-              borderRadius:
-                  BorderRadius.circular(kDefaultPadding2x)),
-        
-          padding: const EdgeInsets.all(kDefaultPadding),
+              borderRadius: BorderRadius.circular(kDefaultPadding2x)),
+          padding: const EdgeInsets.symmetric(
+              vertical: kDefaultPadding, horizontal: kDefaultPadding2x),
           child: Text(
             "Moday 22 December",
             style: Theme.of(context).textTheme.bodyText1,
@@ -28,23 +28,14 @@ class Header extends StatelessWidget {
 
         ///Notifaction Icon
 
-        Container(
-          decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                    color: kDark20,
-                    blurRadius: 20,
-                    offset: Offset(5, 5))
-              ]),
-        ),
+        SizedBox(width: kDefaultPadding2x),
 
         ///Notification Button
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             shape: CircleBorder(),
             shadowColor: kDark20,
-            elevation: 30,
+            elevation: 10,
             primary: Theme.of(context).scaffoldBackgroundColor,
           ),
           onPressed: () {
@@ -52,24 +43,30 @@ class Header extends StatelessWidget {
           },
           child: Stack(
             children: [
-              SvgPicture.asset(
-                  "assets/svg/notification_icon.svg"),
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: SvgPicture.asset("assets/svg/notification_icon.svg"),
+              ),
             ],
           ),
         ),
-
-        Text("John Doe", style: Theme.of(context).textTheme.bodyText1,),
+        SizedBox(width: kDefaultPadding2x),
+        Text(
+          "John Doe",
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+        SizedBox(width: kDefaultPadding2x),
         Container(
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
-            color: Colors.transparent,
-            border: Border.all(width: 2, color: Theme.of(context).primaryColor),
-            shape: BoxShape.circle
-          ),
+              color: Colors.transparent,
+              border:
+                  Border.all(width: 2, color: Theme.of(context).primaryColor),
+              shape: BoxShape.circle),
           child: const CircleAvatar(
             backgroundColor: kPurple,
             minRadius: kDefaultPadding,
-            maxRadius: kDefaultPadding2x,
+            maxRadius: kDefaultPadding2x-8,
             backgroundImage: AssetImage("assets/svg/Detailed View.png"),
           ),
         )
