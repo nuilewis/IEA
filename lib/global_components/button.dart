@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:water_project/constants.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -24,14 +25,16 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-      
+      shape:  RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(kDefaultPadding2x),
+      ),
           elevation: 20, primary: bgColor ?? theme.primaryColor),
       child: showIcon
           ? Row(
               children: [
                 SvgPicture.asset(
                   iconLink!,
-                  color: textColor ?? theme.iconTheme.color ?? Colors.white,
+                  color: textColor ??  Colors.white,
                 )
               ],
             )
