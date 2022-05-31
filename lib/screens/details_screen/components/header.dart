@@ -28,12 +28,12 @@ class Header extends StatelessWidget {
 
         ///Notifaction Icon
 
-        SizedBox(width: kDefaultPadding2x),
+        const SizedBox(width: kDefaultPadding2x),
 
         ///Notification Button
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
             shadowColor: kDark20,
             elevation: 10,
             primary: Theme.of(context).scaffoldBackgroundColor,
@@ -50,12 +50,12 @@ class Header extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(width: kDefaultPadding2x),
+        const SizedBox(width: kDefaultPadding2x),
         Text(
           "John Doe",
           style: Theme.of(context).textTheme.bodyText1,
         ),
-        SizedBox(width: kDefaultPadding2x),
+        const SizedBox(width: kDefaultPadding2x),
         Container(
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(

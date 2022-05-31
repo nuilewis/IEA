@@ -17,6 +17,7 @@ class SensorMetaData extends StatelessWidget {
       bgColor: Colors.white,
       shadowColor: kPurple20,
       child: Column(
+      //  mainAxisSize: MainAxisSize.min,
        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
       RichText(text:    TextSpan(

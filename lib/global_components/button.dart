@@ -38,7 +38,7 @@ class CustomButton extends StatelessWidget {
                     iconLink!,
                     color: textColor ??  Colors.white,
                   ),
-                  SizedBox(width: kDefaultPadding),
+                  const SizedBox(width: kDefaultPadding),
                   Text(
                   text,
                   style: theme.textTheme.bodyText1!

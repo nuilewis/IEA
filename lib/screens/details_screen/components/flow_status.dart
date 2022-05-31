@@ -21,10 +21,10 @@ class FlowStatus extends StatelessWidget {
     bgColor: theme.scaffoldBackgroundColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
+        //mainAxisSize: MainAxisSize.min,
         children: [
           Text("Status", style: theme.textTheme.bodyText1),
-          SizedBox(height: kDefaultPadding,),
+          const SizedBox(height: kDefaultPadding,),
           Container(
             padding: const EdgeInsets.symmetric( vertical: kDefaultPadding, horizontal: kDefaultPadding2x),
             decoration: BoxDecoration(

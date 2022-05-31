@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:water_project/constants.dart';
 import 'package:water_project/screens/details_screen/details_screen.dart';
@@ -5,7 +6,7 @@ import 'package:water_project/screens/details_screen/details_screen.dart';
 import 'custom_menu_item.dart';
 
 class SideMenu extends StatelessWidget {
-  const SideMenu({
+ const SideMenu({
     Key? key,
   }) : super(key: key);
 
@@ -13,10 +14,12 @@ class SideMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return Drawer(
+      elevation: 20,
+      
     backgroundColor: theme.scaffoldBackgroundColor,
       child: ListView(
         children: [
-       SizedBox(height: kDefaultPadding2x*3,),
+       const SizedBox(height: kDefaultPadding2x*3,),
           CustomMenuItem(
             
             title: "Map View",

@@ -23,7 +23,7 @@ class CustomCard extends StatelessWidget {
        
           blurRadius: kDefaultPadding,
           color: shadowColor!,
-          offset: Offset(5, 5),
+          offset: const Offset(5, 5),
         )]: null,
   color: bgColor ?? Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(kDefaultPadding+8),
