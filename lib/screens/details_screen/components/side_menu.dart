@@ -30,7 +30,7 @@ class SideMenu extends StatelessWidget {
           ),
              CustomMenuItem(
             title: "Details",
-            svgSrc: "assets/icons/list_view.svg",
+            svgSrc: "assets/assets/icons/details_outline_icon.svg",
             onPressed: () {
               
               Navigator.pushNamed(context, DetailsScreen.id);}

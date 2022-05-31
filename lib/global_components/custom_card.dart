@@ -15,16 +15,16 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return Container(
-      color: bgColor ?? Theme.of(context).cardColor,
+    
        padding: const EdgeInsets.all(kDefaultPadding2x),
       decoration: BoxDecoration(
         boxShadow:  showShadow! ?[
           BoxShadow(
-          blurRadius: kDefaultPadding2x,
+          blurRadius: kDefaultPadding,
           color: shadowColor!
         )]: null,
-        color: theme.primaryColor,
-        borderRadius: BorderRadius.circular(kDefaultPadding2x),
+  color: bgColor ?? Theme.of(context).cardColor,
+        borderRadius: BorderRadius.circular(kDefaultPadding+8),
  
       ),
              child: child

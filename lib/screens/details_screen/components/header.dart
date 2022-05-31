@@ -15,9 +15,10 @@ class Header extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
+              color: kPurple20,
               borderRadius:
                   BorderRadius.circular(kDefaultPadding2x)),
-          color: kPurple20,
+        
           padding: const EdgeInsets.all(kDefaultPadding),
           child: Text(
             "Moday 22 December",
@@ -41,6 +42,7 @@ class Header extends StatelessWidget {
         ///Notification Button
         ElevatedButton(
           style: ElevatedButton.styleFrom(
+            shape: CircleBorder(),
             shadowColor: kDark20,
             elevation: 30,
             primary: Theme.of(context).scaffoldBackgroundColor,
@@ -66,8 +68,8 @@ class Header extends StatelessWidget {
           ),
           child: const CircleAvatar(
             backgroundColor: kPurple,
-            minRadius: kDefaultPadding2x,
-            maxRadius: kDefaultPadding2x+8,
+            minRadius: kDefaultPadding,
+            maxRadius: kDefaultPadding2x,
             backgroundImage: AssetImage("assets/svg/Detailed View.png"),
           ),
         )
