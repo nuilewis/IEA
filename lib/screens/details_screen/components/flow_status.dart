@@ -16,19 +16,22 @@ class FlowStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return CustomCard(
+      showShadow:  true,
+      shadowColor: kPurple20,
     bgColor: theme.scaffoldBackgroundColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           Text("Status", style: theme.textTheme.bodyText1),
+          SizedBox(height: kDefaultPadding,),
           Container(
-            padding: const EdgeInsets.all(kDefaultPadding),
+            padding: const EdgeInsets.symmetric( vertical: kDefaultPadding, horizontal: kDefaultPadding2x),
             decoration: BoxDecoration(
                 color: isNormal ? kGreen: kFuchsia,
                 borderRadius:
-                    BorderRadius.circular(kDefaultPadding2x)),
-            child: Text( isNormal? "Normal":"Abnormal", style:  theme.textTheme.bodyText1!.copyWith(fontSize: 20),),
+                    BorderRadius.circular(kDefaultPadding)),
+            child: Text( isNormal? "Normal":"Abnormal", style:  theme.textTheme.bodyText1!.copyWith(fontSize: 20, color: Colors.white),),
           )
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:water_project/constants.dart';
 import 'package:water_project/screens/details_screen/details_screen.dart';
 
 import 'custom_menu_item.dart';
@@ -10,27 +11,31 @@ class SideMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Drawer(
+    backgroundColor: theme.scaffoldBackgroundColor,
       child: ListView(
         children: [
-       
+       SizedBox(height: kDefaultPadding2x*3,),
           CustomMenuItem(
+            
             title: "Map View",
-            svgSrc: "assets/icons/map_view.svg",
+            svgSrc: "assets/svg/map_view.svg",
             onPressed: () {
               
               Navigator.pushNamed(context, DetailsScreen.id);}
           ),
              CustomMenuItem(
             title: "List View",
-            svgSrc: "assets/icons/list_view.svg",
+            svgSrc: "assets/svg/list_view.svg",
             onPressed: () {
               
               Navigator.pushNamed(context, DetailsScreen.id);}
           ),
              CustomMenuItem(
+               isSelected: true,
             title: "Details",
-            svgSrc: "assets/assets/icons/details_outline_icon.svg",
+            svgSrc: "assets/svg/details_outline_icon.svg",
             onPressed: () {
               
               Navigator.pushNamed(context, DetailsScreen.id);}

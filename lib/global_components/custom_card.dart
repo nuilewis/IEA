@@ -18,10 +18,12 @@ class CustomCard extends StatelessWidget {
     
        padding: const EdgeInsets.all(kDefaultPadding2x),
       decoration: BoxDecoration(
-        boxShadow:  showShadow! ?[
-          BoxShadow(
+        boxShadow:  showShadow! ?
+         [ BoxShadow(
+       
           blurRadius: kDefaultPadding,
-          color: shadowColor!
+          color: shadowColor!,
+          offset: Offset(5, 5),
         )]: null,
   color: bgColor ?? Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(kDefaultPadding+8),

@@ -26,18 +26,27 @@ class CustomButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
       shape:  RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(kDefaultPadding2x),
+        borderRadius: BorderRadius.circular(kDefaultPadding),
       ),
-          elevation: 20, primary: bgColor ?? theme.primaryColor),
+          elevation: 0, primary: bgColor ?? theme.primaryColor),
       child: showIcon
-          ? Row(
-              children: [
-                SvgPicture.asset(
-                  iconLink!,
-                  color: textColor ??  Colors.white,
-                )
-              ],
-            )
+          ? Padding(
+            padding: const EdgeInsets.symmetric(vertical: kDefaultPadding, horizontal: kDefaultPadding2x),
+            child: Row(
+                children: [
+                  SvgPicture.asset(
+                    iconLink!,
+                    color: textColor ??  Colors.white,
+                  ),
+                  SizedBox(width: kDefaultPadding),
+                  Text(
+                  text,
+                  style: theme.textTheme.bodyText1!
+                      .copyWith(fontSize: 20, color: textColor ?? Colors.white),
+                ),
+                ],
+              ),
+          )
           : Center(
               child: Text(
                 text,

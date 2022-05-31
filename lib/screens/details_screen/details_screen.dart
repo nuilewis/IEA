@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:water_project/constants.dart';
 import 'package:water_project/global_components/button.dart';
@@ -27,41 +28,55 @@ class _DetailsScreenState extends State<DetailsScreen> {
           flex: 2,
           child: SideMenu(),
         ),
+        const SizedBox(width: kDefaultPadding2x),
         Expanded(
           flex: 9,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+        
             children: [
-              const Header(),
-              Row(
-                children: [
-                  Text(
+              const SizedBox(height: kDefaultPadding2x,),
+              const Align(
+                alignment: Alignment.centerRight,
+                child: Header()),
+               Text(
                     "Sensor 1",
                     style: theme.textTheme.headline1!
                         .copyWith(color: theme.primaryColor),
                   ),
-                  const Expanded(child: SensorMetaData()),
-
-                  ///Current Flow Rate
-                  const Expanded(child: DisplayFlowRate()),
-
-                  ///Normal or Abnormal
-                  const Expanded(
-                    child: FlowStatus(
+          
+                  const SizedBox(height: kDefaultPadding*3,),
+              SizedBox(
+                height: 300,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                
+                  children: [
+                   
+                    const SensorMetaData(),
+                        const SizedBox(width: kDefaultPadding2x),
+                    ///Current Flow Rate
+                    const DisplayFlowRate(),
+                        const SizedBox(width: kDefaultPadding2x,),
+                    ///Normal or Abnormal
+                    const FlowStatus(
+                      
                       isNormal: false,
                     ),
-                  ),
-
-                  Expanded(
-                    child: CustomButton(
+                        const SizedBox(width: kDefaultPadding2x),
+                    CustomButton(
                       onPressed: () {},
                       text: "Locate On Map",
                       showIcon: true,
                       iconLink: "assets/svg/map_pin.svg",
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
+              const SizedBox(height: kDefaultPadding2x),
               CustomCard(
+                bgColor: Colors.white,
+                shadowColor:  kPurple20,
                 child: Column(
                   children: [
                     Row(
@@ -76,7 +91,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         SizedBox(width: kDefaultPadding),
                         CategoryItem(title: "Lifetime"),
                       ],
-                    )
+                    ),
+
+                    LineChart(LineChartData( minY: 0, maxY: 100, minX: 0, maxX: 100)),
                   ],
                 ),
               )
@@ -87,7 +104,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             flex: 1,
             child: SizedBox(
               height: double.infinity,
-            ))
+            ),)
       ],
     );
   }

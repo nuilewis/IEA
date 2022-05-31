@@ -20,6 +20,7 @@ class CustomMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(kDefaultPadding),
@@ -27,21 +28,23 @@ class CustomMenuItem extends StatelessWidget {
       child: GestureDetector(
         onTap: onPressed,
         child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: kDefaultPadding2x),
-          padding: const EdgeInsets.symmetric(vertical: kDefaultPadding/2, horizontal: kDefaultPadding),
+          margin: const EdgeInsets.symmetric(horizontal: kDefaultPadding2x, vertical: kDefaultPadding/2),
+          padding: const EdgeInsets.only(top: kDefaultPadding, bottom:kDefaultPadding, left: kDefaultPadding2x*2 ,right: kDefaultPadding),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(kDefaultPadding / 2),
+              borderRadius: BorderRadius.circular(kDefaultPadding ),
               color: isSelected!
                   ? kPurple20
-                  : Theme.of(context).scaffoldBackgroundColor),
+                  : theme.scaffoldBackgroundColor),
           child: Row(
+           mainAxisAlignment: MainAxisAlignment.start, 
             children: [
               SvgPicture.asset(
                 svgSrc,
-                color: Theme.of(context).iconTheme.color,
-                height: 16,
+                color: isSelected! ? theme.primaryColor: theme.iconTheme.color,
+               // height: 16,
               ),
-              Text(title, style: Theme.of(context).textTheme.bodyText1),
+SizedBox(width: kDefaultPadding),
+              Text(title, style: theme.textTheme.bodyText1!.copyWith(fontSize: 18, color: isSelected! ? theme.primaryColor : theme.iconTheme.color)),
             ],
           ),
         ),
