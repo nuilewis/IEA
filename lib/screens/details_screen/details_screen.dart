@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:water_project/constants.dart';
 import 'package:water_project/global_components/button.dart';
+import 'package:water_project/global_components/custom_card.dart';
 import 'package:water_project/screens/details_screen/components/side_menu.dart';
 
 import 'components/display_flow_rate.dart';
 import 'components/flow_status.dart';
 import 'components/header.dart';
+import 'components/sensor_metadata.dart';
 
 class DetailsScreen extends StatefulWidget {
   static const id = "details screen";
@@ -26,7 +28,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
           child: SideMenu(),
         ),
         Expanded(
-          flex: 10,
+          flex: 9,
           child: Column(
             children: [
               const Header(),
@@ -37,63 +39,84 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     style: theme.textTheme.headline1!
                         .copyWith(color: theme.primaryColor),
                   ),
-                  const SensorMetaData(),
+                  const Expanded(child: SensorMetaData()),
 
                   ///Current Flow Rate
-                  const DisplayFlowRate(),
+                  const Expanded(child: DisplayFlowRate()),
 
                   ///Normal or Abnormal
-                  const FlowStatus(
-                    isNormal: false,
+                  const Expanded(
+                    child: FlowStatus(
+                      isNormal: false,
+                    ),
                   ),
 
-                  CustomButton(
-                    onPressed: () {},
-                    text: "Locate On Map",
-                    showIcon: true,
-                    iconLink: "assets/svg/map_pin.svg",
+                  Expanded(
+                    child: CustomButton(
+                      onPressed: () {},
+                      text: "Locate On Map",
+                      showIcon: true,
+                      iconLink: "assets/svg/map_pin.svg",
+                    ),
                   )
                 ],
+              ),
+              CustomCard(
+                child: Column(
+                  children: [
+                    Row(
+                      children: const [
+                        CategoryItem(
+                          title: "Today",
+                          onSelected: true,
+                        ),
+                        CategoryItem(title: "Weekly"),
+                        SizedBox(width: kDefaultPadding),
+                        CategoryItem(title: "Monthly"),
+                        SizedBox(width: kDefaultPadding),
+                        CategoryItem(title: "Lifetime"),
+                      ],
+                    )
+                  ],
+                ),
               )
             ],
           ),
-        )
+        ),
+        const Expanded(
+            flex: 1,
+            child: SizedBox(
+              height: double.infinity,
+            ))
       ],
     );
   }
 }
 
-class SensorMetaData extends StatelessWidget {
-  const SensorMetaData({
+class CategoryItem extends StatelessWidget {
+  final bool onSelected;
+  final String title;
+  const CategoryItem({
     Key? key,
+    this.onSelected = false,
+    required this.title,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    return Column(
-      children: [
-        Text(
-          "sensor id",
-          style: theme.textTheme.bodyText2!.copyWith(color: kDark60),
-        ),
-        RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                  text: "Sensor Diameter: ",
-                  style: theme.textTheme.bodyText2!.copyWith(color: kDark60)),
-              TextSpan(
-                  text: "15 ",
-                  style: theme.textTheme.headline1!
-                      .copyWith(color: theme.primaryColor)),
-              TextSpan(
-                  text: "cm ",
-                  style: theme.textTheme.bodyText2!.copyWith(color: kDark60)),
-            ],
-          ),
-        )
-      ],
+    return Container(
+      padding:
+          const EdgeInsets.symmetric(horizontal: kDefaultPadding, vertical: 12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(kDefaultPadding2x),
+        color: onSelected ? theme.primaryColor : theme.cardColor,
+      ),
+      child: Text(
+        title,
+        style: theme.textTheme.bodyText2!
+            .copyWith(color: onSelected ? Colors.white : theme.iconTheme.color),
+      ),
     );
   }
 }
