@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Demo/constants.dart';
+import '../../../constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchField extends StatefulWidget {
@@ -23,9 +23,9 @@ class _SearchFieldState extends State<SearchField> {
           suffixIcon: InkWell(
             onTap: () {},
             child: Container(
-              padding: const EdgeInsets.all(defaultPadding * 0.75),
+              padding: const EdgeInsets.all(kDefaultPadding * 0.75),
               margin: const EdgeInsets.symmetric(
-                horizontal: defaultPadding / 2,
+                horizontal: kDefaultPadding / 2,
               ),
               decoration: const BoxDecoration(
                 color: primaryColor,
