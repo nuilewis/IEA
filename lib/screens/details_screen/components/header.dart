@@ -66,8 +66,7 @@ class Header extends StatelessWidget {
           child: const CircleAvatar(
             backgroundColor: kPurple,
             minRadius: kDefaultPadding,
-            maxRadius: kDefaultPadding2x-8,
-            backgroundImage: AssetImage("assets/svg/Detailed View.png"),
+            maxRadius: kDefaultPadding2x - 8,
           ),
         )
       ],
