@@ -1,87 +1,107 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:water_project/constants.dart';
 import 'package:water_project/global_components/custom_card.dart';
+import 'package:water_project/providers/flow_rate_data.dart';
 
-class DisplayFlowRate extends StatelessWidget {
-  final DatabaseReference =
-      FirebaseDatabase.instance.reference().child("N18aJdt80LfP9OxnYpi");
+class DisplayFlowRate extends StatefulWidget {
   DisplayFlowRate({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<DisplayFlowRate> createState() => _DisplayFlowRateState();
+}
+
+class _DisplayFlowRateState extends State<DisplayFlowRate> {
+  final databaseReference = FirebaseDatabase.instance.ref("\"");
 //function to read flowrate from realtime database
-  readflowrate() {
-    DatabaseReference.once().then((snapshot) {
-      print(snapshot.value);
-    });
+  readFlowRate() async {
+    DatabaseEvent value = await databaseReference.once();
+    print("databse value is ${value.snapshot.value}");
+    // databaseReference.once().then((snapshot) {
+    //   debugPrint("data from databse is:");
+    //   debugPrint(snapshot.value);
+    //   //databaseValue= snaphshot.value;
+    // });
+  }
+
+  @override
+  void initState() {
+    readFlowRate();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    return CustomCard(
-      bgColor: Colors.white,
-      shadowColor: kPurple20,
-      showShadow: true,
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            //  mainAxisSize: MainAxisSize.min,
+    return Consumer<FlowRateData>(
+      builder: (BuildContext context, flowRateData, child) {
+        flowRateData.getFlowData();
+        String flowRate = flowRateData.flowData!.flowRate.toString();
+        return CustomCard(
+          bgColor: Colors.white,
+          shadowColor: kPurple20,
+          showShadow: true,
+          child: Row(
             children: [
-              // FirebaseAnimatedList(query: DatabaseReference, itemBuilder: (BuildContext context, DataSnapshot snapshot,Animation animation,int index){
-
-              // })
-
-              Text("Current Flow Rate",
-                  style: theme.textTheme.bodyText1!.copyWith(color: kPurple)),
-              const SizedBox(height: kDefaultPadding),
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                        text: "6.3",
-                        style: theme.textTheme.headline1!
-                            .copyWith(fontSize: 48, color: kPurple)),
-                    TextSpan(
-                        text: "m3/min",
-                        style: theme.textTheme.bodyText2!.copyWith(
-                            fontSize: 18, color: kPurple.withOpacity(.5))),
-                  ],
-                ),
-              )
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                //  mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Current Flow Rate",
+                      style:
+                          theme.textTheme.bodyText1!.copyWith(color: kPurple)),
+                  const SizedBox(height: kDefaultPadding),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                            text: flowRate,
+                            style: theme.textTheme.headline1!
+                                .copyWith(fontSize: 48, color: kPurple)),
+                        TextSpan(
+                            text: "m3/min",
+                            style: theme.textTheme.bodyText2!.copyWith(
+                                fontSize: 18, color: kPurple.withOpacity(.5))),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                width: kDefaultPadding,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                // mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Flow Velocity",
+                      style:
+                          theme.textTheme.bodyText1!.copyWith(color: kPurple)),
+                  const SizedBox(height: kDefaultPadding),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                            text: "5.1",
+                            style: theme.textTheme.headline1!
+                                .copyWith(fontSize: 48, color: kPurple)),
+                        TextSpan(
+                            text: "m/sec",
+                            style: theme.textTheme.bodyText2!.copyWith(
+                                fontSize: 24, color: kPurple.withOpacity(.5)))
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ],
           ),
-          const SizedBox(
-            width: kDefaultPadding,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisSize: MainAxisSize.min,
-            children: [
-              Text("Flow Velocity",
-                  style: theme.textTheme.bodyText1!.copyWith(color: kPurple)),
-              const SizedBox(height: kDefaultPadding),
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                        text: "5.1",
-                        style: theme.textTheme.headline1!
-                            .copyWith(fontSize: 48, color: kPurple)),
-                    TextSpan(
-                        text: "m/sec",
-                        style: theme.textTheme.bodyText2!.copyWith(
-                            fontSize: 24, color: kPurple.withOpacity(.5)))
-                  ],
-                ),
-              )
-            ],
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

@@ -10,8 +10,6 @@ import 'components/flow_status.dart';
 import 'components/header.dart';
 import 'components/sensor_metadata.dart';
 
-
-
 class DetailsScreen extends StatefulWidget {
   static const id = "details screen";
   const DetailsScreen({Key? key}) : super(key: key);
@@ -21,7 +19,7 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
-  ///Testting line chart data
+  ///Testing line chart data
   LineChartData get sampleLineChartData1 => LineChartData(
         lineTouchData: lineTouchData1,
         gridData: gridData,
@@ -131,8 +129,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         reservedSize: 40,
       );
 
-  Widget bottomTitleWidgets(
-      double value, TitleMeta meta, BuildContext context) {
+  Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(fontSize: 14, color: kDark60);
     Widget text;
     switch (value.toInt()) {
