@@ -20,7 +20,6 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen> {
   ///Testting line chart data
-
   LineChartData get sampleLineChartData1 => LineChartData(
         lineTouchData: lineTouchData1,
         gridData: gridData,
