@@ -130,18 +130,24 @@ class _DetailsScreenState extends State<DetailsScreen> {
         reservedSize: 40,
       );
 
-  Widget bottomTitleWidgets(double value, TitleMeta meta, BuildContext context) {
+  Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(fontSize: 14, color: kDark60);
     Widget text;
     switch (value.toInt()) {
       case 1:
-        text = const Text('00:00',style: style );
+        text = const Text('00:00', style: style);
         break;
       case 2:
-        text = const Text('06:00',style: style, );
+        text = const Text(
+          '06:00',
+          style: style,
+        );
         break;
       case 3:
-        text = const Text('12:00',style: style, );
+        text = const Text(
+          '12:00',
+          style: style,
+        );
         break;
       default:
         text = const Text('18:00');
