@@ -1,5 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:water_project/models/flow_data_model.dart';
+import 'package:water_project/providers/flow_rate_data.dart';
+import 'package:water_project/providers/sensor_data.dart';
 
 import 'package:water_project/screens/details_screen/details_screen.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -21,11 +25,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: customLightTheme(context),
-      debugShowCheckedModeBanner: false,
-      home: const DetailsScreen(),
-      routes: {DetailsScreen.id: (context) => const DetailsScreen()},
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<FlowRateData>(
+            create: (context) => FlowRateData()),
+        ChangeNotifierProvider<SensorData>(create: (context) => SensorData()),
+      ],
+      child: MaterialApp(
+        theme: customLightTheme(context),
+        debugShowCheckedModeBanner: false,
+        home: const DetailsScreen(),
+        routes: {DetailsScreen.id: (context) => const DetailsScreen()},
+      ),
     );
   }
 }
