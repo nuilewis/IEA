@@ -10,6 +10,8 @@ import 'components/flow_status.dart';
 import 'components/header.dart';
 import 'components/sensor_metadata.dart';
 
+
+
 class DetailsScreen extends StatefulWidget {
   static const id = "details screen";
   const DetailsScreen({Key? key}) : super(key: key);
@@ -20,7 +22,6 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen> {
   ///Testting line chart data
-
   LineChartData get sampleLineChartData1 => LineChartData(
         lineTouchData: lineTouchData1,
         gridData: gridData,
@@ -130,7 +131,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
         reservedSize: 40,
       );
 
-  Widget bottomTitleWidgets(double value, TitleMeta meta) {
+  Widget bottomTitleWidgets(
+      double value, TitleMeta meta, BuildContext context) {
     const style = TextStyle(fontSize: 14, color: kDark60);
     Widget text;
     switch (value.toInt()) {
@@ -165,7 +167,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         showTitles: true,
         reservedSize: 32,
         interval: 1,
-        getTitlesWidget: bottomTitleWidgets,
+        // getTitlesWidget: bottomTitleWidgets,
       );
 
   FlGridData gridData = FlGridData(
@@ -249,7 +251,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     const SizedBox(width: kDefaultPadding2x),
 
                     ///Current Flow Rate
-                    const DisplayFlowRate(),
+                    DisplayFlowRate(),
                     const SizedBox(
                       width: kDefaultPadding2x,
                     ),
