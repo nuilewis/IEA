@@ -7,7 +7,7 @@ import 'package:water_project/global_components/custom_card.dart';
 import 'package:water_project/providers/flow_rate_data.dart';
 
 class DisplayFlowRate extends StatefulWidget {
-  DisplayFlowRate({
+  const DisplayFlowRate({
     Key? key,
   }) : super(key: key);
 
