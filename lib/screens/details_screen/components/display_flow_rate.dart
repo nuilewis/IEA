@@ -20,7 +20,7 @@ class _DisplayFlowRateState extends State<DisplayFlowRate> {
 //function to read flowrate from realtime database
   readFlowRate() async {
     DatabaseEvent value = await databaseReference.once();
-    print("databse value is ${value.snapshot.value}");
+    print("database value is ${value.snapshot.value}");
     // databaseReference.once().then((snapshot) {
     //   debugPrint("data from databse is:");
     //   debugPrint(snapshot.value);
