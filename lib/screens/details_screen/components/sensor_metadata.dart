@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -17,26 +15,39 @@ class SensorMetaData extends StatelessWidget {
       bgColor: Colors.white,
       shadowColor: kPurple20,
       child: Column(
-      //  mainAxisSize: MainAxisSize.min,
-       crossAxisAlignment: CrossAxisAlignment.start,
+        //  mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-      RichText(text:    TextSpan(
-          
+          RichText(
+            text: TextSpan(
               children: [
                 TextSpan(
                     text: "Sensor ID:  ",
                     style: theme.textTheme.bodyText2!.copyWith(color: kDark80)),
                 TextSpan(
-                    text:  "SN01 ",
+                    text: "SN01 ",
                     style: theme.textTheme.headline1!
                         .copyWith(color: theme.primaryColor, fontSize: 18)),
-               
               ],
-            ),),
+            ),
+          ),
           const SizedBox(height: kDefaultPadding),
           RichText(
             text: TextSpan(
-            
+              children: [
+                TextSpan(
+                    text: "Sensor Location:  ",
+                    style: theme.textTheme.bodyText2!.copyWith(color: kDark80)),
+                TextSpan(
+                    text: "Nkwen ",
+                    style: theme.textTheme.headline1!
+                        .copyWith(color: theme.primaryColor, fontSize: 18)),
+              ],
+            ),
+          ),
+          const SizedBox(height: kDefaultPadding),
+          RichText(
+            text: TextSpan(
               children: [
                 TextSpan(
                     text: "Sensor Diameter:  ",
@@ -47,7 +58,8 @@ class SensorMetaData extends StatelessWidget {
                         .copyWith(color: theme.primaryColor, fontSize: 18)),
                 TextSpan(
                     text: "cm",
-                    style: theme.textTheme.bodyText2!.copyWith(color: kPurple40)),
+                    style:
+                        theme.textTheme.bodyText2!.copyWith(color: kPurple40)),
               ],
             ),
           )
