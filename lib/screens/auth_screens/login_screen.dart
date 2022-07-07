@@ -6,6 +6,7 @@ import 'package:water_project/global_components/button.dart';
 import '../details_screen/components/side_menu.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const id = "log in screen";
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -38,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: SizedBox(
             width: screenSize.width * .3,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
@@ -49,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   "Email",
                   style: theme.textTheme.bodyText1,
                 ),
-                const SizedBox(height: kDefaultPadding),
+                const SizedBox(height: kDefaultPadding / 2),
                 TextFormField(
                   key: emailKey,
                   controller: emailController,
@@ -65,10 +66,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: kDefaultPadding2x),
                 const Text("Password"),
-                const SizedBox(height: kDefaultPadding),
+                const SizedBox(height: kDefaultPadding / 2),
                 TextFormField(
                   key: passkey,
                   controller: passwordController,
+                  obscureText: true,
                   decoration:
                       customTextFieldDecoration.copyWith(hintText: "Password"),
                   validator: (value) {
@@ -79,8 +81,21 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                   },
                 ),
-                const SizedBox(height: kDefaultPadding2x),
+                const SizedBox(height: kDefaultPadding * 3),
                 CustomButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      ///TODO: add methods to sign the user in
+
+                    }
+                  },
+                  text: "Login",
+                  textColor: Colors.white,
+                  bgColor: kPurple,
+                ),
+                const SizedBox(height: kDefaultPadding),
+                CustomButton(
+                  isSecondary: true,
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       ///TODO: add methods to sign the user in

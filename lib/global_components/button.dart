@@ -4,6 +4,7 @@ import 'package:water_project/constants.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
+  final bool isSecondary;
   final String text;
   final String? iconLink;
   final bool showIcon;
@@ -15,6 +16,7 @@ class CustomButton extends StatelessWidget {
       required this.text,
       this.iconLink,
       this.showIcon = false,
+      this.isSecondary = false,
       this.bgColor,
       this.textColor})
       : super(key: key);
@@ -25,33 +27,49 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-      shape:  RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(kDefaultPadding),
-      ),
-          elevation: 0, primary: bgColor ?? theme.primaryColor),
+          side: isSecondary
+              ? BorderSide(color: bgColor ?? theme.primaryColor, width: 2)
+              : null,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(kDefaultPadding2x),
+          ),
+          elevation: 0,
+          primary:
+              isSecondary ? Colors.transparent : bgColor ?? theme.primaryColor),
       child: showIcon
           ? Padding(
-            padding: const EdgeInsets.symmetric(vertical: kDefaultPadding, horizontal: kDefaultPadding2x),
-            child: Row(
+              padding: const EdgeInsets.symmetric(
+                  vertical: kDefaultPadding, horizontal: kDefaultPadding2x),
+              child: Row(
                 children: [
                   SvgPicture.asset(
                     iconLink!,
-                    color: textColor ??  Colors.white,
+                    color: isSecondary
+                        ? bgColor ?? theme.primaryColor
+                        : textColor ?? Colors.white,
                   ),
                   const SizedBox(width: kDefaultPadding),
                   Text(
-                  text,
-                  style: theme.textTheme.bodyText1!
-                      .copyWith(fontSize: 20, color: textColor ?? Colors.white),
-                ),
+                    text,
+                    style: theme.textTheme.bodyText1!.copyWith(
+                        fontSize: 20,
+                        color:
+                            isSecondary ? bgColor : textColor ?? Colors.white),
+                  ),
                 ],
               ),
-          )
+            )
           : Center(
-              child: Text(
-                text,
-                style: theme.textTheme.bodyText1!
-                    .copyWith(fontSize: 20, color: textColor ?? Colors.white),
+              child: Padding(
+                padding: const EdgeInsets.all(kDefaultPadding),
+                child: Text(
+                  text,
+                  style: theme.textTheme.bodyText1!.copyWith(
+                      fontSize: 20,
+                      color: isSecondary
+                          ? bgColor ?? theme.primaryColor
+                          : textColor ?? Colors.white),
+                ),
               ),
             ),
     );
