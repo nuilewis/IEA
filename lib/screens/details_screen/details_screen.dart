@@ -47,7 +47,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   LineTouchData get lineTouchData1 => LineTouchData(
         handleBuiltInTouches: true,
         touchTooltipData: LineTouchTooltipData(
-          tooltipPadding: EdgeInsets.all(kDefaultPadding),
+          tooltipPadding: const EdgeInsets.all(kDefaultPadding),
           tooltipBgColor: kPurple,
         ),
       );
@@ -215,94 +215,96 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    return Row(
-      children: [
-        const Expanded(
-          flex: 2,
-          child: SideMenu(),
-        ),
-        const SizedBox(width: kDefaultPadding2x),
-        Expanded(
-          flex: 9,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: kDefaultPadding2x,
-              ),
-              const Align(alignment: Alignment.centerRight, child: Header()),
-              Text(
-                "Sensor 1",
-                style: theme.textTheme.headline1!
-                    .copyWith(color: theme.primaryColor),
-              ),
-              const SizedBox(
-                height: kDefaultPadding * 3,
-              ),
-              SizedBox(
-                height: 160,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SensorMetaData(),
-                    const SizedBox(width: kDefaultPadding2x),
-
-                    ///Current Flow Rate
-                    DisplayFlowRate(),
-                    const SizedBox(
-                      width: kDefaultPadding2x,
-                    ),
-
-                    ///Normal or Abnormal
-                    const FlowStatus(
-                      isNormal: false,
-                    ),
-                    const SizedBox(width: kDefaultPadding2x),
-                    CustomButton(
-                      onPressed: () {},
-                      text: "Locate On Map",
-                      showIcon: true,
-                      iconLink: "assets/svg/map_pin.svg",
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(height: kDefaultPadding2x),
-              CustomCard(
-                bgColor: Colors.white,
-                shadowColor: kPurple20,
-                child: Column(
-                  children: [
-                    Row(
-                      children: const [
-                        CategoryItem(
-                          title: "Today",
-                          onSelected: true,
-                        ),
-                        SizedBox(width: kDefaultPadding),
-                        CategoryItem(title: "Weekly"),
-                        SizedBox(width: kDefaultPadding),
-                        CategoryItem(title: "Monthly"),
-                        SizedBox(width: kDefaultPadding),
-                        CategoryItem(title: "Lifetime"),
-                      ],
-                    ),
-                    SizedBox(height: kDefaultPadding2x),
-                    SizedBox(
-                        height: 400, child: LineChart(sampleLineChartData1)),
-                  ],
-                ),
-              )
-            ],
+    return Scaffold(
+      body: Row(
+        children: [
+          const Expanded(
+            flex: 2,
+            child: SideMenu(),
           ),
-        ),
-        const Expanded(
-          flex: 1,
-          child: SizedBox(
-            height: double.infinity,
+          const SizedBox(width: kDefaultPadding2x),
+          Expanded(
+            flex: 9,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: kDefaultPadding2x,
+                ),
+                const Align(alignment: Alignment.centerRight, child: Header()),
+                Text(
+                  "Sensor 1",
+                  style: theme.textTheme.headline1!
+                      .copyWith(color: theme.primaryColor),
+                ),
+                const SizedBox(
+                  height: kDefaultPadding * 3,
+                ),
+                SizedBox(
+                  height: 160,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SensorMetaData(),
+                      const SizedBox(width: kDefaultPadding2x),
+
+                      ///Current Flow Rate
+                      DisplayFlowRate(),
+                      const SizedBox(
+                        width: kDefaultPadding2x,
+                      ),
+
+                      ///Normal or Abnormal
+                      const FlowStatus(
+                        isNormal: false,
+                      ),
+                      const SizedBox(width: kDefaultPadding2x),
+                      CustomButton(
+                        onPressed: () {},
+                        text: "Locate On Map",
+                        showIcon: true,
+                        iconLink: "assets/svg/map_pin.svg",
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(height: kDefaultPadding2x),
+                CustomCard(
+                  bgColor: Colors.white,
+                  shadowColor: kPurple20,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: const [
+                          CategoryItem(
+                            title: "Today",
+                            onSelected: true,
+                          ),
+                          SizedBox(width: kDefaultPadding),
+                          CategoryItem(title: "Weekly"),
+                          SizedBox(width: kDefaultPadding),
+                          CategoryItem(title: "Monthly"),
+                          SizedBox(width: kDefaultPadding),
+                          CategoryItem(title: "Lifetime"),
+                        ],
+                      ),
+                      const SizedBox(height: kDefaultPadding2x),
+                      SizedBox(
+                          height: 400, child: LineChart(sampleLineChartData1)),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-        )
-      ],
+          const Expanded(
+            flex: 1,
+            child: SizedBox(
+              height: double.infinity,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

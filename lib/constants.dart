@@ -51,17 +51,17 @@ const TextStyle kFootNote =
     TextStyle(fontWeight: FontWeight.normal, fontSize: 11);
 
 ///----------Text Form Field styles ---------////
-InputDecoration wemoTextFieldDecoration = InputDecoration(
+InputDecoration customTextFieldDecoration = InputDecoration(
   errorStyle: kBody.copyWith(color: kFuchsia),
   errorBorder: OutlineInputBorder(
     gapPadding: 4,
     borderSide: const BorderSide(color: kFuchsia, width: 1),
-    borderRadius: BorderRadius.circular(kDefaultPadding),
+    borderRadius: BorderRadius.circular(kDefaultPadding2x),
   ),
   border: OutlineInputBorder(
     gapPadding: 0,
     borderSide: BorderSide.none,
-    borderRadius: BorderRadius.circular(kDefaultPadding),
+    borderRadius: BorderRadius.circular(kDefaultPadding2x),
   ),
   isDense: false,
   filled: true,
