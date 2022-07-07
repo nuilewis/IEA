@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../details_screen/components/side_menu.dart';
 
 class ListScreen extends StatelessWidget {
+  static const id = "list screen";
   const ListScreen({Key? key}) : super(key: key);
 
   @override

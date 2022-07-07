@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:water_project/screens/details_screen/components/side_menu.dart';
 
 class MapsScreen extends StatelessWidget {
+  static const id = "maps screen";
   const MapsScreen({Key? key}) : super(key: key);
 
   @override

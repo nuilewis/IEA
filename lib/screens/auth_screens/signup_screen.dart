@@ -4,6 +4,7 @@ import '../../constants.dart';
 import '../../global_components/button.dart';
 
 class SignUpScreen extends StatefulWidget {
+  static const id = "sign up screen";
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override

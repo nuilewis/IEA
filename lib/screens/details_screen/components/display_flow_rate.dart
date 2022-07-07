@@ -17,12 +17,13 @@ class DisplayFlowRate extends StatefulWidget {
 
 class _DisplayFlowRateState extends State<DisplayFlowRate> {
   final databaseReference = FirebaseDatabase.instance.ref("\"");
-//function to read flowrate from realtime database
+
+  ///function to read flow rate from realtime database
   readFlowRate() async {
     DatabaseEvent value = await databaseReference.once();
     print("database value is ${value.snapshot.value}");
     // databaseReference.once().then((snapshot) {
-    //   debugPrint("data from databse is:");
+    //   debugPrint("data from database is:");
     //   debugPrint(snapshot.value);
     //   //databaseValue= snaphshot.value;
     // });
