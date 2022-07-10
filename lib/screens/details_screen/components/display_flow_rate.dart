@@ -19,19 +19,19 @@ class _DisplayFlowRateState extends State<DisplayFlowRate> {
   final databaseReference = FirebaseDatabase.instance.ref("\"");
 
   ///function to read flow rate from realtime database
-  readFlowRate() async {
-    DatabaseEvent value = await databaseReference.once();
-    print("database value is ${value.snapshot.value}");
-    // databaseReference.once().then((snapshot) {
-    //   debugPrint("data from database is:");
-    //   debugPrint(snapshot.value);
-    //   //databaseValue= snaphshot.value;
-    // });
-  }
+  // readFlowRate() async {
+  //   DatabaseEvent value = await databaseReference.once();
+  //   print("database value is ${value.snapshot.value}");
+  //   // databaseReference.once().then((snapshot) {
+  //   //   debugPrint("data from database is:");
+  //   //   debugPrint(snapshot.value);
+  //   //   //databaseValue= snaphshot.value;
+  //   // });
+  // }
 
   @override
   void initState() {
-    readFlowRate();
+ //   readFlowRate();
     super.initState();
   }
 
@@ -40,8 +40,8 @@ class _DisplayFlowRateState extends State<DisplayFlowRate> {
     ThemeData theme = Theme.of(context);
     return Consumer<FlowRateData>(
       builder: (BuildContext context, flowRateData, child) {
-        flowRateData.getFlowData();
-        String flowRate = flowRateData.flowData!.flowRate.toString();
+        flowRateData.getFlowRateData();
+       // String flowRate = flowRateData.currentflowData!.flowRate.toString();
         return CustomCard(
           bgColor: Colors.white,
           shadowColor: kPurple20,
@@ -60,7 +60,10 @@ class _DisplayFlowRateState extends State<DisplayFlowRate> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                            text: flowRate,
+
+                          text: "test",
+
+                           // text:flowRateData.currentflowData!.flowRate.toString(),
                             style: theme.textTheme.headline1!
                                 .copyWith(fontSize: 48, color: kPurple)),
                         TextSpan(
