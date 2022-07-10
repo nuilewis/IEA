@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/utils/stream_subscriber_mixin.dart';
 import 'package:flutter/material.dart';
+import 'package:water_project/constants.dart';
 
 class FirebaseDBService {
   final FirebaseDatabase _reference = FirebaseDatabase.instance;
@@ -11,15 +15,11 @@ class FirebaseDBService {
     return value;
   }
 
-  getStreamData(String ref) async {
+  Stream<DatabaseEvent> getStreamData(String ref) {
     //getting the stream
-    Stream<DatabaseEvent> valueStream = _reference.ref(ref).onValue;
-
-    //Subscribing to the stream
-    valueStream.listen((DatabaseEvent event) {
-      ///Dow aht ever you want with the stream
-      print("Event TYpe ${event.type}");
-      print("Event snapshot ${event.snapshot}");
-    });
+    Stream<DatabaseEvent> dataStream = _reference.ref(ref).onValue;
+    
+   return dataStream;
+    
   }
 }
