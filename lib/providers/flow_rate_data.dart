@@ -7,21 +7,31 @@ import 'package:water_project/services/firebase_database_service.dart';
 
 class FlowRateData extends ChangeNotifier {
   FlowRate? flowData;
-  List<FlowRate>? flowDataList;
+  List<FlowRate>? flowDataList = [];
 
-  getFlowData() async {
-    DatabaseEvent value = await FirebaseDBService().getData("\"");
-    var encodedData = jsonEncode(value.snapshot.value);
-    var decodeData = jsonDecode(encodedData);
-    var data = value.snapshot.value;
-    // print("\nencoded Data is $encodedData");
-    // print("\nDecoded data is $decodeData");
-    // print("\nnormal Data is $data");
-    print("\nisolated data is ${decodeData["-N27ICgwWtn9WH69ri5C"]}");
+  Future<bool> getFlowData() async {
+    DatabaseEvent _dbEvent = await FirebaseDBService().getData("sources");
+    Map<String, dynamic> jsonData = _dbEvent.snapshot.value as Map<String, dynamic>;
+    jsonData.forEach((key, value) {
+      var newFlowRate = value["flow_rate"];
+      var newVelocity = value["velocity"];
+      assert(newFlowRate is double || newFlowRate is int, "Flow rate type is invalid");
+      flowDataList!.add(FlowRate(flowRate: newFlowRate));
+      debugPrint("Source: $key,  Flow Rate: ${newFlowRate} , velocity: ${newVelocity}");
+      flowData = FlowRate(flowRate: newFlowRate, velocity: newVelocity);//todo: thissh
+    });
 
-    List listofData = [value.snapshot.key];
-    print("list of data keys $listofData");
-    flowData = FlowRate(flowRate: 5);
     notifyListeners();
+    return true;
   }
 }
+
+
+
+
+
+
+
+
+
+

@@ -5,10 +5,10 @@ class FirebaseDBService {
   final FirebaseDatabase _reference = FirebaseDatabase.instance;
 
   Future<DatabaseEvent> getData(String ref) async {
-    DatabaseEvent value = await _reference.ref(ref).once();
+    DatabaseEvent db = await _reference.ref(ref).once();
     //debugPrint("database value is ${value.snapshot.value}");
 
-    return value;
+    return db;
   }
 
   getStreamData(String ref) async {
@@ -18,8 +18,8 @@ class FirebaseDBService {
     //Subscribing to the stream
     valueStream.listen((DatabaseEvent event) {
       ///Dow aht ever you want with the stream
-      print("Event TYpe ${event.type}");
-      print("Event snapshot ${event.snapshot}");
+      debugPrint("Event TYpe ${event.type}");
+      debugPrint("Event snapshot ${event.snapshot}");
     });
   }
 }
