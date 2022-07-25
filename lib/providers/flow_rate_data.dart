@@ -6,29 +6,32 @@ import 'package:water_project/models/flow_data_model.dart';
 import 'package:water_project/services/firebase_database_service.dart';
 
 class FlowRateData extends ChangeNotifier {
-  FlowRate? currentflowData;
-  List<FlowRate>? flowDataList;
+  FlowRate? flowData;
+  List<FlowRate>? flowDataList = [];
 
-  getFlowRateData() async {
-    Stream<DatabaseEvent?> streamData = FirebaseDBService().getStreamData("\"");
+  Future<bool> getFlowData() async {
+    DatabaseEvent _dbEvent = await FirebaseDBService().getData("sources");
+    Map<String, dynamic> jsonData = _dbEvent.snapshot.value as Map<String, dynamic>;
+    jsonData.forEach((key, value) {
+      var newFlowRate = value["flow_rate"];
+      var newVelocity = value["velocity"];
+      assert(newFlowRate is double || newFlowRate is int, "Flow rate type is invalid");
+      flowDataList!.add(FlowRate(flowRate: newFlowRate));
+      debugPrint("Source: $key,  Flow Rate: ${newFlowRate} , velocity: ${newVelocity}");
+      flowData = FlowRate(flowRate: newFlowRate, velocity: newVelocity);//todo: thissh
+    });
 
-    streamData.listen((event) {
-      DataSnapshot? data = event?.snapshot;
-      print("listening data from ${data?.value}");
-      var encodedData = jsonEncode(data?.value);
-      Map<dynamic, dynamic> fakedata= data?.value as Map;
- for(value in encodedData){}
-    
-
-       
-    currentflowData = FlowRate(flowRate: 5);
-
-    },);
-    // var encodedData = jsonEncode(streamData);
-    // var decodeData = jsonDecode(encodedData);
-  
-
-  
-   // notifyListeners();
+    notifyListeners();
+    return true;
   }
 }
+
+
+
+
+
+
+
+
+
+

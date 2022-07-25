@@ -220,13 +220,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
         children: [
           const Expanded(
             flex: 2,
-            child: SideMenu(),
+            child: SingleChildScrollView(
+              primary: false,
+              scrollDirection: Axis.horizontal,
+                child: SideMenu()),
           ),
           const SizedBox(width: kDefaultPadding2x),
           Expanded(
             flex: 9,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
               children: [
                 const SizedBox(
                   height: kDefaultPadding2x,
@@ -242,30 +244,33 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
                 SizedBox(
                   height: 160,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SensorMetaData(),
-                      const SizedBox(width: kDefaultPadding2x),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SensorMetaData(),
+                        const SizedBox(width: kDefaultPadding2x),
 
-                      ///Current Flow Rate
-                      DisplayFlowRate(),
-                      const SizedBox(
-                        width: kDefaultPadding2x,
-                      ),
+                        ///Current Flow Rate
+                        DisplayFlowRate(),
+                        const SizedBox(
+                          width: kDefaultPadding2x,
+                        ),
 
-                      ///Normal or Abnormal
-                      const FlowStatus(
-                        isNormal: false,
-                      ),
-                      const SizedBox(width: kDefaultPadding2x),
-                      CustomButton(
-                        onPressed: () {},
-                        text: "Locate On Map",
-                        showIcon: true,
-                        iconLink: "assets/svg/map_pin.svg",
-                      )
-                    ],
+                        ///Normal or Abnormal
+                        const FlowStatus(
+                          isNormal: false,
+                        ),
+                        const SizedBox(width: kDefaultPadding2x),
+                        CustomButton(
+                          onPressed: () {},
+                          text: "Locate On Map",
+                          showIcon: true,
+                          iconLink: "assets/svg/map_pin.svg",
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(height: kDefaultPadding2x),
@@ -297,8 +302,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ],
             ),
           ),
-          const Expanded(
+          const Flexible(
             flex: 1,
+            fit: FlexFit.tight,
             child: SizedBox(
               height: double.infinity,
             ),
