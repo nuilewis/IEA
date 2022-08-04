@@ -30,7 +30,7 @@ class FlowStatus extends StatelessWidget {
             decoration: BoxDecoration(
                 color: isNormal ? kGreen: kFuchsia,
                 borderRadius:
-                    BorderRadius.circular(kDefaultPadding)),
+                    BorderRadius.circular(kDefaultPadding2x)),
             child: Text( isNormal? "Normal":"Abnormal", style:  theme.textTheme.bodyText1!.copyWith(fontSize: 20, color: Colors.white),),
           )
         ],
