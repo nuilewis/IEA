@@ -257,7 +257,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
                         ///Normal or Abnormal
                         const FlowStatus(
-                          isNormal: false,
+                          isNormal: true,
                         ),
                         const SizedBox(width: kDefaultPadding2x),
                         CustomButton(
