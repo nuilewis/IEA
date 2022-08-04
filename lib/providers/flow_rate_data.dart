@@ -10,15 +10,23 @@ class FlowRateData extends ChangeNotifier {
   List<FlowRate>? flowDataList = [];
 
   Future<bool> getFlowData() async {
-    DatabaseEvent _dbEvent = await FirebaseDBService().getData("sources");
+    DatabaseEvent _dbEvent = await FirebaseDBService().getData("\"");
     Map<String, dynamic> jsonData = _dbEvent.snapshot.value as Map<String, dynamic>;
     jsonData.forEach((key, value) {
-      var newFlowRate = value["flow_rate"];
-      var newVelocity = value["velocity"];
+      String newFlowRateString = value["Flow_Rate"];
+      String newVelocityString = value["Velocity"];
+
+       ///Parse the strings from firebase
+       double? newFlowRate = double.tryParse(newFlowRateString);
+
+      double? newVelocity = double.tryParse(newVelocityString);
+     
+    
+      
       assert(newFlowRate is double || newFlowRate is int, "Flow rate type is invalid");
-      flowDataList!.add(FlowRate(flowRate: newFlowRate));
-      debugPrint("Source: $key,  Flow Rate: ${newFlowRate} , velocity: ${newVelocity}");
-      flowData = FlowRate(flowRate: newFlowRate, velocity: newVelocity);//todo: thissh
+      flowDataList!.add(FlowRate(flowRate: newFlowRate?? 0, velocity: newVelocity ?? 0));
+      debugPrint("Source: $key,  Flow Rate: $newFlowRate , velocity: $newVelocity");
+      flowData = FlowRate(flowRate: newFlowRate ?? 0, velocity: newVelocity);//todo: thissh
     });
 
     notifyListeners();
