@@ -198,12 +198,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
         belowBarData: BarAreaData(
             show: true,
             gradient: LinearGradient(
-                colors: [kPurple40, Colors.white.withOpacity(0)],
+                colors: [kPurple20, Colors.white.withOpacity(0)],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter)),
         spots: const [
           FlSpot(0, 2),
-          FlSpot(3, 1.5),
+          FlSpot(3, 2.5),
           FlSpot(5, 1.4),
           FlSpot(7, 3.4),
           FlSpot(10, 2),
@@ -219,15 +219,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
       body: Row(
         children: [
           const Expanded(
-            flex: 2,
-            child: SingleChildScrollView(
-              primary: false,
-              scrollDirection: Axis.horizontal,
-                child: SideMenu()),
+            flex: 3,
+            child: SideMenu(),
           ),
           const SizedBox(width: kDefaultPadding2x),
           Expanded(
-            flex: 9,
+            flex: 13,
             child: ListView(
               children: [
                 const SizedBox(
@@ -260,7 +257,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
                         ///Normal or Abnormal
                         const FlowStatus(
-                          isNormal: false,
+                          isNormal: true,
                         ),
                         const SizedBox(width: kDefaultPadding2x),
                         CustomButton(
