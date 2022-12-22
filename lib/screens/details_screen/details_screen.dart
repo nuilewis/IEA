@@ -1,10 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:water_project/constants.dart';
-import 'package:water_project/global_components/button.dart';
-import 'package:water_project/global_components/custom_card.dart';
+import 'package:water_project/core/widgets/custom_card.dart';
 import 'package:water_project/screens/details_screen/components/side_menu.dart';
 
+import '../../core/widgets/button.dart';
 import 'components/display_flow_rate.dart';
 import 'components/flow_status.dart';
 import 'components/header.dart';

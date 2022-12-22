@@ -27,9 +27,10 @@ class CustomMenuItem extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          primary: isSelected! ? kPurple20 : theme.scaffoldBackgroundColor,
+          foregroundColor: kPurple20,
+          backgroundColor:
+              isSelected! ? kPurple20 : theme.scaffoldBackgroundColor,
           elevation: 0,
-          onPrimary: kPurple20,
           alignment: Alignment.center,
           // minimumSize: Size(double.infinity, 54 ),
           shape: RoundedRectangleBorder(
@@ -40,7 +41,7 @@ class CustomMenuItem extends StatelessWidget {
               top: kDefaultPadding + 2, bottom: kDefaultPadding + 2),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-           // mainAxisSize: MainAxisSize.min,
+            // mainAxisSize: MainAxisSize.min,
             children: [
               SvgPicture.asset(
                 svgSrc,

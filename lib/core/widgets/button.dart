@@ -30,12 +30,12 @@ class CustomButton extends StatelessWidget {
           side: isSecondary
               ? BorderSide(color: bgColor ?? theme.primaryColor, width: 2)
               : null,
+          backgroundColor:
+              isSecondary ? Colors.transparent : bgColor ?? theme.primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(kDefaultPadding2x),
           ),
-          elevation: 0,
-          primary:
-              isSecondary ? Colors.transparent : bgColor ?? theme.primaryColor),
+          elevation: 0),
       child: showIcon
           ? Padding(
               padding: const EdgeInsets.symmetric(
