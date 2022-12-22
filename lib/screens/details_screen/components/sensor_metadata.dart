@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../../global_components/custom_card.dart';
+import '../../../core/widgets/custom_card.dart';
 
 class SensorMetaData extends StatelessWidget {
   const SensorMetaData({
