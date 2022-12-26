@@ -5,34 +5,58 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:water_project/core/theme.dart';
-import 'package:water_project/providers/flow_rate_data.dart';
-import 'package:water_project/providers/sensor_data.dart';
+import 'package:water_project/providers/flow_rate_provider.dart';
+import 'package:water_project/providers/sensor_provider.dart';
+import 'package:water_project/repositories/sensor_repository.dart';
 import 'package:water_project/screens/auth_screens/login_screen.dart';
 import 'package:water_project/screens/auth_screens/signup_screen.dart';
 import 'package:water_project/screens/details_screen/details_screen.dart';
-import 'package:water_project/screens/maps_screen/maps_screenct/core/theme.dart';
+import 'package:water_project/screens/maps_screen/maps_screen.dart';
+import 'package:water_project/services/sensors/sensor_firestore_service.dart';
+import 'package:water_project/services/sensors/sensor_realtime_db_service.dart';
 
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final FirebaseDatabase database = FirebaseDatabase.instance;
+
+  late final SensorRepository sensorRepository;
+
+  final SensorFirestoreService _sensorFirestoreService =
+      SensorFirestoreService();
+  final SensorRealtimeDBService _sensorRealtimeDBService =
+      SensorRealtimeDBService();
+
+  @override
+  void initState() {
+    sensorRepository = SensorRepositoryImplementation(
+        sensorFireStoreService: _sensorFirestoreService,
+        sensorRealTimeDatabaseService: _sensorRealtimeDBService);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<FlowRateData>(
-            create: (context) => FlowRateData()),
-        ChangeNotifierProvider<SensorData>(create: (context) => SensorData()),
+        ChangeNotifierProvider<FlowRateProvider>(
+            create: (context) => FlowRateProvider()),
+        ChangeNotifierProvider<SensorProvider>(
+            create: (context) =>
+                SensorProvider(sensorRepository: sensorRepository)),
       ],
       child: MaterialApp(
         scrollBehavior: MyCustomScrollBehavior(),

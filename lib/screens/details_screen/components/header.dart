@@ -34,9 +34,9 @@ class Header extends StatelessWidget {
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             shape: const CircleBorder(),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             shadowColor: kDark20,
             elevation: 10,
-            primary: Theme.of(context).scaffoldBackgroundColor,
           ),
           onPressed: () {
             ///Todo: show notifcations tray

@@ -27,6 +27,21 @@ class FlowRate extends Equatable {
         time: data["time"]);
   }
 
+  ///-------CopyWith--------///
+  FlowRate copyWith({
+    double? flowRate,
+    double? velocity,
+    String? sensorID,
+    DateTime? time,
+  }) {
+    return FlowRate(
+      flowRate: flowRate ?? this.flowRate,
+      velocity: velocity ?? this.velocity,
+      sensorID: sensorID ?? this.sensorID,
+      time: time ?? this.time,
+    );
+  }
+
   ///-------Empty-------///
   static FlowRate empty =
       FlowRate(flowRate: 0, velocity: 0, sensorID: "", time: DateTime.now());

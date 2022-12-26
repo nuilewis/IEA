@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../models/sensor_model.dart';
 
 class FirestoreService {
@@ -7,7 +8,7 @@ class FirestoreService {
   addSensorInfo({required Sensor sensorInfo}) {
     Map<String, dynamic> sensorDataToAdd = {
       "location": sensorInfo.location,
-      "diameter": sensorInfo.sensorDiameter,
+      "diameter": sensorInfo.diameter,
       "id": sensorInfo.id
     };
 
@@ -17,7 +18,7 @@ class FirestoreService {
   updateSensorInfo({required Sensor sensorInfo}) {
     Map<String, dynamic> sensorDataToUpdate = {
       "location": sensorInfo.location,
-      "diameter": sensorInfo.sensorDiameter,
+      "diameter": sensorInfo.diameter,
       "id": sensorInfo.id
     };
 
