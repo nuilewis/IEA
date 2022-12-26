@@ -1,9 +1,33 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equatable/equatable.dart';
 
-class Sensor {
+class Sensor extends Equatable {
   final String id;
-  final double sensorDiameter;
+  final double diameter;
   final GeoPoint? location;
 
-  Sensor({required this.id, required this.sensorDiameter, this.location});
+  const Sensor({required this.id, required this.diameter, this.location});
+
+  ///---------To Map and From Map methods---------///
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> data = {
+      "id": id,
+      "diameter": diameter,
+      "location": location,
+    };
+    return data;
+  }
+
+  factory Sensor.fromMap({required Map<String, dynamic> data}) {
+    return Sensor(
+        id: data["id"], diameter: data["diameter"], location: data["location"]);
+  }
+
+  ///-------Empty-------///
+  static Sensor empty = const Sensor(id: "", diameter: 0);
+  bool get isEmpty => this == Sensor.empty;
+  bool get isNotEmpty => this != Sensor.empty;
+
+  @override
+  List<Object?> get props => [id, diameter, location];
 }
