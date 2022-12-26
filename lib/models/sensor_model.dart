@@ -23,6 +23,19 @@ class Sensor extends Equatable {
         id: data["id"], diameter: data["diameter"], location: data["location"]);
   }
 
+  ///-------CopyWith--------///
+  Sensor copyWith({
+    String? id,
+    double? diameter,
+    GeoPoint? location,
+  }) {
+    return Sensor(
+      id: id ?? this.id,
+      diameter: diameter ?? this.diameter,
+      location: location ?? this.location,
+    );
+  }
+
   ///-------Empty-------///
   static Sensor empty = const Sensor(id: "", diameter: 0);
   bool get isEmpty => this == Sensor.empty;
