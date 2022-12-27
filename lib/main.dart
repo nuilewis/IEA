@@ -5,7 +5,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:water_project/core/theme.dart';
-import 'package:water_project/providers/flow_rate_provider.dart';
 import 'package:water_project/providers/sensor_provider.dart';
 import 'package:water_project/repositories/sensor_repository.dart';
 import 'package:water_project/screens/auth_screens/login_screen.dart';
@@ -20,7 +19,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -52,8 +51,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<FlowRateProvider>(
-            create: (context) => FlowRateProvider()),
         ChangeNotifierProvider<SensorProvider>(
             create: (context) =>
                 SensorProvider(sensorRepository: sensorRepository)),
