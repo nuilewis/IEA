@@ -54,19 +54,19 @@ const TextStyle kFootNote =
 InputDecoration customTextFieldDecoration = InputDecoration(
   errorStyle: kBody.copyWith(color: kFuchsia),
   errorBorder: OutlineInputBorder(
-    gapPadding: 4,
-    borderSide: const BorderSide(color: kFuchsia, width: 1),
+    gapPadding: 54,
+    borderSide: const BorderSide(width: 1),
     borderRadius: BorderRadius.circular(kDefaultPadding2x),
   ),
   border: OutlineInputBorder(
     gapPadding: 0,
-    borderSide: BorderSide.none,
-    borderRadius: BorderRadius.circular(kDefaultPadding2x),
+    borderSide: const BorderSide(color: kDark),
+    borderRadius: BorderRadius.circular(10),
   ),
   isDense: false,
   filled: true,
   hintStyle: kBody,
-  fillColor: kPurple20,
+  // fillColor: kPurple20,
 );
 
 ///-------DateTime Constants -------////
