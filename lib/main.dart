@@ -7,11 +7,13 @@ import 'package:provider/provider.dart';
 import 'package:water_project/core/theme.dart';
 import 'package:water_project/providers/flow_rate_data.dart';
 import 'package:water_project/providers/sensor_data.dart';
+import 'package:water_project/screens/add_project.dart';
 import 'package:water_project/screens/auth_screens/login_screen.dart';
 import 'package:water_project/screens/auth_screens/signup_screen.dart';
 import 'package:water_project/screens/details_screen/details_screen.dart';
 // import 'package:water_project/screens/maps_screen/maps_screen/core/theme.dart';
 import 'package:water_project/screens/maps_screen/maps_screen.dart';
+import 'package:water_project/screens/projects_screen/proeject_screen.dart';
 
 import 'firebase_options.dart';
 
@@ -39,12 +41,14 @@ class MyApp extends StatelessWidget {
         scrollBehavior: MyCustomScrollBehavior(),
         theme: customLightTheme(context),
         debugShowCheckedModeBanner: false,
-        home: const LoginScreen(),
+        home: const MapsScreen(),
         routes: {
           DetailsScreen.id: (context) => const DetailsScreen(),
           LoginScreen.id: (context) => const LoginScreen(),
           SignUpScreen.id: (context) => const SignUpScreen(),
           MapsScreen.id: (context) => const MapsScreen(),
+          AddProject.id:(context) => const AddProject(),
+          ProjectScreen.id:(context) => const ProjectScreen(),
         },
       ),
     );

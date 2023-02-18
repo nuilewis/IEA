@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:water_project/constants.dart';
 import 'package:water_project/core/widgets/custom_card.dart';
+import 'package:water_project/screens/details_screen/components/flow_rate_per_project.dart';
 import 'package:water_project/screens/details_screen/components/side_menu.dart';
 
 import '../../core/widgets/button.dart';
@@ -232,9 +233,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
                 const Align(alignment: Alignment.centerRight, child: Header()),
                 Text(
-                  "Sensor 1",
+                  "At a Glance",
                   style: theme.textTheme.headline1!
-                      .copyWith(color: theme.primaryColor),
+                      .copyWith(color: Colors.black),
                 ),
                 const SizedBox(
                   height: kDefaultPadding * 3,
@@ -246,14 +247,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SensorMetaData(),
+                       FlowRatePerProject(isNormal: true),
                         const SizedBox(width: kDefaultPadding2x),
 
                         ///Current Flow Rate
-                        DisplayFlowRate(),
-                        const SizedBox(
-                          width: kDefaultPadding2x,
-                        ),
+                        // DisplayFlowRate(),
+                        // const SizedBox(
+                        //   width: kDefaultPadding2x,
+                        // ),
 
                         ///Normal or Abnormal
                         const FlowStatus(
@@ -271,6 +272,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ),
                 ),
                 const SizedBox(height: kDefaultPadding2x),
+                Text(
+                  "Your Projects",
+                  style: theme.textTheme.headline1!
+                      .copyWith(color: Colors.black),
+                ),
                 CustomCard(
                   bgColor: Colors.white,
                   shadowColor: kPurple20,

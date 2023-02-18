@@ -5,15 +5,15 @@ import 'package:water_project/constants.dart';
 import '../../constants.dart';
 import '../../core/widgets/button.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const id = "log in screen";
-  const LoginScreen({Key? key}) : super(key: key);
+class AddProject extends StatefulWidget {
+  static const id = "add project screen";
+  const AddProject({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<AddProject> createState() => _AddProjectState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _AddProjectState extends State<AddProject> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -75,15 +75,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
-                                    "Name",
-                                    style: theme.textTheme.bodyText1,
+                                    "Project Name",
+                                    style: theme.textTheme.bodyText2,
                                   ),
                                   const SizedBox(height: kDefaultPadding / 2),
                                   TextFormField(
                                     key: nameKey,
                                   
                                     decoration:
-                                        customTextFieldDecoration.copyWith(hintText: "Name"),
+                                        customTextFieldDecoration.copyWith(hintText: "project Name"),
                                     validator: (value) {
                                       // if (value==null) {
                                       //   return "Please Input a valid email address";
@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   const SizedBox(height: kDefaultPadding2x),
                                    Text(
-                                    "Email",
+                                    "Description",
                                   ),
                                   const SizedBox(height: kDefaultPadding / 2),
 
@@ -110,30 +110,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                         return null;
                                       }
                                     },
+                                    maxLines: 10,
+                                    minLines: 8,
                                   ),
-                                  const SizedBox(height: kDefaultPadding2x),
-                                  const Text("Password"),
-                                  const SizedBox(height: kDefaultPadding / 2),
-                                  TextFormField(
-                                    key: passkey,
-                                    controller: passwordController,
-                                    obscureText: true,
-                                    decoration:
-                                        customTextFieldDecoration.copyWith(hintText: "Password"),
-                                    validator: (value) {
-                                      if (value!.length < 8) {
-                                        return "Your password is too short";
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                  ),
+                                 
                                   const SizedBox(height: kDefaultPadding2x),
                                    Text(
-                                    "Comfirm Password",
+                                    "Location",
                                     style: theme.textTheme.bodyText1,
                                   ),
                                   const SizedBox(height: kDefaultPadding / 2),
+                                 
 
                                   TextFormField(
                                     key: comfirmpasskey,
@@ -142,29 +129,25 @@ class _LoginScreenState extends State<LoginScreen> {
                                     decoration:
                                         customTextFieldDecoration.copyWith(hintText: "Password"),
                                     validator: (value) {
-                                      if (value!.length < 8) {
-                                        return "Your password is too short";
-                                      } else {
-                                        return null;
-                                      }
+                                      // Place  function for drop down menu
                                     },
                                   ),
-                                  const SizedBox(height: kDefaultPadding),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 293),
-                                    child: CustomButton(
+                                  // const SizedBox(height: kDefaultPadding/2),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(left: 293),
+                                  //   child: CustomButton(
                                       
-                                      onPressed: () {
-                                        if (formKey.currentState!.validate()) {
-                                          ///TODO: add methods to sign the user in
+                                  //     onPressed: () {
+                                  //       if (formKey.currentState!.validate()) {
+                                  //         ///TODO: add methods to sign the user in
               
-                                        }
-                                      },
-                                      text: "SignUp",
-                                      textColor: Colors.white,
-                                      bgColor: kPurple,
-                                    ),
-                                  ),
+                                  //       }
+                                  //     },
+                                  //     text: "SignUp",
+                                  //     textColor: Colors.white,
+                                  //     bgColor: kPurple,
+                                  //   ),
+                                  // ),
                                   // const SizedBox(height: kDefaultPadding),
                                  
                                 ],
