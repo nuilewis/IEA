@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:water_project/constants.dart';
 import 'package:water_project/screens/details_screen/components/flow_rate_per_project.dart';
 import 'package:water_project/screens/details_screen/components/header.dart';
 import 'package:water_project/screens/details_screen/components/side_menu.dart';
 import 'package:water_project/core/theme.dart';
+import 'package:water_project/screens/maps_screen/google.dart';
 
 import '../details_screen/components/flow_status.dart';
 
@@ -18,7 +20,7 @@ class MapsScreen extends StatelessWidget {
       children: const [
         Expanded(flex: 3, child: SideMenu()),
         Expanded(flex: 9, child: Maps()),
-        Expanded(flex: 4, child: SensorInfo(isNormal: true,)),
+        Expanded(flex: 4, child: SensorInfo()),
       ],
     ));
   }
@@ -59,16 +61,23 @@ class _MapsState extends State<Maps> {
             
           ),
           SizedBox(height: 12),
-          Container(
-            height: 800,
-            width: 900,
-           
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-            ),
+          Padding(
+            padding: const EdgeInsets.only(bottom:15.0),
+            child: Container(
+              height: 800,
+              width: 900,
+              
+             
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+                
+              ),
+              child: maps(),
+             
 
-            
+              
+            ),
           )
        
         ],
@@ -77,8 +86,8 @@ class _MapsState extends State<Maps> {
   }
 }
 class SensorInfo extends StatelessWidget {
-  final bool isNormal;
-  const SensorInfo({super.key,  required this.isNormal});
+  
+  const SensorInfo({super.key,  });
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +116,8 @@ class SensorInfo extends StatelessWidget {
             child: Column(
               children: [
                 project_sensor_info(isNormal: true),
+               
+                
                
                 
               ],
