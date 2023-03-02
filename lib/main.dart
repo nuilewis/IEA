@@ -1,16 +1,23 @@
 import 'dart:ui';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:provider/provider.dart';
+import 'package:water_project/core/connection_checker/connection_checker.dart';
 import 'package:water_project/core/theme.dart';
+import 'package:water_project/providers/auth_provider.dart';
+import 'package:water_project/providers/project_provider.dart';
 import 'package:water_project/providers/sensor_provider.dart';
+import 'package:water_project/repositories/auth_repository.dart';
+import 'package:water_project/repositories/project_repository.dart';
 import 'package:water_project/repositories/sensor_repository.dart';
 import 'package:water_project/screens/auth_screens/login_screen.dart';
 import 'package:water_project/screens/auth_screens/signup_screen.dart';
 import 'package:water_project/screens/details_screen/details_screen.dart';
 import 'package:water_project/screens/maps_screen/maps_screen.dart';
+import 'package:water_project/services/auth/auth_service.dart';
+import 'package:water_project/services/projects/project_firestore_service.dart';
 import 'package:water_project/services/sensors/sensor_firestore_service.dart';
 import 'package:water_project/services/sensors/sensor_realtime_db_service.dart';
 
@@ -30,8 +37,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final FirebaseDatabase database = FirebaseDatabase.instance;
+  final ConnectionChecker connectionChecker =
+      ConnectionCheckerImplementation(InternetConnectionChecker());
 
+  ///Sensor Dependencies
   late final SensorRepository sensorRepository;
 
   final SensorFirestoreService _sensorFirestoreService =
@@ -39,11 +48,30 @@ class _MyAppState extends State<MyApp> {
   final SensorRealtimeDBService _sensorRealtimeDBService =
       SensorRealtimeDBService();
 
+  ///Project Dependencies
+
+  late final ProjectRepository projectRepository;
+  final ProjectFirestoreService _projectFirestoreService =
+      ProjectFirestoreService();
+
+  ///Auth Dependencies
+  ///
+  late final AuthRepository authRepository;
+  final AuthService authService = AuthService();
+
   @override
   void initState() {
     sensorRepository = SensorRepositoryImplementation(
         sensorFireStoreService: _sensorFirestoreService,
-        sensorRealTimeDatabaseService: _sensorRealtimeDBService);
+        sensorRealTimeDatabaseService: _sensorRealtimeDBService,
+        connectionChecker: connectionChecker);
+
+    projectRepository = ProjectRepositoryImplementation(
+        projectFirestoreService: _projectFirestoreService,
+        connectionChecker: connectionChecker);
+
+    authRepository = AuthRepositoryImplementation(
+        authService: authService, connectionChecker: connectionChecker);
     super.initState();
   }
 
@@ -54,6 +82,11 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider<SensorProvider>(
             create: (context) =>
                 SensorProvider(sensorRepository: sensorRepository)),
+        ChangeNotifierProvider<ProjectProvider>(
+            create: (context) =>
+                ProjectProvider(projectRepository: projectRepository)),
+        ChangeNotifierProvider<AuthProvider>(
+            create: (context) => AuthProvider(authRepository: authRepository)),
       ],
       child: MaterialApp(
         scrollBehavior: MyCustomScrollBehavior(),
