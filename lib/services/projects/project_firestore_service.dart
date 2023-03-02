@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:water_project/services/firebase_base_services.dart';
 
 import '../../models/project_model.dart';
@@ -8,10 +9,14 @@ class ProjectFirestoreService extends FirestoreService {
     await firestore.collection("project").doc().set(projectData);
   }
 
-  Future<void> editProject({required Project project}) async {
+  Future<void> updateProject({required Project project}) async {
     Map<String, dynamic> projectData = project.toMap();
 
     await firestore.collection("project").doc().update(projectData);
+  }
+
+  Future<QuerySnapshot> getProjects() async {
+    return await firestore.collection("project").get();
   }
 
   ///Delete Project
