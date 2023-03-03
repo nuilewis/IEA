@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       customTextFieldDecoration.copyWith(hintText: "Password"),
                   validator: (value) {
                     if (value!.length < 8) {
-                      return "Your password is too short";
+                      return "Your password cannot be less than 8 characters";
                     } else {
                       return null;
                     }
