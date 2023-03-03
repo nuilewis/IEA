@@ -35,24 +35,60 @@ class _LoginScreenState extends State<LoginScreen> {
     final ThemeData theme = Theme.of(context);
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: Center(
-        child: Container(
-          margin: const EdgeInsets.only(left:234, right: 234, top: 90, bottom: 100),
-          
-          
-          child: Row(
-            children: [
-              Expanded(
-                flex: 5,
-                
-                
-                child: Container(
-                  decoration: BoxDecoration(
-                    color:  kPurple80,
-                    borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30.0),
-          bottomLeft: Radius.circular(30.0)), 
-                  ),
+
+      body: Form(
+        key: formKey,
+        child: Center(
+          child: SizedBox(
+            width: screenSize.width * .3,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Log In",
+                  style: theme.textTheme.bodyText1,
+                ),
+                Text(
+                  "Email",
+                  style: theme.textTheme.bodyText1,
+                ),
+                const SizedBox(height: kDefaultPadding / 2),
+                TextFormField(
+                  key: emailKey,
+                  controller: emailController,
+                  decoration:
+                      customTextFieldDecoration.copyWith(hintText: "email"),
+                  validator: (value) {
+                    if (!value!.contains("@")) {
+                      return "Please Input a valid email address";
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                const SizedBox(height: kDefaultPadding2x),
+                const Text("Password"),
+                const SizedBox(height: kDefaultPadding / 2),
+                TextFormField(
+                  key: passkey,
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration:
+                      customTextFieldDecoration.copyWith(hintText: "Password"),
+                  validator: (value) {
+                    if (value!.length < 8) {
+                      return "Your password cannot be less than 8 characters";
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                const SizedBox(height: kDefaultPadding * 3),
+                CustomButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      ///TODO: add methods to sign the user in
 
                   height: 708,
                   width: 406,

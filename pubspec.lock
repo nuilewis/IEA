@@ -472,6 +472,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.5"
+
   js_wrapping:
     dependency: transitive
     description:
@@ -480,6 +481,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.4"
+
   json_annotation:
     dependency: transitive
     description:

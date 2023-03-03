@@ -1,0 +1,19 @@
+import 'package:flutter/material.dart';
+
+import '../repositories/auth_repository.dart';
+
+enum AuthSate { initial, submitting, success, error }
+
+class AuthProvider extends ChangeNotifier {
+  AuthRepository authRepository;
+  String errorMessage = "";
+
+  AuthSate state = AuthSate.initial;
+
+  AuthProvider({required this.authRepository});
+
+  Future<void> signIn() async {}
+  Future<void> register() async {}
+  Future<void> updateAccountInfo() async {}
+  Future<void> deleteAccount() async {}
+}

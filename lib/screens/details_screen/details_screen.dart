@@ -1,11 +1,15 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:water_project/constants.dart';
 import 'package:water_project/core/widgets/custom_card.dart';
 import 'package:water_project/screens/details_screen/components/flow_rate_per_project.dart';
+import 'package:water_project/providers/sensor_provider.dart';
+
 import 'package:water_project/screens/details_screen/components/side_menu.dart';
 
 import '../../core/widgets/button.dart';
+import '../../models/flow_data_model.dart';
 import 'components/display_flow_rate.dart';
 import 'components/flow_status.dart';
 import 'components/header.dart';
@@ -32,18 +36,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
         maxY: 4,
         minY: 0,
       );
-
-  // LineChartData get sampleData2 => LineChartData(
-  //       lineTouchData: lineTouchData2,
-  //       gridData: gridData,
-  //       titlesData: titlesData2,
-  //       borderData: borderData,
-  //       lineBarsData: lineBarsData2,
-  //       minX: 0,
-  //       maxX: 14,
-  //       maxY: 6,
-  //       minY: 0,
-  //     );
 
   LineTouchData get lineTouchData1 => LineTouchData(
         handleBuiltInTouches: true,
@@ -216,105 +208,108 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    return Scaffold(
-      body: Row(
-        children: [
-          const Expanded(
-            flex: 3,
-            child: SideMenu(),
-          ),
-          const SizedBox(width: kDefaultPadding2x),
-          Expanded(
-            flex: 13,
-            child: ListView(
-              children: [
-                const SizedBox(
-                  height: kDefaultPadding2x,
-                ),
-                const Align(alignment: Alignment.centerRight, child: Header()),
-                Text(
-                  "At a Glance",
-                  style: theme.textTheme.headline1!
-                      .copyWith(color: Colors.black),
-                ),
-                const SizedBox(
-                  height: kDefaultPadding * 3,
-                ),
-                SizedBox(
-                  height: 160,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                       FlowRatePerProject(isNormal: true),
-                        const SizedBox(width: kDefaultPadding2x),
 
-                        ///Current Flow Rate
-                        // DisplayFlowRate(),
-                        // const SizedBox(
-                        //   width: kDefaultPadding2x,
-                        // ),
-
-                        ///Normal or Abnormal
-                        const FlowStatus(
-                          isNormal: true,
-                        ),
-                        const SizedBox(width: kDefaultPadding2x),
-                        CustomButton(
-                          onPressed: () {},
-                          text: "Locate On Map",
-                          showIcon: true,
-                          iconLink: "assets/svg/map_pin.svg",
-                        )
-                      ],
-                    ),
+    return Consumer<SensorProvider>(builder: (context, sensorData, child) {
+      return Scaffold(
+        body: Row(
+          children: [
+            const Expanded(
+              flex: 3,
+              child: SideMenu(),
+            ),
+            const SizedBox(width: kDefaultPadding2x),
+            Expanded(
+              flex: 13,
+              child: ListView(
+                children: [
+                  const SizedBox(
+                    height: kDefaultPadding2x,
                   ),
-                ),
-                const SizedBox(height: kDefaultPadding2x),
-                Text(
-                  "Your Projects",
-                  style: theme.textTheme.headline1!
-                      .copyWith(color: Colors.black),
-                ),
-                CustomCard(
-                  bgColor: Colors.white,
-                  shadowColor: kPurple20,
-                  child: Column(
-                    children: [
-                      Row(
-                        children: const [
-                          CategoryItem(
-                            title: "Today",
-                            onSelected: true,
+                  const Align(
+                      alignment: Alignment.centerRight, child: Header()),
+                  Text(
+                    "Sensor 1",
+                    style: theme.textTheme.headline1!
+                        .copyWith(color: theme.primaryColor),
+                  ),
+                  const SizedBox(
+                    height: kDefaultPadding * 3,
+                  ),
+                  SizedBox(
+                    height: 160,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SensorMetaData(),
+                          const SizedBox(width: kDefaultPadding2x),
+
+                          ///Current Flow Rate
+                          const DisplayFlowRate(
+                            flowRate: FlowRate(flowRate: 10, velocity: 10),
                           ),
-                          SizedBox(width: kDefaultPadding),
-                          CategoryItem(title: "Weekly"),
-                          SizedBox(width: kDefaultPadding),
-                          CategoryItem(title: "Monthly"),
-                          SizedBox(width: kDefaultPadding),
-                          CategoryItem(title: "Lifetime"),
+                          const SizedBox(
+                            width: kDefaultPadding2x,
+                          ),
+
+                          ///Normal or Abnormal
+                          const FlowStatus(
+                            isNormal: true,
+
+                          ),
+                          const SizedBox(width: kDefaultPadding2x),
+                          CustomButton(
+                            onPressed: () {},
+                            text: "Locate On Map",
+                            showIcon: true,
+                            iconLink: "assets/svg/map_pin.svg",
+                          )
                         ],
                       ),
-                      const SizedBox(height: kDefaultPadding2x),
-                      SizedBox(
-                          height: 400, child: LineChart(sampleLineChartData1)),
-                    ],
+                    ),
                   ),
-                )
-              ],
+                  const SizedBox(height: kDefaultPadding2x),
+                  CustomCard(
+                    bgColor: Colors.white,
+                    shadowColor: kPurple20,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: const [
+                            CategoryItem(
+                              title: "Today",
+                              onSelected: true,
+                            ),
+                            SizedBox(width: kDefaultPadding),
+                            CategoryItem(title: "Weekly"),
+                            SizedBox(width: kDefaultPadding),
+                            CategoryItem(title: "Monthly"),
+                            SizedBox(width: kDefaultPadding),
+                            CategoryItem(title: "Lifetime"),
+                          ],
+                        ),
+                        const SizedBox(height: kDefaultPadding2x),
+                        SizedBox(
+                            height: 400,
+                            child: LineChart(sampleLineChartData1)),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-          const Flexible(
-            flex: 1,
-            fit: FlexFit.tight,
-            child: SizedBox(
-              height: double.infinity,
-            ),
-          )
-        ],
-      ),
-    );
+            const Flexible(
+              flex: 1,
+              fit: FlexFit.tight,
+              child: SizedBox(
+                height: double.infinity,
+              ),
+            )
+          ],
+        ),
+      );
+    });
   }
 }
 
