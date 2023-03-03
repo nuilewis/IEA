@@ -6,6 +6,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:provider/provider.dart';
 import 'package:water_project/core/connection_checker/connection_checker.dart';
 import 'package:water_project/core/theme.dart';
+
 import 'package:water_project/providers/auth_provider.dart';
 import 'package:water_project/providers/project_provider.dart';
 import 'package:water_project/providers/sensor_provider.dart';
@@ -92,12 +93,14 @@ class _MyAppState extends State<MyApp> {
         scrollBehavior: MyCustomScrollBehavior(),
         theme: customLightTheme(context),
         debugShowCheckedModeBanner: false,
-        home: const DetailsScreen(),
+        home: const ProjectScreen(),
         routes: {
           DetailsScreen.id: (context) => const DetailsScreen(),
           LoginScreen.id: (context) => const LoginScreen(),
           SignUpScreen.id: (context) => const SignUpScreen(),
           MapsScreen.id: (context) => const MapsScreen(),
+          AddProject.id: (context) => const AddProject(),
+          ProjectScreen.id: (context) => const ProjectScreen(),
         },
       ),
     );

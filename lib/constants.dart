@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 const primaryColor = Colors.indigoAccent;
 const secondaryColor = Color(0xFF2A2D3E);
 const bgColor = Color(0xFF212332);
+const containercolor = Color.fromRGBO(165, 174, 255, 1);
+const rectanglecolor = Color.fromRGBO(255, 255, 255, 0.5);
 
 ///--------Colors---------///
 // const Color kPurple = Color(0xFF531CF7);
@@ -34,6 +36,8 @@ const Color kDark80 = Color(0xFF4C4C4C);
 const Color kDark60 = Color(0xFFBDBDBD);
 const Color kDark40 = Color(0xFFD7D7D7);
 const Color kDark20 = Color(0xFFF4F4F4);
+const Color Grey =  Color.fromARGB(244, 209, 209, 206);
+const Color Green =  Color.fromARGB(244, 198, 245, 198);
 
 const double kDefaultPadding = 16.0;
 const double kDefaultPadding2x = 32.0;
@@ -45,6 +49,8 @@ const TextStyle kHeadingLight =
 const TextStyle kBody = TextStyle(fontWeight: FontWeight.normal, fontSize: 14);
 const TextStyle kBodyBold =
     TextStyle(fontWeight: FontWeight.bold, fontSize: 14);
+const TextStyle kBodyvold =
+    TextStyle(fontWeight: FontWeight.bold, fontSize: 10);
 const TextStyle kButtonText =
     TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
 const TextStyle kFootNote =
@@ -54,19 +60,19 @@ const TextStyle kFootNote =
 InputDecoration customTextFieldDecoration = InputDecoration(
   errorStyle: kBody.copyWith(color: kFuchsia),
   errorBorder: OutlineInputBorder(
-    gapPadding: 4,
-    borderSide: const BorderSide(color: kFuchsia, width: 1),
+    gapPadding: 3,
+    borderSide: const BorderSide(width: 1),
     borderRadius: BorderRadius.circular(kDefaultPadding2x),
   ),
   border: OutlineInputBorder(
     gapPadding: 0,
-    borderSide: BorderSide.none,
-    borderRadius: BorderRadius.circular(kDefaultPadding2x),
+    borderSide: const BorderSide(color: kDark),
+    borderRadius: BorderRadius.circular(10),
   ),
   isDense: false,
   filled: true,
   hintStyle: kBody,
-  fillColor: kPurple20,
+  // fillColor: kPurple20,
 );
 
 ///-------DateTime Constants -------////

@@ -20,6 +20,12 @@ class SideMenu extends StatelessWidget {
             height: kDefaultPadding2x * 3,
           ),
           CustomMenuItem(
+              title: "Your Projects",
+              svgSrc: "assets/svg/map_view.svg",
+              onPressed: () {
+                Navigator.pushNamed(context, DetailsScreen.id);
+              }),
+          CustomMenuItem(
               title: "Map View",
               svgSrc: "assets/svg/map_view.svg",
               onPressed: () {
@@ -50,6 +56,12 @@ void selectedItem(BuildContext context, int i) {
       Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => const DetailsScreen()),
       );
+break;
+    case 1:
+        Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const DetailsScreen()),
+      );
+    
   }
 }
 
