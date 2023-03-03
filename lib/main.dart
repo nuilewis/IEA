@@ -2,11 +2,10 @@ import 'dart:ui';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:water_project/core/connection_checker/connection_checker.dart';
 import 'package:water_project/core/theme.dart';
-
 import 'package:water_project/providers/auth_provider.dart';
 import 'package:water_project/providers/project_provider.dart';
 import 'package:water_project/providers/sensor_provider.dart';
@@ -23,6 +22,8 @@ import 'package:water_project/services/sensors/sensor_firestore_service.dart';
 import 'package:water_project/services/sensors/sensor_realtime_db_service.dart';
 
 import 'firebase_options.dart';
+import 'screens/add_project.dart';
+import 'screens/projects_screen/proeject_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +40,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final ConnectionChecker connectionChecker =
-      ConnectionCheckerImplementation(InternetConnectionChecker());
+      ConnectionCheckerImplementation(InternetConnectionCheckerPlus());
 
   ///Sensor Dependencies
   late final SensorRepository sensorRepository;

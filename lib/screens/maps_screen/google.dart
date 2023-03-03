@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class maps extends StatefulWidget {
-  const maps({super.key});
+class Maps extends StatefulWidget {
+  const Maps({super.key});
 
   @override
-  State<maps> createState() => _mapsState();
+  State<Maps> createState() => _MapsState();
 }
 
-class _mapsState extends State<maps> {
+class _MapsState extends State<Maps> {
   late GoogleMapController mapscontroller;
-  List<Marker> _markers = [];
+  final List<Marker> _markers = [];
   bool showmaps = true;
 
   @override
   void initState() {
     super.initState();
-    _markers.add(Marker(
+    _markers.add(const Marker(
       markerId: MarkerId("myLocation"),
       position: LatLng(59.948680, 11.010630),
     ));
@@ -32,25 +32,17 @@ class _mapsState extends State<maps> {
   Widget build(BuildContext context) {
     return Container(
       child: showmaps
-          ? Container(
-              // height: 300,
-              // width: 1230,
-
-              // decoration: BoxDecoration(
-              //   borderRadius: BorderRadius.circular(12),
-
-              // ),
-              child: GoogleMap(
-                  onMapCreated: (controller) {
-                    setState(() {
-                      mapscontroller = controller;
-                    });
-                  },
-                  markers: Set<Marker>.of(_markers),
-                  mapType: MapType.normal,
-                  initialCameraPosition: CameraPosition(
-                      target: LatLng(59.948680, 11.010630), zoom: 14)))
-          : CircularProgressIndicator(),
+          ? GoogleMap(
+              onMapCreated: (controller) {
+                setState(() {
+                  mapscontroller = controller;
+                });
+              },
+              markers: Set<Marker>.of(_markers),
+              mapType: MapType.normal,
+              initialCameraPosition: const CameraPosition(
+                  target: LatLng(59.948680, 11.010630), zoom: 14))
+          : const CircularProgressIndicator(),
     );
   }
 }

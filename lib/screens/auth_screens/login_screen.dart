@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:water_project/constants.dart';
-import 'package:water_project/constants.dart';
 
-import '../../constants.dart';
 import '../../core/widgets/button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -35,7 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
     final ThemeData theme = Theme.of(context);
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-
       body: Form(
         key: formKey,
         child: Center(
@@ -86,17 +83,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: kDefaultPadding * 3),
                 CustomButton(
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      ///TODO: add methods to sign the user in
-
-                  height: 708,
-                  width: 406,
-                  
-                  child: Text(''))),
-              Expanded(
-                flex: 11,
-               
+                    text: "Login",
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        ///TODO: add methods to sign the user in
+                      }
+                    }),
+                Expanded(
+                  flex: 11,
                   child: Column(
                     children: [
                       Form(
@@ -105,7 +99,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: SizedBox(
                             // width: screenSize.width * .2,
                             child: Padding(
-                              padding: const EdgeInsets.only(left:54, right: 53),
+                              padding:
+                                  const EdgeInsets.only(left: 54, right: 53),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
@@ -117,9 +112,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   const SizedBox(height: kDefaultPadding / 2),
                                   TextFormField(
                                     key: nameKey,
-                                  
-                                    decoration:
-                                        customTextFieldDecoration.copyWith(hintText: "Name"),
+                                    decoration: customTextFieldDecoration
+                                        .copyWith(hintText: "Name"),
                                     validator: (value) {
                                       // if (value==null) {
                                       //   return "Please Input a valid email address";
@@ -129,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     },
                                   ),
                                   const SizedBox(height: kDefaultPadding2x),
-                                   Text(
+                                  const Text(
                                     "Email",
                                   ),
                                   const SizedBox(height: kDefaultPadding / 2),
@@ -137,8 +131,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   TextFormField(
                                     key: emailKey,
                                     controller: emailController,
-                                    decoration:
-                                        customTextFieldDecoration.copyWith(hintText: "email"),
+                                    decoration: customTextFieldDecoration
+                                        .copyWith(hintText: "email"),
                                     validator: (value) {
                                       if (!value!.contains("@")) {
                                         return "Please Input a valid email address";
@@ -154,8 +148,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     key: passkey,
                                     controller: passwordController,
                                     obscureText: true,
-                                    decoration:
-                                        customTextFieldDecoration.copyWith(hintText: "Password"),
+                                    decoration: customTextFieldDecoration
+                                        .copyWith(hintText: "Password"),
                                     validator: (value) {
                                       if (value!.length < 8) {
                                         return "Your password is too short";
@@ -165,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     },
                                   ),
                                   const SizedBox(height: kDefaultPadding2x),
-                                   Text(
+                                  Text(
                                     "Comfirm Password",
                                     style: theme.textTheme.bodyText1,
                                   ),
@@ -175,8 +169,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     key: comfirmpasskey,
                                     controller: passwordController,
                                     obscureText: true,
-                                    decoration:
-                                        customTextFieldDecoration.copyWith(hintText: "Password"),
+                                    decoration: customTextFieldDecoration
+                                        .copyWith(hintText: "Password"),
                                     validator: (value) {
                                       if (value!.length < 8) {
                                         return "Your password is too short";
@@ -189,11 +183,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 293),
                                     child: CustomButton(
-                                      
                                       onPressed: () {
                                         if (formKey.currentState!.validate()) {
                                           ///TODO: add methods to sign the user in
-              
                                         }
                                       },
                                       text: "SignUp",
@@ -202,7 +194,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
                                   // const SizedBox(height: kDefaultPadding),
-                                 
                                 ],
                               ),
                             ),
@@ -212,10 +203,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-              
-              
-
-            ],
+              ],
+            ),
           ),
         ),
       ),

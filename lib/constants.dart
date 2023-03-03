@@ -36,8 +36,8 @@ const Color kDark80 = Color(0xFF4C4C4C);
 const Color kDark60 = Color(0xFFBDBDBD);
 const Color kDark40 = Color(0xFFD7D7D7);
 const Color kDark20 = Color(0xFFF4F4F4);
-const Color Grey =  Color.fromARGB(244, 209, 209, 206);
-const Color Green =  Color.fromARGB(244, 198, 245, 198);
+const Color grey = Color.fromARGB(244, 209, 209, 206);
+const Color green = Color.fromARGB(244, 198, 245, 198);
 
 const double kDefaultPadding = 16.0;
 const double kDefaultPadding2x = 32.0;

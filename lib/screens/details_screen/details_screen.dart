@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:water_project/constants.dart';
 import 'package:water_project/core/widgets/custom_card.dart';
-import 'package:water_project/screens/details_screen/components/flow_rate_per_project.dart';
 import 'package:water_project/providers/sensor_provider.dart';
-
 import 'package:water_project/screens/details_screen/components/side_menu.dart';
 
 import '../../core/widgets/button.dart';
@@ -256,7 +254,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           ///Normal or Abnormal
                           const FlowStatus(
                             isNormal: true,
-
                           ),
                           const SizedBox(width: kDefaultPadding2x),
                           CustomButton(

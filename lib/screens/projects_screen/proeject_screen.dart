@@ -1,20 +1,12 @@
-
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:water_project/constants.dart';
-import 'package:water_project/core/widgets/button.dart';
 import 'package:water_project/core/widgets/custom_card.dart';
-import 'package:water_project/screens/details_screen/components/display_flow_rate.dart';
 import 'package:water_project/screens/details_screen/components/flow_rate_per_project.dart';
-import 'package:water_project/screens/details_screen/components/flow_status.dart';
 import 'package:water_project/screens/details_screen/components/header.dart';
 import 'package:water_project/screens/details_screen/components/number_of_projects_data.dart';
 import 'package:water_project/screens/details_screen/components/project_status.dart';
-import 'package:water_project/screens/details_screen/components/sensor_metadata.dart';
 import 'package:water_project/screens/details_screen/components/side_menu.dart';
-
-
 
 class ProjectScreen extends StatefulWidget {
   static const id = "project screen";
@@ -239,8 +231,8 @@ class _ProjectScreenState extends State<ProjectScreen> {
                 const Align(alignment: Alignment.centerRight, child: Header()),
                 Text(
                   "At a Glance",
-                  style: theme.textTheme.headline1!
-                      .copyWith(color: Colors.black),
+                  style:
+                      theme.textTheme.headline1!.copyWith(color: Colors.black),
                 ),
                 const SizedBox(
                   height: kDefaultPadding * 3,
@@ -252,18 +244,18 @@ class _ProjectScreenState extends State<ProjectScreen> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         NumberOfProjects(isNormal: true),
-                        const SizedBox(width: kDefaultPadding2x),
+                        SizedBox(width: kDefaultPadding2x),
                         FlowRatePerProject(isNormal: true),
-                        const SizedBox(width: kDefaultPadding2x),
+                        SizedBox(width: kDefaultPadding2x),
                         // const SensorMetaData(),
                         ProjectStatus(isNormal: true),
-                        const SizedBox(width: kDefaultPadding2x),
+                        SizedBox(width: kDefaultPadding2x),
 
                         ///Current Flow Rate
                         // DisplayFlowRate(),
-                        const SizedBox(
+                        SizedBox(
                           width: kDefaultPadding2x,
                         ),
 
@@ -271,7 +263,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                         // const FlowStatus(
                         //   isNormal: true,
                         // ),
-                        const SizedBox(width: kDefaultPadding2x),
+                        SizedBox(width: kDefaultPadding2x),
                         // CustomButton(
                         //   onPressed: () {},
                         //   text: "Locate On Map",
@@ -285,204 +277,174 @@ class _ProjectScreenState extends State<ProjectScreen> {
                 const SizedBox(height: kDefaultPadding2x),
                 Text(
                   "Your Projects",
-                  style: theme.textTheme.headline1!
-                      .copyWith(color: Colors.black),
+                  style:
+                      theme.textTheme.headline1!.copyWith(color: Colors.black),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 370),
                   child: CustomCard(
-                  
                     bgColor: Colors.white,
                     shadowColor: kPurple20,
                     child: Column(
                       children: [
                         Row(
-                          children:  [
-
+                          children: [
                             Container(
-               
-                  
-                  width: 384,
-                  height: 160,
-                  
-                  // alignment: Alignment.bottomLeft,
-               
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blue),
-                    
-                      color: rectanglecolor,
-                      borderRadius: BorderRadius.circular(20)),
-              
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 250,top: 5),
-                          child: Text(
-                            "Project Name",
-                            style: theme.textTheme.headline1!
-                                .copyWith(fontSize: 16, color: Colors.black87),
-                          ),
-                        ),
-                         const SizedBox(height: kDefaultPadding),
-                      
-                        Padding(
-                          padding: const EdgeInsets.only(right: 60),
-                          child: Text(
-                            "Projects fgfgfgfgffgfhfghgfnghngnghythyuyu",
-                            
-                          ),
-                        ),
-                       Padding(
-                         padding: const EdgeInsets.only(top: 70, left: 150, bottom: 4),
-                         child: ElevatedButton(onPressed: () {}, 
-                         
-                         
-                         child: Text("view project"),
-                         
-                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-                          
-                          
-                         ),),
-                       )
+                              width: 384,
+                              height: 160,
 
-                      ],
-                    
-              ),
-                  
-          
-        ),
+                              // alignment: Alignment.bottomLeft,
 
-        const SizedBox(width: kDefaultPadding),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.blue),
+                                  color: rectanglecolor,
+                                  borderRadius: BorderRadius.circular(20)),
 
-        Container(
-               
-                  
-                  width: 384,
-                  height: 160,
-                  
-                  // alignment: Alignment.bottomLeft,
-               
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blue),
-                    
-                      color: rectanglecolor,
-                      borderRadius: BorderRadius.circular(20)),
-              
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 250,top: 5),
-                          child: Text(
-                            "Project Name",
-                            style: theme.textTheme.headline1!
-                                .copyWith(fontSize: 16, color: Colors.black87),
-                          ),
-                        ),
-                         const SizedBox(height: kDefaultPadding),
-                      
-                        Padding(
-                          padding: const EdgeInsets.only(right: 60),
-                          child: Text(
-                            "Projects fgfgfgfgffgfhfghgfnghngnghythyuyu",
-                            
-                          ),
-                        ),
-                       Padding(
-                         padding: const EdgeInsets.only(top: 70, left: 150, bottom: 4),
-                         child: ElevatedButton(onPressed: () {}, 
-                         
-                         
-                         child: Text("view project"),
-                         
-                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-                          
-                          
-                         ),),
-                       )
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        right: 250, top: 5),
+                                    child: Text(
+                                      "Project Name",
+                                      style: theme.textTheme.headline1!
+                                          .copyWith(
+                                              fontSize: 16,
+                                              color: Colors.black87),
+                                    ),
+                                  ),
+                                  const SizedBox(height: kDefaultPadding),
+                                  const Padding(
+                                    padding: EdgeInsets.only(right: 60),
+                                    child: Text(
+                                      "Projects fgfgfgfgffgfhfghgfnghngnghythyuyu",
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 70, left: 150, bottom: 4),
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blue,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                      ),
+                                      child: const Text("view project"),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: kDefaultPadding),
+                            Container(
+                              width: 384,
+                              height: 160,
 
-                      ],
-                    
-              ),
-                  
-          
-        ),
+                              // alignment: Alignment.bottomLeft,
+
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.blue),
+                                  color: rectanglecolor,
+                                  borderRadius: BorderRadius.circular(20)),
+
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        right: 250, top: 5),
+                                    child: Text(
+                                      "Project Name",
+                                      style: theme.textTheme.headline1!
+                                          .copyWith(
+                                              fontSize: 16,
+                                              color: Colors.black87),
+                                    ),
+                                  ),
+                                  const SizedBox(height: kDefaultPadding),
+                                  const Padding(
+                                    padding: EdgeInsets.only(right: 60),
+                                    child: Text(
+                                      "Projects fgfgfgfgffgfhfghgfnghngnghythyuyu",
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 70, left: 150, bottom: 4),
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blue,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                      ),
+                                      child: const Text("view project"),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                         const SizedBox(height: kDefaultPadding2x),
                         Row(
-                          children:  [
-
+                          children: [
                             Container(
-               
-                  
-                  width: 384,
-                  height: 160,
-                  
-                  // alignment: Alignment.bottomLeft,
-               
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blue),
-                    
-                      color: rectanglecolor,
-                      borderRadius: BorderRadius.circular(20)),
-              
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 250,top: 5),
-                          child: Text(
-                            "Project Name",
-                            style: theme.textTheme.headline1!
-                                .copyWith(fontSize: 16, color: Colors.black87),
-                          ),
-                        ),
-                         const SizedBox(height: kDefaultPadding),
-                      
-                        Padding(
-                          padding: const EdgeInsets.only(right: 60),
-                          child: Text(
-                            "Projects fgfgfgfgffgfhfghgfnghngnghythyuyu",
-                            
-                          ),
-                        ),
-                       Padding(
-                         padding: const EdgeInsets.only(top: 70, left: 150, bottom: 4),
-                         child: ElevatedButton(onPressed: () {}, 
-                         
-                         
-                         child: Text("view project"),
-                         
-                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-                          
-                          
-                         ),),
-                       )
+                              width: 384,
+                              height: 160,
 
-                      ],
-                    
-              ),
-                  
-          
-        ),
+                              // alignment: Alignment.bottomLeft,
 
-        const SizedBox(width: kDefaultPadding),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.blue),
+                                  color: rectanglecolor,
+                                  borderRadius: BorderRadius.circular(20)),
 
-      
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        right: 250, top: 5),
+                                    child: Text(
+                                      "Project Name",
+                                      style: theme.textTheme.headline1!
+                                          .copyWith(
+                                              fontSize: 16,
+                                              color: Colors.black87),
+                                    ),
+                                  ),
+                                  const SizedBox(height: kDefaultPadding),
+                                  const Padding(
+                                    padding: EdgeInsets.only(right: 60),
+                                    child: Text(
+                                      "Projects fgfgfgfgffgfhfghgfnghngnghythyuyu",
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 70, left: 150, bottom: 4),
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blue,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                      ),
+                                      child: const Text("view project"),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: kDefaultPadding),
                           ],
                         )
-                        
                       ],
                     ),
                   ),

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:water_project/constants.dart';
-import 'package:water_project/constants.dart';
 
-import '../../constants.dart';
-import '../../core/widgets/button.dart';
+import '../core/widgets/button.dart';
 
 class AddProject extends StatefulWidget {
   static const id = "add project screen";
@@ -37,131 +35,117 @@ class _AddProjectState extends State<AddProject> {
     return Scaffold(
       body: Center(
         child: Container(
-          margin: const EdgeInsets.only(left:234, right: 234, top: 90, bottom: 100),
-          
-          
+          margin: const EdgeInsets.only(
+              left: 234, right: 234, top: 90, bottom: 100),
           child: Row(
             children: [
               Expanded(
-                flex: 5,
-                
-                
-                child: Container(
-                  decoration: BoxDecoration(
-                    color:  kPurple80,
-                    borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30.0),
-          bottomLeft: Radius.circular(30.0)), 
-                  ),
-
-                  height: 708,
-                  width: 406,
-                  
-                  child: Text(''))),
+                  flex: 5,
+                  child: Container(
+                      decoration: const BoxDecoration(
+                        color: kPurple80,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30.0),
+                            bottomLeft: Radius.circular(30.0)),
+                      ),
+                      height: 708,
+                      width: 406,
+                      child: const Text(''))),
               Expanded(
                 flex: 11,
-               
-                  child: Column(
-                    children: [
-                      Form(
-                        key: formKey,
-                        child: Center(
-                          child: SizedBox(
-                            // width: screenSize.width * .2,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left:54, right: 53),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    "Project Name",
-                                    style: theme.textTheme.bodyText2,
-                                  ),
-                                  const SizedBox(height: kDefaultPadding / 2),
-                                  TextFormField(
-                                    key: nameKey,
-                                  
-                                    decoration:
-                                        customTextFieldDecoration.copyWith(hintText: "project Name"),
-                                    validator: (value) {
-                                      // if (value==null) {
-                                      //   return "Please Input a valid email address";
-                                      // } else {
-                                      //   return null;
-                                      // }
-                                    },
-                                  ),
-                                  const SizedBox(height: kDefaultPadding2x),
-                                   Text(
-                                    "Description",
-                                  ),
-                                  const SizedBox(height: kDefaultPadding / 2),
+                child: Column(
+                  children: [
+                    Form(
+                      key: formKey,
+                      child: Center(
+                        child: SizedBox(
+                          // width: screenSize.width * .2,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 54, right: 53),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "Project Name",
+                                  style: theme.textTheme.bodyText2,
+                                ),
+                                const SizedBox(height: kDefaultPadding / 2),
+                                TextFormField(
+                                  key: nameKey,
+                                  decoration: customTextFieldDecoration
+                                      .copyWith(hintText: "project Name"),
+                                  validator: (value) {
+                                    // if (value==null) {
+                                    //   return "Please Input a valid email address";
+                                    // } else {
+                                    //   return null;
+                                    // }
+                                  },
+                                ),
+                                const SizedBox(height: kDefaultPadding2x),
+                                const Text(
+                                  "Description",
+                                ),
+                                const SizedBox(height: kDefaultPadding / 2),
 
-                                  TextFormField(
-                                    key: emailKey,
-                                    controller: emailController,
-                                    decoration:
-                                        customTextFieldDecoration.copyWith(hintText: "email"),
-                                    validator: (value) {
-                                      if (!value!.contains("@")) {
-                                        return "Please Input a valid email address";
-                                      } else {
-                                        return null;
+                                TextFormField(
+                                  key: emailKey,
+                                  controller: emailController,
+                                  decoration: customTextFieldDecoration
+                                      .copyWith(hintText: "email"),
+                                  validator: (value) {
+                                    if (!value!.contains("@")) {
+                                      return "Please Input a valid email address";
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                  maxLines: 10,
+                                  minLines: 8,
+                                ),
+
+                                const SizedBox(height: kDefaultPadding2x),
+                                Text(
+                                  "Location",
+                                  style: theme.textTheme.bodyText1,
+                                ),
+                                const SizedBox(height: kDefaultPadding / 2),
+
+                                TextFormField(
+                                  key: comfirmpasskey,
+                                  controller: passwordController,
+                                  obscureText: true,
+                                  decoration: customTextFieldDecoration
+                                      .copyWith(hintText: "Password"),
+                                  validator: (value) {
+                                    ///Todo: validate form field
+                                  },
+                                ),
+                                // const SizedBox(height: kDefaultPadding/2),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 293),
+                                  child: CustomButton(
+                                    onPressed: () {
+                                      if (formKey.currentState!.validate()) {
+                                        ///TODO: add methods to sign the user in
                                       }
                                     },
-                                    maxLines: 10,
-                                    minLines: 8,
+                                    text: "SignUp",
+                                    textColor: Colors.white,
+                                    bgColor: kPurple,
                                   ),
-                                 
-                                  const SizedBox(height: kDefaultPadding2x),
-                                   Text(
-                                    "Location",
-                                    style: theme.textTheme.bodyText1,
-                                  ),
-                                  const SizedBox(height: kDefaultPadding / 2),
-                                 
-
-                                  TextFormField(
-                                    key: comfirmpasskey,
-                                    controller: passwordController,
-                                    obscureText: true,
-                                    decoration:
-                                        customTextFieldDecoration.copyWith(hintText: "Password"),
-                                    validator: (value) {
-                                      // Place  function for drop down menu
-                                    },
-                                  ),
-                                  // const SizedBox(height: kDefaultPadding/2),
-                                  // Padding(
-                                  //   padding: const EdgeInsets.only(left: 293),
-                                  //   child: CustomButton(
-                                      
-                                  //     onPressed: () {
-                                  //       if (formKey.currentState!.validate()) {
-                                  //         ///TODO: add methods to sign the user in
-              
-                                  //       }
-                                  //     },
-                                  //     text: "SignUp",
-                                  //     textColor: Colors.white,
-                                  //     bgColor: kPurple,
-                                  //   ),
-                                  // ),
-                                  // const SizedBox(height: kDefaultPadding),
-                                 
-                                ],
-                              ),
+                                ),
+                                const SizedBox(height: kDefaultPadding),
+                              ],
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              
-              
-
+              ),
             ],
           ),
         ),
