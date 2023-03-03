@@ -41,14 +41,14 @@ class MyApp extends StatelessWidget {
         scrollBehavior: MyCustomScrollBehavior(),
         theme: customLightTheme(context),
         debugShowCheckedModeBanner: false,
-        home: const MapsScreen(),
+        home: const ProjectScreen(),
         routes: {
           DetailsScreen.id: (context) => const DetailsScreen(),
           LoginScreen.id: (context) => const LoginScreen(),
           SignUpScreen.id: (context) => const SignUpScreen(),
           MapsScreen.id: (context) => const MapsScreen(),
-          AddProject.id:(context) => const AddProject(),
-          ProjectScreen.id:(context) => const ProjectScreen(),
+          AddProject.id: (context) => const AddProject(),
+          ProjectScreen.id: (context) => const ProjectScreen(),
         },
       ),
     );
