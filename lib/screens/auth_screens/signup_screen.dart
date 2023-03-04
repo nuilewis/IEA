@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
+import '../../core/constants.dart';
 import '../../core/widgets/button.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -100,7 +100,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       ///TODO: add methods to register the user
-
                     }
                   },
                   text: "Login",

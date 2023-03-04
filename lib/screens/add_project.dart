@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:water_project/constants.dart';
+import 'package:water_project/core/constants.dart';
 
 import '../core/widgets/button.dart';
 
@@ -68,7 +68,7 @@ class _AddProjectState extends State<AddProject> {
                               children: [
                                 Text(
                                   "Project Name",
-                                  style: theme.textTheme.bodyText2,
+                                  style: theme.textTheme.bodyMedium,
                                 ),
                                 const SizedBox(height: kDefaultPadding / 2),
                                 TextFormField(
@@ -108,7 +108,7 @@ class _AddProjectState extends State<AddProject> {
                                 const SizedBox(height: kDefaultPadding2x),
                                 Text(
                                   "Location",
-                                  style: theme.textTheme.bodyText1,
+                                  style: theme.textTheme.bodyLarge,
                                 ),
                                 const SizedBox(height: kDefaultPadding / 2),
 

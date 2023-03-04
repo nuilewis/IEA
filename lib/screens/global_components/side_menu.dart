@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:water_project/constants.dart';
+import 'package:water_project/core/constants.dart';
 import 'package:water_project/screens/details_screen/details_screen.dart';
-import 'custom_menu_item.dart';
+
+import '../details_screen/components/custom_menu_item.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -56,12 +57,11 @@ void selectedItem(BuildContext context, int i) {
       Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => const DetailsScreen()),
       );
-break;
+      break;
     case 1:
-        Navigator.of(context).push(
+      Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => const DetailsScreen()),
       );
-    
   }
 }
 

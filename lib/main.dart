@@ -90,18 +90,24 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider<AuthProvider>(
             create: (context) => AuthProvider(authRepository: authRepository)),
       ],
-      child: MaterialApp(
-        scrollBehavior: MyCustomScrollBehavior(),
-        theme: customLightTheme(context),
-        debugShowCheckedModeBanner: false,
-        home: const ProjectScreen(),
-        routes: {
-          DetailsScreen.id: (context) => const DetailsScreen(),
-          LoginScreen.id: (context) => const LoginScreen(),
-          SignUpScreen.id: (context) => const SignUpScreen(),
-          MapsScreen.id: (context) => const MapsScreen(),
-          AddProject.id: (context) => const AddProject(),
-          ProjectScreen.id: (context) => const ProjectScreen(),
+      child: Consumer<AuthProvider>(
+        builder: (context, authData, child) {
+
+          return MaterialApp(
+            scrollBehavior: MyCustomScrollBehavior(),
+            theme: customLightTheme(context),
+            debugShowCheckedModeBanner: false,
+            //Todo: check login State and redirect either to login or homepage
+            home: const LoginScreen(),
+            routes: {
+              DetailsScreen.id: (context) => const DetailsScreen(),
+              LoginScreen.id: (context) => const LoginScreen(),
+              SignUpScreen.id: (context) => const SignUpScreen(),
+              MapsScreen.id: (context) => const MapsScreen(),
+              AddProject.id: (context) => const AddProject(),
+              ProjectScreen.id: (context) => const ProjectScreen(),
+            },
+          );
         },
       ),
     );

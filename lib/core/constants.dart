@@ -15,7 +15,7 @@ const rectanglecolor = Color.fromRGBO(255, 255, 255, 0.5);
 
 const Color kPurple = Color(0xFF3448FF);
 const Color kPurple80 = Color(0xFF5061FF);
-//const Color kPurple60 = Color(0xFFB298FF);
+const Color kPurple60 = Color(0xFFB298FF);
 const Color kPurple40 = Color(0xFFA5AEFF);
 const Color kPurple20 = Color(0xFFE8EAFF);
 
@@ -43,34 +43,35 @@ const double kDefaultPadding = 16.0;
 const double kDefaultPadding2x = 32.0;
 
 ///----TextStyles----///
-const TextStyle kHeading = TextStyle(fontWeight: FontWeight.bold, fontSize: 28);
+const TextStyle kHeading = TextStyle(fontWeight: FontWeight.bold, fontSize: 22);
 const TextStyle kHeadingLight =
-    TextStyle(fontWeight: FontWeight.normal, fontSize: 28);
+    TextStyle(fontWeight: FontWeight.normal, fontSize: 22);
 const TextStyle kBody = TextStyle(fontWeight: FontWeight.normal, fontSize: 14);
 const TextStyle kBodyBold =
     TextStyle(fontWeight: FontWeight.bold, fontSize: 14);
-const TextStyle kBodyvold =
-    TextStyle(fontWeight: FontWeight.bold, fontSize: 10);
+
 const TextStyle kButtonText =
-    TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
+    TextStyle(fontWeight: FontWeight.bold, fontSize: 14);
 const TextStyle kFootNote =
-    TextStyle(fontWeight: FontWeight.normal, fontSize: 11);
+    TextStyle(fontWeight: FontWeight.normal, fontSize: 10);
 
 ///----------Text Form Field styles ---------////
 InputDecoration customTextFieldDecoration = InputDecoration(
   errorStyle: kBody.copyWith(color: kFuchsia),
+
   errorBorder: OutlineInputBorder(
     gapPadding: 3,
-    borderSide: const BorderSide(width: 1),
-    borderRadius: BorderRadius.circular(kDefaultPadding2x),
+    borderSide: const BorderSide(width: 1, color: kPurple40),
+    borderRadius: BorderRadius.circular(kDefaultPadding),
   ),
   border: OutlineInputBorder(
     gapPadding: 0,
-    borderSide: const BorderSide(color: kDark),
-    borderRadius: BorderRadius.circular(10),
+    borderSide: const BorderSide(color: kPurple40),
+    borderRadius: BorderRadius.circular(kDefaultPadding),
   ),
   isDense: false,
   filled: true,
+  fillColor: Colors.transparent,
   hintStyle: kBody,
   // fillColor: kPurple20,
 );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../../core/constants.dart';
 import '../../../core/widgets/custom_card.dart';
 
 class FlowStatus extends StatelessWidget {

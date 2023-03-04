@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../../core/constants.dart';
 import '../../../core/widgets/custom_card.dart';
 
 class SensorMetaData extends StatelessWidget {
@@ -17,12 +17,7 @@ class SensorMetaData extends StatelessWidget {
       child: Column(
         //  mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-        
-          
-         
-          
-        ],
+        children: [],
       ),
     );
   }

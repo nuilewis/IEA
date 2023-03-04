@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:water_project/constants.dart';
+import 'package:water_project/core/constants.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -33,7 +33,7 @@ class CustomButton extends StatelessWidget {
           backgroundColor:
               isSecondary ? Colors.transparent : bgColor ?? theme.primaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(kDefaultPadding2x),
+            borderRadius: BorderRadius.circular(kDefaultPadding),
           ),
           elevation: 0),
       child: showIcon
@@ -51,7 +51,7 @@ class CustomButton extends StatelessWidget {
                   const SizedBox(width: kDefaultPadding),
                   Text(
                     text,
-                    style: theme.textTheme.bodyText1!.copyWith(
+                    style: theme.textTheme.bodyLarge!.copyWith(
                         fontSize: 20,
                         color:
                             isSecondary ? bgColor : textColor ?? Colors.white),
@@ -64,7 +64,7 @@ class CustomButton extends StatelessWidget {
                 padding: const EdgeInsets.all(kDefaultPadding),
                 child: Text(
                   text,
-                  style: theme.textTheme.bodyText1!.copyWith(
+                  style: theme.textTheme.bodyLarge!.copyWith(
                       fontSize: 20,
                       color: isSecondary
                           ? bgColor ?? theme.primaryColor

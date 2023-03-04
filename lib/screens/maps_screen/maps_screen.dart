@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:water_project/constants.dart';
+import 'package:water_project/core/constants.dart';
 import 'package:water_project/screens/details_screen/components/header.dart';
-import 'package:water_project/screens/details_screen/components/side_menu.dart';
+import 'package:water_project/screens/global_components/side_menu.dart';
 
 class MapsScreen extends StatelessWidget {
   static const id = "maps screen";
