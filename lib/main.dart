@@ -92,13 +92,12 @@ class _MyAppState extends State<MyApp> {
       ],
       child: Consumer<AuthProvider>(
         builder: (context, authData, child) {
-
           return MaterialApp(
             scrollBehavior: MyCustomScrollBehavior(),
             theme: customLightTheme(context),
             debugShowCheckedModeBanner: false,
             //Todo: check login State and redirect either to login or homepage
-            home: const LoginScreen(),
+            home: const SignUpScreen(),
             routes: {
               DetailsScreen.id: (context) => const DetailsScreen(),
               LoginScreen.id: (context) => const LoginScreen(),

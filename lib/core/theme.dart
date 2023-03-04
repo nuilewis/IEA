@@ -5,7 +5,7 @@ ThemeData customLightTheme(BuildContext context) {
   return ThemeData(
     useMaterial3: true,
     primaryColor: kPurple80,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: kDark20,
     brightness: Brightness.light,
     cardColor: kDark20,
     iconTheme: const IconThemeData(color: kDark),

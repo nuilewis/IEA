@@ -61,18 +61,33 @@ InputDecoration customTextFieldDecoration = InputDecoration(
 
   errorBorder: OutlineInputBorder(
     gapPadding: 3,
+    borderSide: const BorderSide(width: 1, color: kFuchsia80),
+    borderRadius: BorderRadius.circular(
+      kDefaultPadding,
+    ),
+  ),
+
+  border: OutlineInputBorder(
+    gapPadding: 0,
     borderSide: const BorderSide(width: 1, color: kPurple40),
     borderRadius: BorderRadius.circular(kDefaultPadding),
   ),
-  border: OutlineInputBorder(
+  focusedBorder: OutlineInputBorder(
     gapPadding: 0,
-    borderSide: const BorderSide(color: kPurple40),
+    borderSide: const BorderSide(width: 2, color: kPurple60),
     borderRadius: BorderRadius.circular(kDefaultPadding),
   ),
+  enabledBorder: OutlineInputBorder(
+    gapPadding: 0,
+    borderSide: const BorderSide(width: 1, color: kPurple40),
+    borderRadius: BorderRadius.circular(kDefaultPadding),
+  ),
+  hoverColor: kPurple20.withOpacity(.5),
   isDense: false,
   filled: true,
   fillColor: Colors.transparent,
   hintStyle: kBody,
+
   // fillColor: kPurple20,
 );
 
