@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:water_project/core/constants.dart';
 import 'package:water_project/core/widgets/custom_card.dart';
+import 'package:water_project/core/widgets/side_menu.dart';
 import 'package:water_project/providers/sensor_provider.dart';
-import 'package:water_project/screens/global_components/side_menu.dart';
 
 import '../../core/widgets/button.dart';
+import '../../core/widgets/header.dart';
 import '../../models/flow_data_model.dart';
 import 'components/display_flow_rate.dart';
 import 'components/flow_status.dart';
-import 'components/header.dart';
 import 'components/sensor_metadata.dart';
 
 class DetailsScreen extends StatefulWidget {
@@ -227,7 +227,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       alignment: Alignment.centerRight, child: Header()),
                   Text(
                     "Sensor 1",
-                    style: theme.textTheme.headline1!
+                    style: theme.textTheme.displayLarge!
                         .copyWith(color: theme.primaryColor),
                   ),
                   const SizedBox(
@@ -331,7 +331,7 @@ class CategoryItem extends StatelessWidget {
       ),
       child: Text(
         title,
-        style: theme.textTheme.bodyText2!
+        style: theme.textTheme.bodyMedium!
             .copyWith(color: onSelected ? Colors.white : theme.iconTheme.color),
       ),
     );

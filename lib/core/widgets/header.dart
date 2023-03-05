@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../core/constants.dart';
+import '../constants.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -21,8 +21,8 @@ class Header extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
               vertical: kDefaultPadding, horizontal: kDefaultPadding2x),
           child: Text(
-            "Moday 22 December",
-            style: Theme.of(context).textTheme.bodyText1,
+            "Monday 22 December",
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
 
@@ -53,7 +53,7 @@ class Header extends StatelessWidget {
         const SizedBox(width: kDefaultPadding2x),
         Text(
           "John Doe",
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         const SizedBox(width: kDefaultPadding2x),
         Container(

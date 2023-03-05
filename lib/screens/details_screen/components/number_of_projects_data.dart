@@ -40,13 +40,13 @@ class NumberOfProjects extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 25, right: 40),
                   child: Text(
                     "02",
-                    style: theme.textTheme.headline1!
+                    style: theme.textTheme.displayLarge!
                         .copyWith(fontSize: 20, color: Colors.black87),
                   ),
                 ),
                 Text(
                   "Projects",
-                  style: theme.textTheme.bodyText1!
+                  style: theme.textTheme.bodyLarge!
                       .copyWith(fontSize: 20, color: Colors.grey),
                 ),
               ],

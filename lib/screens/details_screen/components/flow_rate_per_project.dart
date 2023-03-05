@@ -40,7 +40,7 @@ class FlowRatePerProject extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 25, right: 28),
                   child: Text(
                     "3,456",
-                    style: theme.textTheme.headline1!
+                    style: theme.textTheme.displayLarge!
                         .copyWith(fontSize: 20, color: Colors.black87),
                   ),
                 ),

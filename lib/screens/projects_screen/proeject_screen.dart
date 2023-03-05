@@ -2,11 +2,11 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:water_project/core/constants.dart';
 import 'package:water_project/core/widgets/custom_card.dart';
+import 'package:water_project/core/widgets/header.dart';
+import 'package:water_project/core/widgets/side_menu.dart';
 import 'package:water_project/screens/details_screen/components/flow_rate_per_project.dart';
-import 'package:water_project/screens/details_screen/components/header.dart';
 import 'package:water_project/screens/details_screen/components/number_of_projects_data.dart';
 import 'package:water_project/screens/details_screen/components/project_status.dart';
-import 'package:water_project/screens/global_components/side_menu.dart';
 
 class ProjectScreen extends StatefulWidget {
   static const id = "project screen";
@@ -231,8 +231,8 @@ class _ProjectScreenState extends State<ProjectScreen> {
                 const Align(alignment: Alignment.centerRight, child: Header()),
                 Text(
                   "At a Glance",
-                  style:
-                      theme.textTheme.headline1!.copyWith(color: Colors.black),
+                  style: theme.textTheme.displayLarge!
+                      .copyWith(color: Colors.black),
                 ),
                 const SizedBox(
                   height: kDefaultPadding * 3,
@@ -277,8 +277,8 @@ class _ProjectScreenState extends State<ProjectScreen> {
                 const SizedBox(height: kDefaultPadding2x),
                 Text(
                   "Your Projects",
-                  style:
-                      theme.textTheme.headline1!.copyWith(color: Colors.black),
+                  style: theme.textTheme.displayLarge!
+                      .copyWith(color: Colors.black),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 370),
@@ -307,7 +307,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                         right: 250, top: 5),
                                     child: Text(
                                       "Project Name",
-                                      style: theme.textTheme.headline1!
+                                      style: theme.textTheme.displayLarge!
                                           .copyWith(
                                               fontSize: 16,
                                               color: Colors.black87),
@@ -357,7 +357,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                         right: 250, top: 5),
                                     child: Text(
                                       "Project Name",
-                                      style: theme.textTheme.headline1!
+                                      style: theme.textTheme.displayLarge!
                                           .copyWith(
                                               fontSize: 16,
                                               color: Colors.black87),
@@ -411,7 +411,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                         right: 250, top: 5),
                                     child: Text(
                                       "Project Name",
-                                      style: theme.textTheme.headline1!
+                                      style: theme.textTheme.displayLarge!
                                           .copyWith(
                                               fontSize: 16,
                                               color: Colors.black87),
@@ -486,7 +486,7 @@ class CategoryItem extends StatelessWidget {
       ),
       child: Text(
         title,
-        style: theme.textTheme.bodyText2!
+        style: theme.textTheme.bodyMedium!
             .copyWith(color: onSelected ? Colors.white : theme.iconTheme.color),
       ),
     );

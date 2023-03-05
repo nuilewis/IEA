@@ -24,18 +24,18 @@ class DisplayFlowRate extends StatelessWidget {
             //  mainAxisSize: MainAxisSize.min,
             children: [
               Text("Current Flow Rate",
-                  style: theme.textTheme.bodyText1!.copyWith(color: kPurple)),
+                  style: theme.textTheme.bodyLarge!.copyWith(color: kPurple)),
               const SizedBox(height: kDefaultPadding),
               RichText(
                 text: TextSpan(
                   children: [
                     TextSpan(
                         text: flowRate.flowRate.toString(),
-                        style: theme.textTheme.headline1!
+                        style: theme.textTheme.displayLarge!
                             .copyWith(fontSize: 48, color: kPurple)),
                     TextSpan(
                         text: "m3/min",
-                        style: theme.textTheme.bodyText2!.copyWith(
+                        style: theme.textTheme.bodyMedium!.copyWith(
                             fontSize: 18, color: kPurple.withOpacity(.5))),
                   ],
                 ),
@@ -50,18 +50,18 @@ class DisplayFlowRate extends StatelessWidget {
             // mainAxisSize: MainAxisSize.min,
             children: [
               Text("Flow Velocity",
-                  style: theme.textTheme.bodyText1!.copyWith(color: kPurple)),
+                  style: theme.textTheme.bodyLarge!.copyWith(color: kPurple)),
               const SizedBox(height: kDefaultPadding),
               RichText(
                 text: TextSpan(
                   children: [
                     TextSpan(
                         text: flowRate.flowRate.toString(),
-                        style: theme.textTheme.headline1!
+                        style: theme.textTheme.displayLarge!
                             .copyWith(fontSize: 48, color: kPurple)),
                     TextSpan(
                         text: "m/sec",
-                        style: theme.textTheme.bodyText2!.copyWith(
+                        style: theme.textTheme.bodyMedium!.copyWith(
                             fontSize: 24, color: kPurple.withOpacity(.5)))
                   ],
                 ),

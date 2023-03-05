@@ -26,7 +26,7 @@ class _AddProjectState extends State<AddProject> {
   final Key passkey = GlobalKey();
   final Key emailKey = GlobalKey();
   final Key nameKey = GlobalKey();
-  final Key comfirmpasskey = GlobalKey();
+  final Key confirmPasskey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +113,7 @@ class _AddProjectState extends State<AddProject> {
                                 const SizedBox(height: kDefaultPadding / 2),
 
                                 TextFormField(
-                                  key: comfirmpasskey,
+                                  key: confirmPasskey,
                                   controller: passwordController,
                                   obscureText: true,
                                   decoration: customTextFieldDecoration
