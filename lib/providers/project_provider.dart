@@ -1,17 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
+import '../core/enums/app_state_enum.dart';
 import '../core/errors/failure.dart';
 import '../models/project_model.dart';
 import '../repositories/project_repository.dart';
 
-enum ProjectState { initial, submitting, success, error }
+
 
 class ProjectProvider extends ChangeNotifier {
   ProjectRepository projectRepository;
   String errorMessage = "";
   List<Project> allProjects = [];
-  ProjectState state = ProjectState.initial;
+  AppState state = AppState.initial;
 
   ProjectProvider({required this.projectRepository});
 
@@ -22,10 +23,10 @@ class ProjectProvider extends ChangeNotifier {
     response.fold((failure) {
       errorMessage = failure.errorMessage ??
           "An error occurred while getting your projects";
-      state = ProjectState.error;
+      state = AppState.error;
     }, (projects) {
       allProjects = projects;
-      state = ProjectState.success;
+      state = AppState.success;
     });
 
     notifyListeners();
@@ -38,9 +39,9 @@ class ProjectProvider extends ChangeNotifier {
     response.fold((failure) {
       errorMessage = failure.errorMessage ??
           "An error occurred while trying to update the project";
-      state = ProjectState.error;
+      state = AppState.error;
     }, (nothing) {
-      state = ProjectState.success;
+      state = AppState.success;
     });
 
     notifyListeners();
@@ -53,9 +54,9 @@ class ProjectProvider extends ChangeNotifier {
     response.fold((failure) {
       errorMessage = failure.errorMessage ??
           "An error occurred while trying to delete the project";
-      state = ProjectState.error;
+      state = AppState.error;
     }, (nothing) {
-      state = ProjectState.success;
+      state = AppState.success;
     });
 
     notifyListeners();
@@ -68,9 +69,9 @@ class ProjectProvider extends ChangeNotifier {
     response.fold((failure) {
       errorMessage = failure.errorMessage ??
           "An error occurred while trying to create your project";
-      state = ProjectState.error;
+      state = AppState.error;
     }, (nothing) {
-      state = ProjectState.success;
+      state = AppState.success;
     });
 
     notifyListeners();

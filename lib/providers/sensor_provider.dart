@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:water_project/models/sensor_model.dart';
 import 'package:water_project/repositories/sensor_repository.dart';
 
+import '../core/enums/app_state_enum.dart';
 import '../core/errors/failure.dart';
 import '../models/flow_data_model.dart';
 import '../models/project_model.dart';
@@ -16,8 +17,7 @@ class SensorProvider extends ChangeNotifier {
   List<Sensor> allSensors = [];
   List<FlowRate> flowRateData = [];
   FlowRate? flowData;
-  SensorState state = SensorState.initial;
-
+AppState state = AppState.initial;
   SensorProvider({required this.sensorRepository});
 
   Future<void> getSensors({required Project project}) async {
@@ -27,10 +27,10 @@ class SensorProvider extends ChangeNotifier {
     response.fold((failure) {
       errorMessage = failure.errorMessage ??
           "An error occurred while getting the sensor info";
-      state = SensorState.error;
+      state = AppState.error;
     }, (sensors) {
       allSensors = sensors;
-      state = SensorState.success;
+      state = AppState.success;
     });
 
     notifyListeners();
@@ -43,14 +43,14 @@ class SensorProvider extends ChangeNotifier {
     response.fold((failure) {
       errorMessage = failure.errorMessage ??
           "An error occurred while getting the sensor flow rate data";
-      state = SensorState.error;
+      state = AppState.error;
     }, (flowRateStream) {
       flowRateStream.listen((event) {
         ///Todo: find out how to extract both the velocity of water, and date time of the log from the stream
         FlowRate flowRate = FlowRate(flowRate: event.snapshot.value as double);
         flowRateData.add(flowRate);
       });
-      state = SensorState.success;
+      state = AppState.success;
     });
 
     notifyListeners();

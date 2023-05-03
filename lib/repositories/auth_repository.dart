@@ -7,8 +7,10 @@ import '../models/auth_models.dart';
 import '../services/auth/auth_service.dart';
 
 abstract class AuthRepository {
-  Future<Either<Failure, void>> signIn({required SignInParameters parameters});
-  Future<Either<Failure, void>> register(
+  Future<Either<Failure, void>> signInWithEmail(
+      {required SignInParameters parameters});
+  Future<Either<Failure, void>> signInWithGoogle();
+  Future<Either<Failure, void>> registerWithEmail(
       {required RegisterParameters parameters});
   Future<Either<Failure, void>> updateAccountInfo();
   Future<Either<Failure, void>> deleteAccount();
@@ -38,11 +40,11 @@ class AuthRepositoryImplementation implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, void>> register(
+  Future<Either<Failure, void>> registerWithEmail(
       {required RegisterParameters parameters}) async {
     if (await connectionChecker.isConnected) {
       try {
-        await authService.register(parameters: parameters);
+        await authService.registerWithEmail(parameters: parameters);
         return const Right(null);
       } on FirebaseException catch (e) {
         return Left(FirebaseFailure(errorMessage: e.message));
@@ -56,11 +58,11 @@ class AuthRepositoryImplementation implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, void>> signIn(
+  Future<Either<Failure, void>> signInWithEmail(
       {required SignInParameters parameters}) async {
     if (await connectionChecker.isConnected) {
       try {
-        await authService.signIn(parameters: parameters);
+        await authService.signInWithEmail(parameters: parameters);
         return const Right(null);
       } on FirebaseException catch (e) {
         return Left(FirebaseFailure(errorMessage: e.message));
@@ -84,6 +86,26 @@ class AuthRepositoryImplementation implements AuthRepository {
       } catch (e) {
         return const Left(FirebaseFailure(
             errorMessage: "An error occurred while trying update Info"));
+      }
+    } else {
+      return const Left(NetworkFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> signInWithGoogle() async {
+    if (await connectionChecker.isConnected) {
+      try {
+        await authService.signInWithGoogle();
+        return const Right(null);
+      } on FirebaseException catch (e) {
+        return Left(FirebaseFailure(errorMessage: e.message));
+      } catch (e) {
+        return const Left(
+          FirebaseFailure(
+              errorMessage:
+                  "An error occurred while trying to sing in With Google"),
+        );
       }
     } else {
       return const Left(NetworkFailure());
