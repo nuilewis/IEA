@@ -28,7 +28,7 @@ class CustomButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
           side: isSecondary
-              ? BorderSide(color: bgColor ?? theme.primaryColor, width: 2)
+              ? BorderSide(color: bgColor ?? theme.primaryColor, width: 1.5)
               : null,
           backgroundColor:
               isSecondary ? Colors.transparent : bgColor ?? theme.primaryColor,

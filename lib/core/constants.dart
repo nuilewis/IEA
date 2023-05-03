@@ -60,7 +60,7 @@ InputDecoration customTextFieldDecoration = InputDecoration(
   errorStyle: kBody.copyWith(color: kFuchsia),
 
   errorBorder: OutlineInputBorder(
-    gapPadding: 3,
+    gapPadding: 0,
     borderSide: const BorderSide(width: 1, color: kFuchsia80),
     borderRadius: BorderRadius.circular(
       kDefaultPadding,
@@ -83,7 +83,7 @@ InputDecoration customTextFieldDecoration = InputDecoration(
     borderRadius: BorderRadius.circular(kDefaultPadding),
   ),
   hoverColor: kPurple20.withOpacity(.5),
-  isDense: false,
+  isDense: true,
   filled: true,
   fillColor: Colors.transparent,
   hintStyle: kBody,

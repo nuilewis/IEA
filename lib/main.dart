@@ -91,7 +91,7 @@ class _MyAppState extends State<MyApp> {
             theme: customLightTheme(context),
             debugShowCheckedModeBanner: false,
             //Todo: check login State and redirect either to login or homepage
-            home: const SignUpScreen(),
+            home: const LoginScreen(),
             routes: {
               DetailsScreen.id: (context) => const DetailsScreen(),
               LoginScreen.id: (context) => const LoginScreen(),
