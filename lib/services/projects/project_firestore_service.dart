@@ -6,6 +6,8 @@ import '../../models/project_model.dart';
 const String projectPath = "project";
 
 class ProjectFirestoreService extends FirestoreService {
+
+
   Future<void> addNewProject(Project project) async {
     Map<String, dynamic> projectData = project.toMap();
     await firestore.collection(projectPath).doc().set(projectData);

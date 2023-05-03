@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../core/constants.dart';
-import '../../core/widgets/button.dart';
+import '../../core/core.dart';
+
 
 class SignUpScreen extends StatefulWidget {
   static const id = "sign up screen";

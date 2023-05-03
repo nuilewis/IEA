@@ -1,17 +1,14 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:water_project/core/constants.dart';
-import 'package:water_project/core/widgets/custom_card.dart';
-import 'package:water_project/core/widgets/side_menu.dart';
-import 'package:water_project/providers/sensor_provider.dart';
-
-import '../../core/widgets/button.dart';
-import '../../core/widgets/header.dart';
-import '../../models/flow_data_model.dart';
 import 'components/display_flow_rate.dart';
 import 'components/flow_status.dart';
 import 'components/sensor_metadata.dart';
+import '../../core/core.dart';
+import '../../models/models.dart';
+import '../../providers/providers.dart';
+
+
 
 class DetailsScreen extends StatefulWidget {
   static const id = "details screen";

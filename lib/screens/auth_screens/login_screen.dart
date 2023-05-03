@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:water_project/core/constants.dart';
+import '../../core/core.dart';
 
-import '../../core/widgets/button.dart';
 
 class LoginScreen extends StatefulWidget {
   static const id = "log in screen";

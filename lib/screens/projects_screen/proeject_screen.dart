@@ -1,12 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:water_project/core/constants.dart';
-import 'package:water_project/core/widgets/custom_card.dart';
-import 'package:water_project/core/widgets/header.dart';
-import 'package:water_project/core/widgets/side_menu.dart';
 import 'package:water_project/screens/details_screen/components/flow_rate_per_project.dart';
 import 'package:water_project/screens/details_screen/components/number_of_projects_data.dart';
 import 'package:water_project/screens/details_screen/components/project_status.dart';
+
+import '../../core/core.dart';
 
 class ProjectScreen extends StatefulWidget {
   static const id = "project screen";
