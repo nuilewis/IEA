@@ -76,11 +76,11 @@ class _AddProjectState extends State<AddProject> {
                                   decoration: customTextFieldDecoration
                                       .copyWith(hintText: "project Name"),
                                   validator: (value) {
-                                    // if (value==null) {
-                                    //   return "Please Input a valid email address";
-                                    // } else {
-                                    //   return null;
-                                    // }
+                                    if (value!.isEmpty) {
+                                      return "Please input a project name";
+                                    } else {
+                                      return null;
+                                    }
                                   },
                                 ),
                                 const SizedBox(height: kDefaultPadding2x),

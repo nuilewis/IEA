@@ -5,8 +5,10 @@ import '../../models/project_model.dart';
 import '../../models/sensor_model.dart';
 
 class SensorFirestoreService extends FirestoreService {
-  Future<void> uploadSensorInfo(
-      {required Sensor sensor, required Project project}) async {
+  Future<void> uploadSensorInfo({
+    required Sensor sensor,
+    required Project project,
+  }) async {
     Map<String, dynamic> sensorData = sensor.toMap();
 
     ///Todo: think hard about this databse schema

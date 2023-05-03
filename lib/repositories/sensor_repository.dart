@@ -21,10 +21,11 @@ class SensorRepositoryImplementation implements SensorRepository {
   final SensorRealtimeDBService sensorRealTimeDatabaseService;
   final ConnectionChecker connectionChecker;
 
-  SensorRepositoryImplementation(
-      {required this.sensorFireStoreService,
-      required this.sensorRealTimeDatabaseService,
-      required this.connectionChecker});
+  SensorRepositoryImplementation({
+    required this.sensorFireStoreService,
+    required this.sensorRealTimeDatabaseService,
+    required this.connectionChecker,
+  });
   @override
   Future<Either<Failure, Stream<DatabaseEvent>>> getSensorFlowRateData(
       Sensor senor) async {
