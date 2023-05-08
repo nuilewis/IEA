@@ -38,7 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         color: Colors.white,
                         borderRadius: BorderRadius.horizontal(
                             right: Radius.circular(kDefaultPadding2x))),
-                    child: SignUpForm()),
+                    child: const SignUpForm()),
               ),
             ],
           ),

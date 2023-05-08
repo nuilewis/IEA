@@ -21,9 +21,15 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        return android;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for android - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -54,25 +60,5 @@ class DefaultFirebaseOptions {
     authDomain: 'water-monitory-jjtronic.firebaseapp.com',
     databaseURL: 'https://water-monitory-jjtronic-default-rtdb.firebaseio.com',
     storageBucket: 'water-monitory-jjtronic.appspot.com',
-  );
-
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCFq5T0FFL-8-FGuwtHHOw4RXSlC30IQCY',
-    appId: '1:312993905854:android:cc97c542ba7b94d856f2ef',
-    messagingSenderId: '312993905854',
-    projectId: 'water-monitory-jjtronic',
-    databaseURL: 'https://water-monitory-jjtronic-default-rtdb.firebaseio.com',
-    storageBucket: 'water-monitory-jjtronic.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA-YbAovLTOtOM2FpgpVV_BGINtY3aav40',
-    appId: '1:312993905854:ios:93ba99185bd43c3b56f2ef',
-    messagingSenderId: '312993905854',
-    projectId: 'water-monitory-jjtronic',
-    databaseURL: 'https://water-monitory-jjtronic-default-rtdb.firebaseio.com',
-    storageBucket: 'water-monitory-jjtronic.appspot.com',
-    iosClientId: '312993905854-q7qsfbebgkgha926qi8f774v1ttr4r3b.apps.googleusercontent.com',
-    iosBundleId: 'com.example.waterProject',
   );
 }
