@@ -10,7 +10,7 @@ class MapsScreen extends StatelessWidget {
     return Scaffold(
         body: Row(
       children: const [
-        Expanded(flex: 3, child: SideMenu()),
+        Expanded(flex: 3, child: NavigationRailDrawer()),
         Expanded(flex: 9, child: Maps()),
         Expanded(flex: 4, child: SensorInfo()),
       ],

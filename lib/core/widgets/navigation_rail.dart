@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:water_project/screens/maps_screen/maps_screen.dart';
+import 'package:water_project/screens/projects_screen/proeject_screen.dart';
+
+import '../../screens/details_screen/details_screen.dart';
 
 // class SideMenu extends StatelessWidget {
 //   const SideMenu({
@@ -71,18 +75,32 @@ import 'package:flutter_svg/flutter_svg.dart';
 //   }
 // }
 
-class SideMenu extends StatefulWidget {
-  const SideMenu({Key? key}) : super(key: key);
+class NavigationRailDrawer extends StatefulWidget {
+  static const String id = "Navigation_Rail_Drawer";
+  const NavigationRailDrawer({Key? key}) : super(key: key);
 
   @override
-  State<SideMenu> createState() => _SideMenuState();
+  State<NavigationRailDrawer> createState() => _NavigationRailDrawerState();
 }
 
-class _SideMenuState extends State<SideMenu> {
-  int _selectedIndex = 0;
-
+class _NavigationRailDrawerState extends State<NavigationRailDrawer> {
   bool isExpanded = false;
 
+  final List<Widget> pages = const [
+    MapsScreen(
+      key: PageStorageKey(MapsScreen.id),
+    ),
+    DetailsScreen(
+      key: PageStorageKey(DetailsScreen.id),
+    ),
+    ProjectScreen(
+      key: PageStorageKey(ProjectScreen.id),
+    )
+  ];
+
+  final PageStorageBucket bucket = PageStorageBucket();
+
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
@@ -90,37 +108,37 @@ class _SideMenuState extends State<SideMenu> {
       screenSize.width < 300 ? isExpanded = false : isExpanded = true;
     });
     return Scaffold(
-      body: Row(
-        children: [
-          NavigationRail(
-            extended: isExpanded,
+      drawer: NavigationRail(
+        extended: isExpanded,
 
-            ///If the rail is expanded, then show the labels, if not, then don't show the labels.
-            labelType: isExpanded
-                ? NavigationRailLabelType.all
-                : NavigationRailLabelType.none,
-            destinations: [
-              NavigationRailDestination(
-                icon: SvgPicture.asset(""),
-                label: const Text("Home"),
-              ),
-              NavigationRailDestination(
-                icon: SvgPicture.asset(""),
-                label: const Text("Home 2"),
-              ),
-              NavigationRailDestination(
-                icon: SvgPicture.asset(""),
-                label: const Text("Home 3"),
-              ),
-            ],
-            selectedIndex: 0,
-            onDestinationSelected: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
-          )
+        ///If the rail is expanded, then show the labels, if not, then don't show the labels.
+        labelType: isExpanded
+            ? NavigationRailLabelType.all
+            : NavigationRailLabelType.none,
+        destinations: [
+          NavigationRailDestination(
+            icon: SvgPicture.asset(""),
+            label: const Text("Projects"),
+          ),
+          NavigationRailDestination(
+            icon: SvgPicture.asset(""),
+            label: const Text("Details"),
+          ),
+          NavigationRailDestination(
+            icon: SvgPicture.asset(""),
+            label: const Text("Maps"),
+          ),
         ],
+        onDestinationSelected: (int index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        selectedIndex: _selectedIndex,
+      ),
+      body: PageStorage(
+        bucket: bucket,
+        child: pages[_selectedIndex],
       ),
     );
   }

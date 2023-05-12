@@ -216,7 +216,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
         children: [
           const Expanded(
             flex: 3,
-            child: SideMenu(),
+            child: NavigationRailDrawer(),
           ),
           const SizedBox(width: kDefaultPadding2x),
           Expanded(
