@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/core.dart';
 
-
 class LoginScreen extends StatefulWidget {
   static const id = "log up screen";
   const LoginScreen({Key? key}) : super(key: key);
@@ -15,6 +14,9 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        foregroundColor: Colors.red,
+      ),
       body: Center(
         child: SizedBox(
           width: screenSize.width > 1200 ? 800 : screenSize.width * .7,
@@ -47,10 +49,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
-
-
-
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -90,7 +88,6 @@ class _LoginFormState extends State<LoginForm> {
                 const SizedBox(height: kDefaultPadding),
                 Text("Login", style: theme.textTheme.displayLarge),
                 const SizedBox(height: kDefaultPadding2x),
-
                 Text(
                   "Email",
                   style: theme.textTheme.bodyLarge,
@@ -99,7 +96,7 @@ class _LoginFormState extends State<LoginForm> {
                   key: emailKey,
                   controller: emailController,
                   decoration:
-                  customTextFieldDecoration.copyWith(hintText: "email"),
+                      customTextFieldDecoration.copyWith(hintText: "email"),
                   validator: (value) {
                     if (!value!.contains("@")) {
                       return "Please Input a valid email address";
@@ -114,7 +111,7 @@ class _LoginFormState extends State<LoginForm> {
                   key: passkey,
                   controller: passwordController,
                   decoration:
-                  customTextFieldDecoration.copyWith(hintText: "Password"),
+                      customTextFieldDecoration.copyWith(hintText: "Password"),
                   validator: (value) {
                     if (value!.length < 8) {
                       return "Your password is too short";
@@ -123,7 +120,6 @@ class _LoginFormState extends State<LoginForm> {
                     }
                   },
                 ),
-
                 const SizedBox(height: kDefaultPadding2x),
                 CustomButton(
                   onPressed: () {
@@ -135,20 +131,16 @@ class _LoginFormState extends State<LoginForm> {
                   textColor: Colors.white,
                   bgColor: kPurple,
                 ),
-SizedBox(height: kDefaultPadding),
-
+                SizedBox(height: kDefaultPadding),
                 CustomButton(
-
                   onPressed: () {
                     ///TODO: add methods to sing in with Google
-
                   },
                   isSecondary: true,
                   text: "Continue with Google",
                   showIcon: true,
                   iconLink: "assets/svg/google_icon.svg",
                 ),
-
                 const SizedBox(
                   height: kDefaultPadding,
                 )

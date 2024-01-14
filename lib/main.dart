@@ -96,9 +96,10 @@ class _MyAppState extends State<MyApp> {
             //     ? NavigationRailDrawer.id
             //     : LoginScreen.id,
             // initialRoute: "/",
-            home: NavigationRailDrawer(),
+            //   home: NavigationRailDrawer(),
+            home: LoginScreen(),
             routes: {
-              "/": (context) => const NavigationRailDrawer(),
+              //"/": (context) => const NavigationRailDrawer(),
               DetailsScreen.id: (context) => const DetailsScreen(),
               LoginScreen.id: (context) => const LoginScreen(),
               SignUpScreen.id: (context) => const SignUpScreen(),

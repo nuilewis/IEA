@@ -12,10 +12,6 @@ class AuthService {
         await _firebaseAuth.signInWithEmailAndPassword(
             email: parameters.email, password: parameters.password);
 
-
-
-
-
     return userCredential;
   }
 
@@ -51,10 +47,7 @@ class AuthService {
   Future<void> updateAccountInfo() async {}
 
   Future<void> deleteAccount(User user) async {
-
     await user.delete();
-
-
   }
 
   Future<void> signOut() async {
@@ -63,7 +56,6 @@ class AuthService {
 
   ///Get Stream of User Auth State
   ///
-
   Stream<User?> getAuthStateChanges() {
     return _firebaseAuth.authStateChanges();
   }
