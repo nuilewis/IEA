@@ -35,16 +35,15 @@ class AuthRepositoryImplementation implements AuthRepository {
         return const Right(null);
       } on FirebaseAuthException catch (e) {
         //If an authentication error occurs, return an failure with the error message;
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } on FirebaseException catch (e) {
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } catch (e) {
-        return const Left(FirebaseFailure(
+        return const Left(Failure.firebase(
             errorMessage: "An error occurred while trying to delete account"));
       }
     } else {
-      return const Left(NetworkFailure());
-    }
+      return Left(Failure.network());    }
   }
 
   @override
@@ -57,16 +56,15 @@ class AuthRepositoryImplementation implements AuthRepository {
         return Right(userCredential.user);
       } on FirebaseAuthException catch (e) {
         //If an authentication error occurs, return an failure with the error message;
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } on FirebaseException catch (e) {
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } catch (e) {
-        return const Left(FirebaseFailure(
+        return const Left(Failure.firebase(
             errorMessage: "An error occurred while trying to register"));
       }
     } else {
-      return const Left(NetworkFailure());
-    }
+      return Left(Failure.network());    }
   }
 
   @override
@@ -79,16 +77,15 @@ class AuthRepositoryImplementation implements AuthRepository {
         return Right(userCredential.user);
       } on FirebaseAuthException catch (e) {
         //If an authentication error occurs, return an failure with the error message;
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } on FirebaseException catch (e) {
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } catch (e) {
-        return const Left(FirebaseFailure(
+        return const Left(Failure.firebase(
             errorMessage: "An error occurred while trying to sign in"));
       }
     } else {
-      return const Left(NetworkFailure());
-    }
+      return Left(Failure.network());    }
   }
 
   @override
@@ -99,16 +96,15 @@ class AuthRepositoryImplementation implements AuthRepository {
         return const Right(null);
       } on FirebaseAuthException catch (e) {
         //If an authentication error occurs, return an failure with the error message;
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } on FirebaseException catch (e) {
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } catch (e) {
-        return const Left(FirebaseFailure(
+        return const Left(Failure.firebase(
             errorMessage: "An error occurred while trying update Info"));
       }
     } else {
-      return const Left(NetworkFailure());
-    }
+      return Left(Failure.network());    }
   }
 
   @override
@@ -120,19 +116,18 @@ class AuthRepositoryImplementation implements AuthRepository {
         return Right(userCredential.user);
       } on FirebaseAuthException catch (e) {
         //If an authentication error occurs, return an failure with the error message;
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } on FirebaseException catch (e) {
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } catch (e) {
         return const Left(
-          FirebaseFailure(
+          Failure.firebase(
               errorMessage:
                   "An error occurred while trying to sing in With Google"),
         );
       }
     } else {
-      return const Left(NetworkFailure());
-    }
+      return Left(Failure.network());    }
   }
 
   @override
@@ -143,12 +138,12 @@ class AuthRepositoryImplementation implements AuthRepository {
       return Right(authStateStream);
     } on FirebaseAuthException catch (e) {
       //If an authentication error occurs, return an failure with the error message;
-      return Left(FirebaseFailure(errorMessage: e.message));
+      return Left(Failure.firebase(errorMessage: e.message));
     } on FirebaseException catch (e) {
-      return Left(FirebaseFailure(errorMessage: e.message));
+      return Left(Failure.firebase(errorMessage: e.message));
     } catch (e) {
       return const Left(
-        FirebaseFailure(
+        Failure.firebase(
             errorMessage:
                 "An error occurred while trying to sing in With Google"),
       );

@@ -102,7 +102,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   key: nameKey,
                   controller: nameController,
                   decoration:
-                      customTextFieldDecoration.copyWith(hintText: "name"),
+                      AppInputDecoration.inputDecoration(context).copyWith(hintText: "name"),
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Please input a name";
@@ -120,7 +120,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   key: emailKey,
                   controller: emailController,
                   decoration:
-                      customTextFieldDecoration.copyWith(hintText: "email"),
+                      AppInputDecoration.inputDecoration(context).copyWith(hintText: "email"),
                   validator: (value) {
                     if (!value!.contains("@")) {
                       return "Please Input a valid email address";
@@ -135,7 +135,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   key: passkey,
                   controller: passwordController,
                   decoration:
-                      customTextFieldDecoration.copyWith(hintText: "Password"),
+                      AppInputDecoration.inputDecoration(context).copyWith(hintText: "Password"),
                   validator: (value) {
                     if (value!.length < 8) {
                       return "Your password is too short";
@@ -150,7 +150,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   key: confirmPassKey,
                   controller: confirmPassController,
                   decoration:
-                      customTextFieldDecoration.copyWith(hintText: "Password"),
+                      AppInputDecoration.inputDecoration(context).copyWith(hintText: "Password"),
                   validator: (value) {
                     if (confirmPassController.text == passwordController.text) {
                       return null;

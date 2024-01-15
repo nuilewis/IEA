@@ -1,42 +1,243 @@
 import 'package:flutter/material.dart';
-import 'package:water_project/core/constants.dart';
+import 'package:flutter/services.dart';
+import 'core.dart';
 
-ThemeData customLightTheme(BuildContext context) {
-  return ThemeData(
+
+
+class AppThemeData {
+  static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    primaryColor: kPurple80,
-    scaffoldBackgroundColor: kDark20,
-    brightness: Brightness.light,
-    cardColor: kDark20,
-    iconTheme: const IconThemeData(color: kDark),
-    fontFamily: "Poppins",
-    textTheme: const TextTheme(
-        displayLarge: kHeading,
-        displayMedium: kHeadingLight,
-        bodyLarge: kBody,
-        bodyMedium: kBody),
-    colorScheme: const ColorScheme.light()
-        .copyWith(secondary: kFuchsia)
-        .copyWith(background: Colors.white),
+    primaryColor: AppColours.blueSeed,
+    primaryColorLight: AppColours.blue60,
+    primaryColorDark: AppColours.blue30,
+    scaffoldBackgroundColor: AppColours.white,
+    iconTheme: const IconThemeData(color: AppColours.black),
+    primaryIconTheme: const IconThemeData(color: AppColours.black),
+    cardTheme: CardTheme(
+        color: AppColours.blue95,
+        elevation: 0,
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        )
+
+
+    ),
+    fontFamily: 'Plus Jakarta Sans',
+    textTheme: TextTheme(
+      displayLarge:
+      AppTextStyles.displayLarge.copyWith(color: AppColours.black),
+      displayMedium:
+      AppTextStyles.displayMedium.copyWith(color: AppColours.black),
+      displaySmall:
+      AppTextStyles.displaySmall.copyWith(color: AppColours.black),
+
+      ///
+      headlineLarge:
+      AppTextStyles.headlineLarge.copyWith(color: AppColours.black),
+      headlineSmall:
+      AppTextStyles.headlineSmall.copyWith(color: AppColours.black),
+      headlineMedium: AppTextStyles.headlineMedium
+          .copyWith(color: AppColours.black),
+
+      ///
+      titleLarge:
+      AppTextStyles.titleLarge.copyWith(color: AppColours.black),
+      titleMedium:
+      AppTextStyles.titleMedium.copyWith(color: AppColours.black),
+      titleSmall:
+      AppTextStyles.titleSmall.copyWith(color: AppColours.black),
+
+      ///
+      bodyLarge:
+      AppTextStyles.bodyLarge.copyWith(color: AppColours.black),
+      bodyMedium:
+      AppTextStyles.bodyMedium.copyWith(color: AppColours.black),
+      bodySmall:
+      AppTextStyles.bodySmall.copyWith(color: AppColours.black),
+    ),
+    appBarTheme: const AppBarTheme(
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        elevation: 0,
+        backgroundColor: Colors.transparent),
+    cardColor: AppColours.blue95,
+    elevatedButtonTheme: const ElevatedButtonThemeData(
+      style: ButtonStyle(
+        fixedSize: MaterialStatePropertyAll<Size>(Size.fromHeight(52)),
+        padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(
+            EdgeInsets.symmetric(horizontal: 16)),
+        elevation: MaterialStatePropertyAll<double>(0),
+      ),
+    ),
+    chipTheme: ChipThemeData(
+      labelStyle:
+      AppTextStyles.bodyMedium.copyWith(color: AppColours.blue10),
+      elevation: 0,
+      selectedColor: AppColours.blue90,
+      backgroundColor: AppColours.neutral95,
+      side: BorderSide.none,
+      shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(32)),
+    ),
+    sliderTheme: const SliderThemeData(
+        activeTickMarkColor: AppColours.blue40,
+        inactiveTrackColor: AppColours.neutral90,
+        trackHeight: 4,
+        trackShape: RoundedRectSliderTrackShape(),
+        thumbShape: RoundSliderThumbShape(
+          elevation: 0,
+          enabledThumbRadius: 18,
+          disabledThumbRadius: 4,
+          pressedElevation: 0,
+        ),
+        thumbColor: AppColours.white,
+        overlayColor: Colors.transparent,
+        overlayShape: RoundSliderOverlayShape(overlayRadius: 0)),
+    switchTheme: SwitchThemeData(
+      thumbColor: const MaterialStatePropertyAll<Color>(AppColours.white),
+      trackColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
+          return AppColours.blue40;
+        }
+        return AppColours.blue90;
+      }),
+      trackOutlineColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
+          return AppColours.blue40;
+        }
+        return AppColours.blue90;
+      }),
+      trackOutlineWidth: const MaterialStatePropertyAll<double>(0),
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    ),
+    colorScheme: ColorScheme.fromSeed(
+      brightness: Brightness.light,
+      seedColor: AppColours.blueSeed,
+      primary: AppColours.blueSeed,
+      onPrimary: AppColours.white,
+      primaryContainer: AppColours.blue90,
+      onPrimaryContainer: AppColours.blue10,
+      error: AppColours.red50,
+      onError: AppColours.white,
+      errorContainer: AppColours.red90,
+      onErrorContainer: AppColours.red10,
+    ),
   );
-}
 
-ThemeData customDarkTheme(BuildContext context) {
-  return ThemeData(
+  ///--------Dark Theme-------///
+  static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    primaryColor: kPurple80,
-    scaffoldBackgroundColor: const Color.fromARGB(255, 17, 17, 17),
-    brightness: Brightness.dark,
-    cardColor: kDark60,
-    iconTheme: const IconThemeData(color: Colors.white),
-    fontFamily: "Poppins",
-    textTheme: const TextTheme(
-        displayLarge: kHeading,
-        displayMedium: kHeadingLight,
-        bodyLarge: kBody,
-        bodyMedium: kBody),
-    colorScheme: const ColorScheme.dark()
-        .copyWith(secondary: kFuchsia)
-        .copyWith(background: const Color.fromARGB(255, 17, 17, 17)),
+    primaryColor: AppColours.blue70,
+    primaryColorLight: AppColours.blue90,
+    primaryColorDark: AppColours.blue70,
+    scaffoldBackgroundColor: AppColours.black,
+    iconTheme: const IconThemeData(color: AppColours.white),
+    primaryIconTheme: const IconThemeData(color: AppColours.white),
+    switchTheme: SwitchThemeData(
+      thumbColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
+          return AppColours.blue10;
+        }
+        return AppColours.neutral70;
+      }),
+      trackColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
+          return AppColours.blue70;
+        }
+        return AppColours.neutral20;
+      }),
+      trackOutlineColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.selected)) {
+          return AppColours.blue70;
+        }
+        return AppColours.neutral20;
+      }),
+      trackOutlineWidth: const MaterialStatePropertyAll<double>(0),
+    ),
+    cardTheme: CardTheme(
+      color: AppColours.neutral20,
+      elevation: 0,
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+      ),
+    ),
+    fontFamily: 'Plus Jakarta Sans',
+    textTheme: TextTheme(
+      displayLarge:
+      AppTextStyles.displayLarge.copyWith(color: AppColours.white),
+      displayMedium:
+      AppTextStyles.displayMedium.copyWith(color: AppColours.white),
+      displaySmall:
+      AppTextStyles.displaySmall.copyWith(color: AppColours.white),
+
+      ///
+      headlineLarge:
+      AppTextStyles.headlineLarge.copyWith(color: AppColours.white),
+      headlineSmall:
+      AppTextStyles.headlineSmall.copyWith(color: AppColours.white),
+      headlineMedium: AppTextStyles.headlineMedium
+          .copyWith(color: AppColours.white),
+
+      ///
+      titleLarge:
+      AppTextStyles.titleLarge.copyWith(color: AppColours.white),
+      titleMedium:
+      AppTextStyles.titleMedium.copyWith(color: AppColours.white),
+      titleSmall:
+      AppTextStyles.titleSmall.copyWith(color: AppColours.white),
+
+      ///
+      bodyLarge:
+      AppTextStyles.bodyLarge.copyWith(color: AppColours.white),
+      bodyMedium:
+      AppTextStyles.bodyMedium.copyWith(color: AppColours.white),
+      bodySmall:
+      AppTextStyles.bodySmall.copyWith(color: AppColours.white),
+    ),
+    appBarTheme: const AppBarTheme(
+      systemOverlayStyle: SystemUiOverlayStyle.light,
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+    ),
+    cardColor: AppColours.neutral20,
+    elevatedButtonTheme: const ElevatedButtonThemeData(
+      style: ButtonStyle(
+        fixedSize: MaterialStatePropertyAll<Size>(Size.fromHeight(52)),
+        padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(
+            EdgeInsets.symmetric(horizontal: 16)),
+        elevation: MaterialStatePropertyAll<double>(0),
+      ),
+    ),
+    chipTheme: ChipThemeData(
+      elevation: 0,
+      selectedColor: AppColours.blue70,
+      backgroundColor: AppColours.neutral20,
+      side: BorderSide.none,
+      shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(32)),
+    ),
+    sliderTheme: const SliderThemeData(
+        activeTickMarkColor: AppColours.blue40,
+        inactiveTrackColor: AppColours.neutral90,
+        trackHeight: 4,
+        trackShape: RoundedRectSliderTrackShape(),
+        thumbShape: RoundSliderThumbShape(
+          elevation: 0,
+          enabledThumbRadius: 18,
+          disabledThumbRadius: 4,
+          pressedElevation: 0,
+        ),
+        thumbColor: AppColours.white,
+        overlayColor: Colors.transparent,
+        overlayShape: RoundSliderOverlayShape(overlayRadius: 0)),
+    colorScheme: ColorScheme.fromSeed(
+      brightness: Brightness.dark,
+      seedColor: AppColours.blueSeed,
+      primary: AppColours.blue70,
+      onPrimary: AppColours.blue10,
+      primaryContainer: AppColours.blue10,
+      onPrimaryContainer: AppColours.blue95,
+      error: AppColours.red60,
+      onError: AppColours.white,
+      errorContainer: AppColours.red10,
+      onErrorContainer: AppColours.red90,
+    ),
   );
 }

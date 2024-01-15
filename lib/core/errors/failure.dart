@@ -1,57 +1,24 @@
+import 'dart:ffi';
+
 import 'package:equatable/equatable.dart';
 
-abstract class Failure extends Equatable {
+class Failure extends Equatable {
   final String? errorMessage;
   final String? code;
 
   const Failure({this.errorMessage, this.code});
 
-  @override
-  List<Object?> get props => [errorMessage, code];
-}
+  const Failure.generic({this.errorMessage ="An error has occurred", this.code});
+  const Failure.firebase({this.errorMessage ="An error has occurred", this.code});
+  const Failure.network({this.errorMessage ="An error has occurred", this.code});
+  const Failure.storage({this.errorMessage ="An error has occurred", this.code});
 
-////////////////////////////////////////////////////////////
-class FirebaseFailure implements Failure {
-  @override
-  final String? errorMessage;
-  @override
-  final String? code;
-
-  const FirebaseFailure({this.errorMessage, this.code});
 
   @override
   List<Object?> get props => [errorMessage, code];
 
   @override
+
   bool? get stringify => true;
-}
 
-class LocalStorageFailure implements Failure {
-  @override
-  final String? errorMessage;
-  @override
-  final String? code;
-
-  const LocalStorageFailure({this.errorMessage, this.code});
-
-  @override
-  List<Object?> get props => [errorMessage, code];
-
-  @override
-  bool? get stringify => true;
-}
-
-class NetworkFailure implements Failure {
-  @override
-  final String? errorMessage;
-  @override
-  final String? code;
-
-  const NetworkFailure({this.errorMessage, this.code});
-
-  @override
-  List<Object?> get props => [errorMessage, code];
-
-  @override
-  bool? get stringify => true;
 }

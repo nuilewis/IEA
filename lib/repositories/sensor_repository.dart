@@ -36,15 +36,14 @@ class SensorRepositoryImplementation implements SensorRepository {
 
         return Right(flowRateStream);
       } on FirebaseException catch (e) {
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } catch (e) {
-        return const Left(FirebaseFailure(
+        return const Left(Failure.firebase(
             errorMessage:
                 "An error occurred while trying to get the flow rate data"));
       }
     } else {
-      return const Left(NetworkFailure());
-    }
+      return Left(Failure.network());    }
   }
 
   @override
@@ -66,14 +65,13 @@ class SensorRepositoryImplementation implements SensorRepository {
 
         return Right(sensorsList);
       } on FirebaseException catch (e) {
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } catch (e) {
-        return const Left(FirebaseFailure(
+        return const Left(Failure.firebase(
             errorMessage:
                 "An error occurred while trying to get the flow rate data"));
       }
     } else {
-      return const Left(NetworkFailure());
-    }
+      return Left(Failure.network());    }
   }
 }

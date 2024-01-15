@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:water_project/core/constants.dart';
+import 'package:water_project/screens/widgets/button.dart';
 
 import '../core/widgets/button.dart';
 
@@ -73,7 +74,7 @@ class _AddProjectState extends State<AddProject> {
                                 const SizedBox(height: kDefaultPadding / 2),
                                 TextFormField(
                                   key: nameKey,
-                                  decoration: customTextFieldDecoration
+                                  decoration: AppInputDecoration.inputDecoration(context)(context)
                                       .copyWith(hintText: "project Name"),
                                   validator: (value) {
                                     if (value!.isEmpty) {
@@ -92,7 +93,7 @@ class _AddProjectState extends State<AddProject> {
                                 TextFormField(
                                   key: emailKey,
                                   controller: emailController,
-                                  decoration: customTextFieldDecoration
+                                  decoration: AppInputDecoration.inputDecoration(context)
                                       .copyWith(hintText: "email"),
                                   validator: (value) {
                                     if (!value!.contains("@")) {
@@ -116,7 +117,7 @@ class _AddProjectState extends State<AddProject> {
                                   key: confirmPasskey,
                                   controller: passwordController,
                                   obscureText: true,
-                                  decoration: customTextFieldDecoration
+                                  decoration: AppInputDecoration.inputDecoration(context)
                                       .copyWith(hintText: "Password"),
                                   validator: (value) {
                                     ///Todo: validate form field

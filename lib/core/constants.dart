@@ -1,98 +1,8 @@
 import 'package:flutter/material.dart';
 
-const primaryColor = Colors.indigoAccent;
-const secondaryColor = Color(0xFF2A2D3E);
-const bgColor = Color(0xFF212332);
-const containercolor = Color.fromRGBO(165, 174, 255, 1);
-const rectanglecolor = Color.fromRGBO(255, 255, 255, 0.5);
-
-///--------Colors---------///
-// const Color kPurple = Color(0xFF531CF7);
-// const Color kPurple80 = Color(0xB3531CF7);
-// const Color kPurple60 = Color(0x80531CF7);
-// const Color kPurple40 = Color(0x4D531CF7);
-// const Color kPurple20 = Color(0x1A531CF7);
-
-const Color kPurple = Color(0xFF3448FF);
-const Color kPurple80 = Color(0xFF5061FF);
-const Color kPurple60 = Color(0xFFB298FF);
-const Color kPurple40 = Color(0xFFA5AEFF);
-const Color kPurple20 = Color(0xFFE8EAFF);
-
-const Color kGreen = Color(0xFF52DBB9);
-const Color kGreen80 = Color(0xFF85EBD1);
-const Color kGreen60 = Color(0xFFBAF2E4);
-const Color kGreen40 = Color(0xFFD0F9EF);
-const Color kGreen20 = Color(0xFFE8FDF8);
-
-const Color kFuchsia = Color(0xFFFC4684);
-const Color kFuchsia80 = Color(0xFFFF7DA9);
-const Color kFuchsia60 = Color(0xFFFFACC8);
-const Color kFuchsia40 = Color(0xFFFFD4E3);
-const Color kFuchsia20 = Color(0xFFFFE9F0);
-
-const Color kDark = Color(0xFF353535);
-const Color kDark80 = Color(0xFF4C4C4C);
-const Color kDark60 = Color(0xFFBDBDBD);
-const Color kDark40 = Color(0xFFD7D7D7);
-const Color kDark20 = Color(0xFFF4F4F4);
-const Color grey = Color.fromARGB(244, 209, 209, 206);
-const Color green = Color.fromARGB(244, 198, 245, 198);
-
-const double kDefaultPadding = 16.0;
-const double kDefaultPadding2x = 32.0;
-
-///----TextStyles----///
-const TextStyle kHeading = TextStyle(fontWeight: FontWeight.bold, fontSize: 22);
-const TextStyle kHeadingLight =
-    TextStyle(fontWeight: FontWeight.normal, fontSize: 22);
-const TextStyle kBody = TextStyle(fontWeight: FontWeight.normal, fontSize: 14);
-const TextStyle kBodyBold =
-    TextStyle(fontWeight: FontWeight.bold, fontSize: 14);
-
-const TextStyle kButtonText =
-    TextStyle(fontWeight: FontWeight.bold, fontSize: 14);
-const TextStyle kFootNote =
-    TextStyle(fontWeight: FontWeight.normal, fontSize: 10);
-
-///----------Text Form Field styles ---------////
-InputDecoration customTextFieldDecoration = InputDecoration(
-  errorStyle: kBody.copyWith(color: kFuchsia),
-
-  errorBorder: OutlineInputBorder(
-    gapPadding: 0,
-    borderSide: const BorderSide(width: 1, color: kFuchsia80),
-    borderRadius: BorderRadius.circular(
-      kDefaultPadding,
-    ),
-  ),
-
-  border: OutlineInputBorder(
-    gapPadding: 0,
-    borderSide: const BorderSide(width: 1, color: kPurple40),
-    borderRadius: BorderRadius.circular(kDefaultPadding),
-  ),
-  focusedBorder: OutlineInputBorder(
-    gapPadding: 0,
-    borderSide: const BorderSide(width: 2, color: kPurple60),
-    borderRadius: BorderRadius.circular(kDefaultPadding),
-  ),
-  enabledBorder: OutlineInputBorder(
-    gapPadding: 0,
-    borderSide: const BorderSide(width: 1, color: kPurple40),
-    borderRadius: BorderRadius.circular(kDefaultPadding),
-  ),
-  hoverColor: kPurple20.withOpacity(.5),
-  isDense: true,
-  filled: true,
-  fillColor: Colors.transparent,
-  hintStyle: kBody,
-
-  // fillColor: kPurple20,
-);
 
 ///-------DateTime Constants -------////
-///
+
 Map<int, String> monthsOfYear = {
   1: "January",
   2: "February",
@@ -107,3 +17,238 @@ Map<int, String> monthsOfYear = {
   11: "November",
   12: "December",
 };
+
+///-------Paddings--------///
+const double kDefaultPadding = 16.0;
+const double kDefaultPadding2x = 32.0;
+
+///------Input Decorations-------///
+class AppInputDecoration {
+  static InputDecoration inputDecoration(BuildContext context) {
+    return InputDecoration(
+        errorStyle: AppTextStyles.bodyMedium
+            .copyWith(color: Theme.of(context).colorScheme.error),
+        errorBorder: OutlineInputBorder(
+          gapPadding: 4,
+          borderSide:
+          BorderSide(color: Theme.of(context).colorScheme.error, width: 1),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        border: OutlineInputBorder(
+          gapPadding: 0,
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        enabledBorder: OutlineInputBorder(
+          gapPadding: 0,
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        disabledBorder: OutlineInputBorder(
+          gapPadding: 0,
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        focusedBorder: OutlineInputBorder(
+          gapPadding: 0,
+          borderSide: const BorderSide(width: 1, color: AppColours.blue60),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        filled: true,
+        isDense: true,
+        fillColor: Theme.of(context).cardColor,
+        hintStyle:
+        AppTextStyles.bodyMedium.copyWith(color: AppColours.neutral50),
+        labelStyle: AppTextStyles.bodyMedium.copyWith(color: AppColours.black));
+  }
+}
+
+///------Colours-------///
+class AppColours {
+  static const Color black = Color(0xFF1C1A22);
+  static const Color white = Color(0xFFFFFBFF);
+
+  ///-----------Purple---------///
+  static const Color blueSeed = Color(0xFF1F84FB);
+  static const Color blue10 = Color(0xFF002F64);
+  static const Color blue20 = Color(0xFF002F64);
+  static const Color blue30 = Color(0xFF00458D);
+  static const Color blue40 = Color(0xFF005DB9);
+  static const Color blue50 = Color(0xFF0075E6);
+  static const Color blue60 = Color(0xFF4090FF);
+  static const Color blue70 = Color(0xFF7BACFF);
+  static const Color blue80 = Color(0xFFAAC7FF);
+  static const Color blue90 = Color(0xFFD6E3FF);
+  static const Color blue95 = Color(0xFFECF0FF);
+  static const Color blue99 = Color(0xFFFDFBFF);
+
+  ///-----------Green---------///
+  static const Color greenSeed = Color(0xFF0DCC70);
+  static const Color green10 = Color(0xFF00210D);
+  static const Color green20 = Color(0xFF00391B);
+  static const Color green30 = Color(0xFF005229);
+  static const Color green40 = Color(0xFF006D39);
+  static const Color green50 = Color(0xFF008949);
+  static const Color green60 = Color(0xFF00A65A);
+  static const Color green70 = Color(0xFF00C46B);
+  static const Color green80 = Color(0xFF3AE283);
+  static const Color green90 = Color(0xFF5FFF9C);
+  static const Color green95 = Color(0xFFC3FFCF);
+  static const Color green99 = Color(0xFFF5FFF3);
+
+  ///-----------Yellow---------///
+  static const Color yellowSeed = Color(0xFFFECB48);
+  static const Color yellow10 = Color(0xFF251A00);
+  static const Color yellow20 = Color(0xFF3F2E00);
+  static const Color yellow30 = Color(0xFF5A4300);
+  static const Color yellow40 = Color(0xFF775A00);
+  static const Color yellow50 = Color(0xFF967200);
+  static const Color yellow60 = Color(0xFFB58A00);
+  static const Color yellow70 = Color(0xFFD3A521);
+  static const Color yellow80 = Color(0xFFF1C03D);
+  static const Color yellow90 = Color(0xFFFFDF99);
+  static const Color yellow95 = Color(0xFFFFEFD2);
+  static const Color yellow99 = Color(0xFFFFFBFF);
+
+  ///-----------Red---------///
+  static const Color redSeed = Color(0xFFFF4C4C);
+  static const Color red10 = Color(0xFF410004);
+  static const Color red20 = Color(0xFF68000B);
+  static const Color red30 = Color(0xFF930014);
+  static const Color red40 = Color(0xFFBB1623);
+  static const Color red50 = Color(0xFFDF3438);
+  static const Color red60 = Color(0xFFFF5352);
+  static const Color red70 = Color(0xFFFF8982);
+  static const Color red80 = Color(0xFFFFB3AE);
+  static const Color red90 = Color(0xFFFFDAD7);
+  static const Color red95 = Color(0xFFFFEDEB);
+  static const Color red99 = Color(0xFFFFFBFF);
+
+  ///-----------Neutral---------///
+  static const Color neutral10 = Color(0xFF1A1B1E);
+  static const Color neutral20 = Color(0xFF313033);
+  static const Color neutral30 = Color(0xFF48464A);
+  static const Color neutral40 = Color(0xFF605D62);
+  static const Color neutral50 = Color(0xFF79767A);
+  static const Color neutral60 = Color(0xFF938F94);
+  static const Color neutral70 = Color(0xFFAEAAAF);
+  static const Color neutral80 = Color(0xFFCAC4CF);
+  static const Color neutral90 = Color(0xFFE6E1E6);
+  static const Color neutral95 = Color(0xFFF4EFF4);
+  static const Color neutral99 = Color(0xFFFFFBFF);
+}
+
+///------Text Styles-------///
+class AppTextStyles {
+  ///---Display---//
+
+
+  static TextStyle displayLarge = const TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 57,
+    height: 1,
+  );
+
+
+
+  static TextStyle displayMedium = const TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 45,
+    height: 1,
+  );
+
+
+  static TextStyle displaySmall = const TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 36,
+    height: 1,
+  );
+
+
+
+  ///---Headline---///
+  static TextStyle headlineLarge = const TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 32,
+    height: 1,
+  );
+  static TextStyle headlineMedium = const TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 28,
+    height: 1,
+  );
+
+  static TextStyle headlineSmall = const TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 24,
+    height: 1,
+  );
+
+  ///---Title---///
+  static TextStyle titleLargeBold = const TextStyle(
+    fontWeight: FontWeight.w800,
+    fontSize: 22,
+    height: 1,
+  );
+  static TextStyle titleLarge = const TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 22,
+    height: 1,
+  );
+
+  static TextStyle titleMediumBold = const TextStyle(
+    fontWeight: FontWeight.w800,
+    fontSize: 16,
+    //  height: 1,
+  );
+  static TextStyle titleMedium = const TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 16,
+    //   height: 1,
+  );
+
+  static TextStyle titleSmallBold = const TextStyle(
+    fontWeight: FontWeight.w800,
+    fontSize: 14,
+    //   height: 1,
+  );
+  static TextStyle titleSmall = const TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 14,
+    //   height: 1,
+  );
+
+  ///---Body---///
+  static TextStyle bodyLargeBold = const TextStyle(
+    fontWeight: FontWeight.w800,
+    fontSize: 16,
+    height: 1.5,
+  );
+  static TextStyle bodyLarge = const TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 16,
+    height: 1.5,
+  );
+
+  static TextStyle bodyMediumBold = const TextStyle(
+    fontWeight: FontWeight.w800,
+    fontSize: 14,
+    height: 1.5,
+  );
+  static TextStyle bodyMedium = const TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 14,
+    height: 1.5,
+  );
+
+  static TextStyle bodySmallBold = const TextStyle(
+    fontWeight: FontWeight.w800,
+    fontSize: 12,
+    // height: 1,
+  );
+  static TextStyle bodySmall = const TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 12,
+    // height: 1,
+  );
+}

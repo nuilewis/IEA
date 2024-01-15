@@ -27,15 +27,14 @@ class ProjectRepositoryImplementation implements ProjectRepository {
         await projectFirestoreService.addNewProject(project);
         return const Right(null);
       } on FirebaseException catch (e) {
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } catch (e) {
-        return const Left(FirebaseFailure(
+        return const Left(Failure.firebase(
             errorMessage:
                 "An unknown error occurred while trying to create a project"));
       }
     } else {
-      return const Left(NetworkFailure());
-    }
+      return Left(Failure.network());    }
   }
 
   @override
@@ -45,15 +44,14 @@ class ProjectRepositoryImplementation implements ProjectRepository {
         await projectFirestoreService.deleteProject(project: project);
         return const Right(null);
       } on FirebaseException catch (e) {
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } catch (e) {
-        return const Left(FirebaseFailure(
+        return const Left(Failure.firebase(
             errorMessage:
                 "An unknown error occurred while trying to delete the project"));
       }
     } else {
-      return const Left(NetworkFailure());
-    }
+      return Left(Failure.network());    }
   }
 
   @override
@@ -74,19 +72,18 @@ class ProjectRepositoryImplementation implements ProjectRepository {
           }
           return Right(gottenProjects);
         } else {
-          return const Left(FirebaseFailure(
+          return const Left(Failure.firebase(
               errorMessage: "There are no projects at the moment"));
         }
       } on FirebaseException catch (e) {
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } catch (e) {
-        return const Left(FirebaseFailure(
+        return const Left(Failure.firebase(
             errorMessage:
                 "An unknown error occurred while trying to get projects"));
       }
     } else {
-      return const Left(NetworkFailure());
-    }
+      return Left(Failure.network());    }
   }
 
   @override
@@ -96,14 +93,13 @@ class ProjectRepositoryImplementation implements ProjectRepository {
         await projectFirestoreService.updateProject(project: project);
         return const Right(null);
       } on FirebaseException catch (e) {
-        return Left(FirebaseFailure(errorMessage: e.message));
+        return Left(Failure.firebase(errorMessage: e.message));
       } catch (e) {
-        return const Left(FirebaseFailure(
+        return const Left(Failure.firebase(
             errorMessage:
                 "An unknown error occurred while trying to update the project"));
       }
     } else {
-      return const Left(NetworkFailure());
-    }
+      return Left(Failure.network());    }
   }
 }

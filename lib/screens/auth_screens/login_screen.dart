@@ -96,7 +96,7 @@ class _LoginFormState extends State<LoginForm> {
                   key: emailKey,
                   controller: emailController,
                   decoration:
-                      customTextFieldDecoration.copyWith(hintText: "email"),
+                      AppInputDecoration.inputDecoration(context).copyWith(hintText: "email"),
                   validator: (value) {
                     if (!value!.contains("@")) {
                       return "Please Input a valid email address";
@@ -111,7 +111,7 @@ class _LoginFormState extends State<LoginForm> {
                   key: passkey,
                   controller: passwordController,
                   decoration:
-                      customTextFieldDecoration.copyWith(hintText: "Password"),
+                      AppInputDecoration.inputDecoration(context).copyWith(hintText: "Password"),
                   validator: (value) {
                     if (value!.length < 8) {
                       return "Your password is too short";

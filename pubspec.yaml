@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=2.19.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -29,16 +29,19 @@ dependencies:
   firebase_core: ^2.4.0
   flutter_svg: 
   firebase_database: ^10.0.7
-  fl_chart: ^0.62.0
+  fl_chart: ^0.66.0
   provider: ^6.0.3
   dartz: ^0.10.1
   cloud_firestore: ^4.0.4
-  internet_connection_checker_plus: ^1.0.1
+  internet_connection_checker_plus: ^2.2.0
   equatable: ^2.0.5
   google_maps_flutter_web:
   firebase_auth: ^4.4.2
   google_maps_flutter: ^2.2.6
   google_sign_in: ^6.1.0
+  fluentui_icons: ^1.0.0
+  fpdart: ^1.1.0
+  gap: ^3.0.1
 
 
 
@@ -52,7 +55,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.1
+  flutter_lints: ^3.0.1
   mockito: ^5.3.2
   build_runner: ^2.3.2
 
@@ -64,21 +67,19 @@ flutter:
     - assets/fonts/
 
   fonts:
-    - family: Poppins
+    - family: Plus Jakarta Sans
       fonts:
-        - asset: assets/fonts/Poppins-Bold.ttf
-        - asset: assets/fonts/Poppins-BoldItalic.ttf
-        - asset: assets/fonts/Poppins-ExtraBold.ttf
-        - asset: assets/fonts/Poppins-ExtraBoldItalic.ttf
-        - asset: assets/fonts/Poppins-ExtraLight.ttf
-        - asset: assets/fonts/Poppins-ExtraLightItalic.ttf
-        - asset: assets/fonts/Poppins-Light.ttf
-        - asset: assets/fonts/Poppins-LightItalic.ttf
-        - asset: assets/fonts/Poppins-Italic.ttf
-        - asset: assets/fonts/Poppins-Medium.ttf
-        - asset: assets/fonts/Poppins-MediumItalic.ttf
-        - asset: assets/fonts/Poppins-Regular.ttf
-        - asset: assets/fonts/Poppins-SemiBold.ttf
-        - asset: assets/fonts/Poppins-SemiBoldItalic.ttf
-        - asset: assets/fonts/Poppins-Thin.ttf
-        - asset: assets/fonts/Poppins-ThinItalic.ttf
+        - asset: assets/fonts/PlusJakartaSans-Bold.ttf
+        - asset: assets/fonts/PlusJakartaSans-BoldItalic.ttf
+        - asset: assets/fonts/PlusJakartaSans-ExtraBold.ttf
+        - asset: assets/fonts/PlusJakartaSans-ExtraBoldItalic.ttf
+        - asset: assets/fonts/PlusJakartaSans-ExtraLight.ttf
+        - asset: assets/fonts/PlusJakartaSans-ExtraLightItalic.ttf
+        - asset: assets/fonts/PlusJakartaSans-Light.ttf
+        - asset: assets/fonts/PlusJakartaSans-LightItalic.ttf
+        - asset: assets/fonts/PlusJakartaSans-Italic.ttf
+        - asset: assets/fonts/PlusJakartaSans-Medium.ttf
+        - asset: assets/fonts/PlusJakartaSans-MediumItalic.ttf
+        - asset: assets/fonts/PlusJakartaSans-Regular.ttf
+        - asset: assets/fonts/PlusJakartaSans-SemiBold.ttf
+        - asset: assets/fonts/PlusJakartaSans-SemiBoldItalic.ttf

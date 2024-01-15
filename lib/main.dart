@@ -34,7 +34,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final ConnectionChecker connectionChecker =
-      ConnectionCheckerImplementation(InternetConnectionCheckerPlus());
+      ConnectionChecker(InternetConnection());
 
   ///Sensor Dependencies
   late final SensorRepository sensorRepository;
@@ -90,16 +90,12 @@ class _MyAppState extends State<MyApp> {
           print(authData.authState.toString());
           return MaterialApp(
             scrollBehavior: MyCustomScrollBehavior(),
-            theme: customLightTheme(context),
+            theme: AppThemeData.lightTheme,
+            darkTheme: AppThemeData.darkTheme,
+            themeMode: ThemeMode.system,
             debugShowCheckedModeBanner: false,
-            // initialRoute: authData.authState == AuthState.authenticated
-            //     ? NavigationRailDrawer.id
-            //     : LoginScreen.id,
-            // initialRoute: "/",
-            //   home: NavigationRailDrawer(),
             home: LoginScreen(),
             routes: {
-              //"/": (context) => const NavigationRailDrawer(),
               DetailsScreen.id: (context) => const DetailsScreen(),
               LoginScreen.id: (context) => const LoginScreen(),
               SignUpScreen.id: (context) => const SignUpScreen(),
