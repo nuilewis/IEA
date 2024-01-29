@@ -10,16 +10,15 @@ class CustomButton extends StatelessWidget {
   final bool showIcon;
   final Color? bgColor;
   final Color? textColor;
-  const CustomButton(
-      {Key? key,
+    const CustomButton(
+      {super.key,
       required this.onPressed,
       required this.text,
       this.iconLink,
       this.showIcon = false,
       this.isSecondary = false,
       this.bgColor,
-      this.textColor})
-      : super(key: key);
+      this.textColor});
 
   @override
   Widget build(BuildContext context) {
@@ -28,17 +27,17 @@ class CustomButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
           side: isSecondary
-              ? BorderSide(color: bgColor ?? theme.primaryColor, width: 1.5)
+              ? BorderSide(color: bgColor ?? Theme.of(context).colorScheme.primary , width: 1.5)
               : null,
           backgroundColor:
-              isSecondary ? Colors.transparent : bgColor ?? theme.primaryColor,
+              isSecondary ? Colors.transparent : bgColor ?? Theme.of(context).colorScheme.primary ,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(kDefaultPadding),
           ),
           elevation: 0),
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.all(kDefaultPadding),
+          padding:   const EdgeInsets.all(kDefaultPadding),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -46,18 +45,18 @@ class CustomButton extends StatelessWidget {
                   ? SvgPicture.asset(
                       iconLink!,
                       color: isSecondary
-                          ? bgColor ?? theme.primaryColor
+                          ? bgColor ?? Theme.of(context).colorScheme.primary 
                           : textColor ?? Colors.white,
                     )
-                  : const SizedBox(),
+                  :   const SizedBox(),
               showIcon
-                  ? const SizedBox(width: kDefaultPadding)
-                  : const SizedBox(),
+                  ?   const SizedBox(width: kDefaultPadding)
+                  :   const SizedBox(),
               Text(
                 text,
                 style: theme.textTheme.bodyLarge!.copyWith(
                     color: isSecondary
-                        ? bgColor ?? theme.primaryColor
+                        ? bgColor ?? Theme.of(context).colorScheme.primary 
                         : textColor ?? Colors.white),
               ),
             ],

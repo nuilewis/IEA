@@ -43,7 +43,7 @@ class AuthRepositoryImplementation implements AuthRepository {
             errorMessage: "An error occurred while trying to delete account"));
       }
     } else {
-      return Left(Failure.network());    }
+      return const Left(Failure.network());    }
   }
 
   @override
@@ -64,7 +64,7 @@ class AuthRepositoryImplementation implements AuthRepository {
             errorMessage: "An error occurred while trying to register"));
       }
     } else {
-      return Left(Failure.network());    }
+      return const Left(Failure.network());    }
   }
 
   @override
@@ -85,7 +85,7 @@ class AuthRepositoryImplementation implements AuthRepository {
             errorMessage: "An error occurred while trying to sign in"));
       }
     } else {
-      return Left(Failure.network());    }
+      return const Left(Failure.network());    }
   }
 
   @override
@@ -104,7 +104,7 @@ class AuthRepositoryImplementation implements AuthRepository {
             errorMessage: "An error occurred while trying update Info"));
       }
     } else {
-      return Left(Failure.network());    }
+      return const Left(Failure.network());    }
   }
 
   @override
@@ -127,7 +127,7 @@ class AuthRepositoryImplementation implements AuthRepository {
         );
       }
     } else {
-      return Left(Failure.network());    }
+      return const Left(Failure.network());    }
   }
 
   @override

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../core/core.dart';
+import '../widgets/button.dart';
 
 class SignUpScreen extends StatefulWidget {
-  static const id = "sign up screen";
-  const SignUpScreen({Key? key}) : super(key: key);
+  static   const id = "sign up screen";
+    const SignUpScreen({super.key});
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -25,20 +26,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Expanded(
                 flex: 1,
                 child: Container(
-                  decoration: const BoxDecoration(
-                      color: kPurple40,
-                      borderRadius: BorderRadius.horizontal(
+                  decoration:   BoxDecoration(
+                      color: Theme.of(context).primaryColorDark,
+                      borderRadius: const BorderRadius.horizontal(
                           left: Radius.circular(kDefaultPadding2x))),
                 ),
               ),
               Expanded(
                 flex: 2,
                 child: Container(
-                    decoration: const BoxDecoration(
+                    decoration:   const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.horizontal(
                             right: Radius.circular(kDefaultPadding2x))),
-                    child: const SignUpForm()),
+                    child:   const SignUpForm()),
               ),
             ],
           ),
@@ -51,7 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
 
 class SignUpForm extends StatefulWidget {
-  const SignUpForm({Key? key}) : super(key: key);
+    const SignUpForm({super.key});
 
   @override
   State<SignUpForm> createState() => _SignUpFormState();
@@ -86,14 +87,14 @@ class _SignUpFormState extends State<SignUpForm> {
       child: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding2x),
+            padding:   const EdgeInsets.symmetric(horizontal: kDefaultPadding2x),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const SizedBox(height: kDefaultPadding),
+                  const SizedBox(height: kDefaultPadding),
                 Text("Sign up", style: theme.textTheme.displayLarge),
-                const SizedBox(height: kDefaultPadding2x),
+                  const SizedBox(height: kDefaultPadding2x),
                 Text(
                   "Name",
                   style: theme.textTheme.bodyLarge,
@@ -111,7 +112,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     }
                   },
                 ),
-                const SizedBox(height: kDefaultPadding),
+                  const SizedBox(height: kDefaultPadding),
                 Text(
                   "Email",
                   style: theme.textTheme.bodyLarge,
@@ -129,8 +130,8 @@ class _SignUpFormState extends State<SignUpForm> {
                     }
                   },
                 ),
-                const SizedBox(height: kDefaultPadding),
-                const Text("Password"),
+                  const SizedBox(height: kDefaultPadding),
+                  const Text("Password"),
                 TextFormField(
                   key: passkey,
                   controller: passwordController,
@@ -144,8 +145,8 @@ class _SignUpFormState extends State<SignUpForm> {
                     }
                   },
                 ),
-                const SizedBox(height: kDefaultPadding),
-                const Text("Confirm Password"),
+                  const SizedBox(height: kDefaultPadding),
+                  const Text("Confirm Password"),
                 TextFormField(
                   key: confirmPassKey,
                   controller: confirmPassController,
@@ -159,7 +160,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     }
                   },
                 ),
-                const SizedBox(height: kDefaultPadding2x),
+                  const SizedBox(height: kDefaultPadding2x),
                 CustomButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -168,9 +169,9 @@ class _SignUpFormState extends State<SignUpForm> {
                   },
                   text: "Sign up",
                   textColor: Colors.white,
-                  bgColor: kPurple,
+                  bgColor: Theme.of(context).colorScheme.primary,
                 ),
-                const SizedBox(
+                  const SizedBox(
                   height: kDefaultPadding,
                 )
               ],

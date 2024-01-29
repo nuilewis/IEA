@@ -43,7 +43,7 @@ class SensorRepositoryImplementation implements SensorRepository {
                 "An error occurred while trying to get the flow rate data"));
       }
     } else {
-      return Left(Failure.network());    }
+      return const Left(Failure.network());    }
   }
 
   @override
@@ -72,6 +72,6 @@ class SensorRepositoryImplementation implements SensorRepository {
                 "An error occurred while trying to get the flow rate data"));
       }
     } else {
-      return Left(Failure.network());    }
+      return const Left(Failure.network());    }
   }
 }

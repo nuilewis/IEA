@@ -3,15 +3,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:water_project/screens/maps_screen/maps_screen.dart';
 import 'package:water_project/screens/projects_screen/proeject_screen.dart';
 
+import '../../core/constants.dart';
 import '../../screens/auth_screens/login_screen.dart';
 import '../../screens/details_screen/components/custom_menu_item.dart';
 import '../../screens/details_screen/details_screen.dart';
-import '../constants.dart';
 
 class SideMenu extends StatelessWidget {
-  const SideMenu({
-    Key? key,
-  }) : super(key: key);
+    const SideMenu({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class SideMenu extends StatelessWidget {
       backgroundColor: theme.scaffoldBackgroundColor,
       child: ListView(
         children: [
-          const SizedBox(
+            const SizedBox(
             height: kDefaultPadding2x * 3,
           ),
           CustomMenuItem(
@@ -59,28 +59,28 @@ void selectedItem(BuildContext context, int i) {
   switch (i) {
     case 0:
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const DetailsScreen()),
+        MaterialPageRoute(builder: (context) =>   const DetailsScreen()),
       );
       break;
     case 1:
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const DetailsScreen()),
+        MaterialPageRoute(builder: (context) =>   const DetailsScreen()),
       );
   }
 }
 
 class People extends StatelessWidget {
-  const People({Key? key}) : super(key: key);
+    const People({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Text("field");
+    return   const Text("field");
   }
 }
 
 class NavigationRailDrawer extends StatefulWidget {
-  static const String id = "Navigation_Rail_Drawer";
-  const NavigationRailDrawer({Key? key}) : super(key: key);
+  static   String id = "Navigation_Rail_Drawer";
+    const NavigationRailDrawer({super.key});
 
   @override
   State<NavigationRailDrawer> createState() => _NavigationRailDrawerState();
@@ -89,17 +89,17 @@ class NavigationRailDrawer extends StatefulWidget {
 class _NavigationRailDrawerState extends State<NavigationRailDrawer> {
   bool isExpanded = true;
 
-  final List<Widget> pages = const [
-    MapsScreen(
+  final List<Widget> pages =   [
+    const MapsScreen(
       key: PageStorageKey(MapsScreen.id),
     ),
-    DetailsScreen(
+    const DetailsScreen(
       key: PageStorageKey(DetailsScreen.id),
     ),
-    ProjectScreen(
+    const ProjectScreen(
       key: PageStorageKey(ProjectScreen.id),
     ),
-    LoginScreen(
+    const LoginScreen(
       key: PageStorageKey(LoginScreen.id),
     )
   ];
@@ -109,16 +109,12 @@ class _NavigationRailDrawerState extends State<NavigationRailDrawer> {
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
-    // setState(() {
-    //   screenSize.width < 300 ? isExpanded = false : isExpanded = true;
-    // });
     return Scaffold(
       body: PageStorage(
         bucket: bucket,
         child: Row(
           children: [
-            SideMenu(),
+            const SideMenu(),
             NavigationRail(
               extended: true,
 
@@ -126,15 +122,15 @@ class _NavigationRailDrawerState extends State<NavigationRailDrawer> {
               destinations: [
                 NavigationRailDestination(
                   icon: SvgPicture.asset(""),
-                  label: const Text("Projects"),
+                  label:   const Text("Projects"),
                 ),
                 NavigationRailDestination(
                   icon: SvgPicture.asset(""),
-                  label: const Text("Details"),
+                  label:   const Text("Details"),
                 ),
                 NavigationRailDestination(
                   icon: SvgPicture.asset(""),
-                  label: const Text("Maps"),
+                  label:   const Text("Maps"),
                 ),
               ],
               onDestinationSelected: (int index) {

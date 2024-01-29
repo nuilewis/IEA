@@ -26,7 +26,7 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -94,7 +94,7 @@ class _MyAppState extends State<MyApp> {
             darkTheme: AppThemeData.darkTheme,
             themeMode: ThemeMode.system,
             debugShowCheckedModeBanner: false,
-            home: LoginScreen(),
+            home: const LoginScreen(),
             routes: {
               DetailsScreen.id: (context) => const DetailsScreen(),
               LoginScreen.id: (context) => const LoginScreen(),

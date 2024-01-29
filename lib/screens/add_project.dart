@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:water_project/core/constants.dart';
 import 'package:water_project/screens/widgets/button.dart';
 
-import '../core/widgets/button.dart';
 
 class AddProject extends StatefulWidget {
-  static const id = "add project screen";
-  const AddProject({Key? key}) : super(key: key);
+  static   const id = "add project screen";
+    const AddProject({super.key});
 
   @override
   State<AddProject> createState() => _AddProjectState();
@@ -32,26 +31,25 @@ class _AddProjectState extends State<AddProject> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
         child: Container(
-          margin: const EdgeInsets.only(
+          margin:   const EdgeInsets.only(
               left: 234, right: 234, top: 90, bottom: 100),
           child: Row(
             children: [
               Expanded(
                   flex: 5,
                   child: Container(
-                      decoration: const BoxDecoration(
-                        color: kPurple80,
-                        borderRadius: BorderRadius.only(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).cardColor,
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(30.0),
                             bottomLeft: Radius.circular(30.0)),
                       ),
                       height: 708,
                       width: 406,
-                      child: const Text(''))),
+                      child:   const Text(''))),
               Expanded(
                 flex: 11,
                 child: Column(
@@ -62,7 +60,7 @@ class _AddProjectState extends State<AddProject> {
                         child: SizedBox(
                           // width: screenSize.width * .2,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 54, right: 53),
+                            padding:   const EdgeInsets.only(left: 54, right: 53),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
@@ -71,10 +69,10 @@ class _AddProjectState extends State<AddProject> {
                                   "Project Name",
                                   style: theme.textTheme.bodyMedium,
                                 ),
-                                const SizedBox(height: kDefaultPadding / 2),
+                                  const SizedBox(height: kDefaultPadding / 2),
                                 TextFormField(
                                   key: nameKey,
-                                  decoration: AppInputDecoration.inputDecoration(context)(context)
+                                  decoration: AppInputDecoration.inputDecoration(context)
                                       .copyWith(hintText: "project Name"),
                                   validator: (value) {
                                     if (value!.isEmpty) {
@@ -84,11 +82,11 @@ class _AddProjectState extends State<AddProject> {
                                     }
                                   },
                                 ),
-                                const SizedBox(height: kDefaultPadding2x),
-                                const Text(
+                                  const SizedBox(height: kDefaultPadding2x),
+                                  const Text(
                                   "Description",
                                 ),
-                                const SizedBox(height: kDefaultPadding / 2),
+                                  const SizedBox(height: kDefaultPadding / 2),
 
                                 TextFormField(
                                   key: emailKey,
@@ -106,12 +104,12 @@ class _AddProjectState extends State<AddProject> {
                                   minLines: 8,
                                 ),
 
-                                const SizedBox(height: kDefaultPadding2x),
+                                  const SizedBox(height: kDefaultPadding2x),
                                 Text(
                                   "Location",
                                   style: theme.textTheme.bodyLarge,
                                 ),
-                                const SizedBox(height: kDefaultPadding / 2),
+                                  const SizedBox(height: kDefaultPadding / 2),
 
                                 TextFormField(
                                   key: confirmPasskey,
@@ -120,12 +118,14 @@ class _AddProjectState extends State<AddProject> {
                                   decoration: AppInputDecoration.inputDecoration(context)
                                       .copyWith(hintText: "Password"),
                                   validator: (value) {
+                                    return null;
+                                  
                                     ///Todo: validate form field
                                   },
                                 ),
-                                // const SizedBox(height: kDefaultPadding/2),
+                                //   SizedBox(height: kDefaultPadding/2),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 293),
+                                  padding:   const EdgeInsets.only(left: 293),
                                   child: CustomButton(
                                     onPressed: () {
                                       if (formKey.currentState!.validate()) {
@@ -134,10 +134,10 @@ class _AddProjectState extends State<AddProject> {
                                     },
                                     text: "SignUp",
                                     textColor: Colors.white,
-                                    bgColor: kPurple,
+                                    bgColor: Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
-                                const SizedBox(height: kDefaultPadding),
+                                  const SizedBox(height: kDefaultPadding),
                               ],
                             ),
                           ),

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants.dart';
-import '../../../core/widgets/custom_card.dart';
+import '../../widgets/custom_card.dart';
 
 class NumberOfProjects extends StatelessWidget {
   final bool isNormal;
-  const NumberOfProjects({
-    Key? key,
+    const NumberOfProjects({
+    super.key,
     required this.isNormal,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +17,9 @@ class NumberOfProjects extends StatelessWidget {
       height: 208,
       child: CustomCard(
         showShadow: true,
-        shadowColor: kPurple20,
-        bgColor: containercolor,
+        bgColor: Theme.of(context).cardColor,
         child: Padding(
-          padding: const EdgeInsets.only(
+          padding:   const EdgeInsets.only(
             top: 50,
             right: 100,
           ),
@@ -32,12 +30,12 @@ class NumberOfProjects extends StatelessWidget {
             // alignment: Alignment.bottomLeft,
 
             decoration: BoxDecoration(
-                color: rectanglecolor, borderRadius: BorderRadius.circular(20)),
+              borderRadius: BorderRadius.circular(20)),
 
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 25, right: 40),
+                  padding:   const EdgeInsets.only(top: 25, right: 40),
                   child: Text(
                     "02",
                     style: theme.textTheme.displayLarge!

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Maps extends StatefulWidget {
-  const Maps({super.key});
+    const Maps({super.key});
 
   @override
   State<Maps> createState() => _MapsState();
@@ -16,7 +16,7 @@ class _MapsState extends State<Maps> {
   @override
   void initState() {
     super.initState();
-    _markers.add(const Marker(
+    _markers.add(  const Marker(
       markerId: MarkerId("myLocation"),
       position: LatLng(59.948680, 11.010630),
     ));
@@ -40,9 +40,9 @@ class _MapsState extends State<Maps> {
               },
               markers: Set<Marker>.of(_markers),
               mapType: MapType.normal,
-              initialCameraPosition: const CameraPosition(
+              initialCameraPosition:   const CameraPosition(
                   target: LatLng(59.948680, 11.010630), zoom: 14))
-          : const CircularProgressIndicator(),
+          :   const CircularProgressIndicator(),
     );
   }
 }

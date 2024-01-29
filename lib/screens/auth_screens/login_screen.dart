@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../core/core.dart';
+import '../widgets/button.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const id = "log up screen";
-  const LoginScreen({Key? key}) : super(key: key);
+  static   const id = "log up screen";
+    const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -27,20 +28,20 @@ class _LoginScreenState extends State<LoginScreen> {
               Expanded(
                 flex: 1,
                 child: Container(
-                  decoration: const BoxDecoration(
-                      color: kPurple40,
-                      borderRadius: BorderRadius.horizontal(
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColorDark,
+                      borderRadius: const BorderRadius.horizontal(
                           left: Radius.circular(kDefaultPadding2x))),
                 ),
               ),
               Expanded(
                 flex: 2,
                 child: Container(
-                    decoration: const BoxDecoration(
+                    decoration:   const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.horizontal(
                             right: Radius.circular(kDefaultPadding2x))),
-                    child: LoginForm()),
+                    child: const LoginForm()),
               ),
             ],
           ),
@@ -51,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class LoginForm extends StatefulWidget {
-  const LoginForm({Key? key}) : super(key: key);
+    const LoginForm({super.key});
 
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -80,14 +81,14 @@ class _LoginFormState extends State<LoginForm> {
       child: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding2x),
+            padding:   const EdgeInsets.symmetric(horizontal: kDefaultPadding2x),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const SizedBox(height: kDefaultPadding),
+                  const SizedBox(height: kDefaultPadding),
                 Text("Login", style: theme.textTheme.displayLarge),
-                const SizedBox(height: kDefaultPadding2x),
+                  const SizedBox(height: kDefaultPadding2x),
                 Text(
                   "Email",
                   style: theme.textTheme.bodyLarge,
@@ -105,8 +106,8 @@ class _LoginFormState extends State<LoginForm> {
                     }
                   },
                 ),
-                const SizedBox(height: kDefaultPadding),
-                const Text("Password"),
+                  const SizedBox(height: kDefaultPadding),
+                  const Text("Password"),
                 TextFormField(
                   key: passkey,
                   controller: passwordController,
@@ -120,7 +121,7 @@ class _LoginFormState extends State<LoginForm> {
                     }
                   },
                 ),
-                const SizedBox(height: kDefaultPadding2x),
+                  const SizedBox(height: kDefaultPadding2x),
                 CustomButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -129,9 +130,9 @@ class _LoginFormState extends State<LoginForm> {
                   },
                   text: "Login",
                   textColor: Colors.white,
-                  bgColor: kPurple,
+                  bgColor: Theme.of(context).colorScheme.primary,
                 ),
-                SizedBox(height: kDefaultPadding),
+                const SizedBox(height: kDefaultPadding),
                 CustomButton(
                   onPressed: () {
                     ///TODO: add methods to sing in with Google
@@ -141,7 +142,7 @@ class _LoginFormState extends State<LoginForm> {
                   showIcon: true,
                   iconLink: "assets/svg/google_icon.svg",
                 ),
-                const SizedBox(
+                  const SizedBox(
                   height: kDefaultPadding,
                 )
               ],

@@ -9,27 +9,27 @@ class CustomMenuItem extends StatelessWidget {
   final VoidCallback onPressed;
   final bool? isSelected;
 
-  const CustomMenuItem({
-    Key? key,
+    const CustomMenuItem({
+    super.key,
     // For selecting those three line once press "Command+D"
     required this.title,
     required this.svgSrc,
     required this.onPressed,
     this.isSelected = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(
+      padding:   const EdgeInsets.symmetric(
           vertical: kDefaultPadding / 2, horizontal: kDefaultPadding),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          foregroundColor: kPurple20,
+          foregroundColor: Theme.of(context).cardColor,
           backgroundColor:
-              isSelected! ? kPurple20 : theme.scaffoldBackgroundColor,
+              isSelected! ? Theme.of(context).cardColor : theme.scaffoldBackgroundColor,
           elevation: 0,
           alignment: Alignment.center,
           // minimumSize: Size(double.infinity, 54 ),
@@ -37,7 +37,7 @@ class CustomMenuItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(kDefaultPadding)),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(
+          padding:   const EdgeInsets.only(
               top: kDefaultPadding + 2, bottom: kDefaultPadding + 2),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -45,15 +45,15 @@ class CustomMenuItem extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 svgSrc,
-                color: isSelected! ? theme.primaryColor : theme.iconTheme.color,
+                color: isSelected! ? Theme.of(context).colorScheme.primary  : theme.iconTheme.color,
                 // height: 16,
               ),
-              const SizedBox(width: kDefaultPadding),
+                const SizedBox(width: kDefaultPadding),
               Text(title,
                   style: theme.textTheme.bodyLarge!.copyWith(
                       fontSize: 18,
                       color: isSelected!
-                          ? theme.primaryColor
+                          ? Theme.of(context).colorScheme.primary 
                           : theme.iconTheme.color)),
             ],
           ),

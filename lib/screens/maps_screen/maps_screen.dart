@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import '../../core/core.dart';
+import '../widgets/navigation_rail.dart';
 
 class MapsScreen extends StatelessWidget {
-  static const id = "maps screen";
-  const MapsScreen({Key? key}) : super(key: key);
+  static const  id = "maps screen";
+    const MapsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
         body: Row(
-      children: const [
+      children:   [
         Expanded(flex: 3, child: NavigationRailDrawer()),
         Expanded(flex: 9, child: Maps()),
         Expanded(flex: 4, child: SensorInfo()),
@@ -19,7 +20,7 @@ class MapsScreen extends StatelessWidget {
 }
 
 class Maps extends StatefulWidget {
-  const Maps({Key? key}) : super(key: key);
+    const Maps({super.key});
 
   @override
   State<Maps> createState() => _MapsState();
@@ -32,25 +33,24 @@ class _MapsState extends State<Maps> {
       color: Colors.grey,
       child: Column(
         children: [
-          const Spacer(),
-          const Header(),
-          const SizedBox(
+            const Spacer(),
+            const SizedBox(
             height: 50,
           ),
           Row(
-            children: const [
+            children: [
               Padding(
-                padding: EdgeInsets.only(left: 20.0),
+                padding: const EdgeInsets.only(left: 20.0),
                 child: Text(
                   'Project 1',
-                  style: kHeading,
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
               )
             ],
           ),
-          const SizedBox(height: 12),
+            const SizedBox(height: 12),
           Padding(
-            padding: const EdgeInsets.only(bottom: 15.0),
+            padding:   const EdgeInsets.only(bottom: 15.0),
             child: Container(
               height: 800,
               width: 900,
@@ -58,7 +58,7 @@ class _MapsState extends State<Maps> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: const Maps(),
+              child:   const Maps(),
             ),
           )
         ],
@@ -68,7 +68,7 @@ class _MapsState extends State<Maps> {
 }
 
 class SensorInfo extends StatelessWidget {
-  const SensorInfo({
+    const SensorInfo({
     super.key,
   });
 
@@ -76,30 +76,30 @@ class SensorInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
+          const SizedBox(
           height: 125,
         ),
         Row(
-          children: const [
+          children:  [
             Padding(
-              padding: EdgeInsets.only(left: 8.0),
+              padding: const EdgeInsets.only(left: 8.0),
               child: Text(
                 'Project sensors',
                 textAlign: TextAlign.left,
-                style: kHeading,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),
           ],
         ),
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding:   const EdgeInsets.all(10.0),
           child: Container(
             height: 60,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: kPurple20)),
-            child: Column(
-              children: const [
+                border: Border.all(color: Theme.of(context).cardColor)),
+            child: const Column(
+              children:   [
                 ProjectSensorInfo(isNormal: true),
               ],
             ),
@@ -111,10 +111,10 @@ class SensorInfo extends StatelessWidget {
 }
 
 class ProjectSensorInfo extends StatelessWidget {
-  const ProjectSensorInfo({
-    Key? key,
+    const ProjectSensorInfo({
+    super.key,
     required this.isNormal,
-  }) : super(key: key);
+  });
 
   final bool isNormal;
 
@@ -122,28 +122,28 @@ class ProjectSensorInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const SizedBox(
+          const SizedBox(
           width: kDefaultPadding * 3,
         ),
-        const Text(
+          Text(
           '345 ',
-          style: kBodyBold,
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold),
         ),
-        const Text('m2/sec'),
-        const SizedBox(
+          const Text('m2/sec'),
+          const SizedBox(
           width: kDefaultPadding * 3,
         ),
-        const Text('50 cm'),
-        const SizedBox(
+          const Text('50 cm'),
+          const SizedBox(
           width: kDefaultPadding * 3,
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+          padding:   const EdgeInsets.only(top: 5.0, bottom: 5.0),
           child: Container(
-            padding: const EdgeInsets.symmetric(
+            padding:   const EdgeInsets.symmetric(
                 vertical: kDefaultPadding, horizontal: kDefaultPadding2x),
             decoration: BoxDecoration(
-                color: isNormal ? kGreen : kFuchsia,
+                color: isNormal ? AppColours.green70 : AppColours.redSeed,
                 borderRadius: BorderRadius.circular(kDefaultPadding2x)),
             child: Text(
               isNormal ? "Normal" : "Abnormal",

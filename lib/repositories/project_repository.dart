@@ -34,7 +34,7 @@ class ProjectRepositoryImplementation implements ProjectRepository {
                 "An unknown error occurred while trying to create a project"));
       }
     } else {
-      return Left(Failure.network());    }
+      return const Left(Failure.network());    }
   }
 
   @override
@@ -51,7 +51,7 @@ class ProjectRepositoryImplementation implements ProjectRepository {
                 "An unknown error occurred while trying to delete the project"));
       }
     } else {
-      return Left(Failure.network());    }
+      return const Left(Failure.network());    }
   }
 
   @override
@@ -83,7 +83,7 @@ class ProjectRepositoryImplementation implements ProjectRepository {
                 "An unknown error occurred while trying to get projects"));
       }
     } else {
-      return Left(Failure.network());    }
+      return const Left(Failure.network());    }
   }
 
   @override
@@ -100,6 +100,6 @@ class ProjectRepositoryImplementation implements ProjectRepository {
                 "An unknown error occurred while trying to update the project"));
       }
     } else {
-      return Left(Failure.network());    }
+      return const Left(Failure.network());    }
   }
 }

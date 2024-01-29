@@ -1,35 +1,34 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants.dart';
-import '../../../core/widgets/custom_card.dart';
+import '../../widgets/custom_card.dart';
 
 class FlowStatus extends StatelessWidget {
   final bool isNormal;
-  const FlowStatus({
-    Key? key,
+    const FlowStatus({
+    super.key,
     required this.isNormal,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return CustomCard(
       showShadow: true,
-      shadowColor: kPurple20,
       bgColor: theme.scaffoldBackgroundColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         //mainAxisSize: MainAxisSize.min,
         children: [
           Text("Status", style: theme.textTheme.bodyLarge),
-          const SizedBox(
+            const SizedBox(
             height: kDefaultPadding,
           ),
           Container(
-            padding: const EdgeInsets.symmetric(
+            padding:   const EdgeInsets.symmetric(
                 vertical: kDefaultPadding, horizontal: kDefaultPadding2x),
             decoration: BoxDecoration(
-                color: isNormal ? kGreen : kFuchsia,
+                color: isNormal ? AppColours.green70 : AppColours.redSeed,
                 borderRadius: BorderRadius.circular(kDefaultPadding2x)),
             child: Text(
               isNormal ? "Normal" : "Abnormal",

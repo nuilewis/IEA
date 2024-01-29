@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-
-import '../../../core/constants.dart';
-import '../../../core/widgets/custom_card.dart';
+import 'package:water_project/core/constants.dart';
+import 'package:water_project/screens/widgets/custom_card.dart';
 
 class FlowRatePerProject extends StatelessWidget {
   final bool isNormal;
-  const FlowRatePerProject({
-    Key? key,
+    const FlowRatePerProject({
+    super.key,
     required this.isNormal,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +17,9 @@ class FlowRatePerProject extends StatelessWidget {
       height: 208,
       child: CustomCard(
         showShadow: true,
-        shadowColor: kPurple20,
         bgColor: Colors.white,
         child: Padding(
-          padding: const EdgeInsets.only(
+          padding:   const EdgeInsets.only(
             top: 50,
             right: 100,
           ),
@@ -32,19 +30,19 @@ class FlowRatePerProject extends StatelessWidget {
             // alignment: Alignment.bottomLeft,
 
             decoration: BoxDecoration(
-                color: grey, borderRadius: BorderRadius.circular(20)),
+                color: AppColours.neutral10, borderRadius: BorderRadius.circular(20)),
 
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 25, right: 28),
+                  padding:   const EdgeInsets.only(top: 25, right: 28),
                   child: Text(
                     "3,456",
                     style: theme.textTheme.displayLarge!
                         .copyWith(fontSize: 20, color: Colors.black87),
                   ),
                 ),
-                const Padding(
+                  const Padding(
                   padding: EdgeInsets.only(right: 30),
                   child: Text(
                     "m/s2",

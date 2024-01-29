@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants.dart';
-import '../../../core/widgets/custom_card.dart';
+import '../../widgets/custom_card.dart';
 
 class ProjectStatus extends StatelessWidget {
   final bool isNormal;
-  const ProjectStatus({
-    Key? key,
+    const ProjectStatus({
+    super.key,
     required this.isNormal,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
     return SizedBox(
       width: 271.86,
       height: 208,
       child: CustomCard(
         showShadow: true,
-        shadowColor: kPurple20,
+        shadowColor: Theme.of(context).cardColor,
         bgColor: Colors.white,
         child: Padding(
-          padding: const EdgeInsets.only(
+          padding:   const EdgeInsets.only(
             top: 50,
             right: 100,
           ),
@@ -32,10 +31,10 @@ class ProjectStatus extends StatelessWidget {
             // alignment: Alignment.bottomLeft,
 
             decoration: BoxDecoration(
-                color: green, borderRadius: BorderRadius.circular(20)),
+                color: AppColours.green70, borderRadius: BorderRadius.circular(20)),
 
-            child: Column(
-              children: const [
+            child: const Column(
+              children:   [
                 Padding(
                   padding: EdgeInsets.only(top: 25, right: 10),
                   child: Text(
