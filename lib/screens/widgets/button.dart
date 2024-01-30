@@ -1,66 +1,118 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:water_project/core/constants.dart';
+
+import '../../core/core.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
-  final bool isSecondary;
-  final String text;
-  final String? iconLink;
-  final bool showIcon;
-  final Color? bgColor;
-  final Color? textColor;
-    const CustomButton(
-      {super.key,
-      required this.onPressed,
-      required this.text,
-      this.iconLink,
-      this.showIcon = false,
-      this.isSecondary = false,
-      this.bgColor,
-      this.textColor});
+  final String label;
+  final ButtonType buttonType;
+  final IconData? iconData;
+  final String? iconPath;
+  final Color? color;
+  final Color? backgroundColor;
+  final bool? overrideIconColor;
+  const CustomButton({
+    super.key,
+    required this.onPressed,
+    required this.label,
+    this.color,
+    this.backgroundColor,
+    this.iconPath,
+    this.iconData,
+    this.overrideIconColor = true,
+    this.buttonType = ButtonType.primary,
+  });
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
+
+    if(iconData!=null && iconPath!=null){
+      throw ErrorHint("Cannot provide both an icon path and and IconData simultaneously");
+    }
+
+    final theme = Theme.of(context);
+    ButtonStyle style = ElevatedButton.styleFrom(
+      backgroundColor: backgroundColor ?? theme.colorScheme.primary,
+      foregroundColor: color ?? Colors.white,
+    );
+    Color labelColor = theme.colorScheme.primary;
+    switch (buttonType) {
+      case ButtonType.primary:
+        style = ElevatedButton.styleFrom(
+          alignment: Alignment.center,
+          backgroundColor: backgroundColor ?? theme.colorScheme.primary,
+          foregroundColor: color ?? Colors.white,
+        );
+        labelColor = color ?? theme.colorScheme.onPrimary;
+        break;
+
+      case ButtonType.secondary:
+        style = ElevatedButton.styleFrom(
+          backgroundColor:
+              backgroundColor ?? theme.colorScheme.primaryContainer,
+          foregroundColor: color ?? theme.colorScheme.onPrimaryContainer,
+        );
+        labelColor = color ?? theme.colorScheme.onPrimaryContainer;
+        break;
+
+      case ButtonType.outline:
+        style = ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            foregroundColor: color ?? theme.colorScheme.primary,
+            side: BorderSide(
+              width: 1,
+              color: backgroundColor ?? theme.colorScheme.primary,
+            ));
+
+        labelColor = color ?? theme.colorScheme.primary;
+        break;
+      case ButtonType.text:
+        style = ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            foregroundColor: color ?? theme.colorScheme.primary);
+        labelColor = color ?? theme.colorScheme.primary;
+        break;
+
+      default:
+        style = ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor ?? theme.colorScheme.primary,
+          foregroundColor: color ?? Colors.white,
+        );
+        labelColor = color ?? theme.colorScheme.primary;
+        break;
+    }
     return ElevatedButton(
       onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-          side: isSecondary
-              ? BorderSide(color: bgColor ?? Theme.of(context).colorScheme.primary , width: 1.5)
-              : null,
-          backgroundColor:
-              isSecondary ? Colors.transparent : bgColor ?? Theme.of(context).colorScheme.primary ,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(kDefaultPadding),
-          ),
-          elevation: 0),
+      style: style,
       child: Center(
-        child: Padding(
-          padding:   const EdgeInsets.all(kDefaultPadding),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              showIcon
-                  ? SvgPicture.asset(
-                      iconLink!,
-                      color: isSecondary
-                          ? bgColor ?? Theme.of(context).colorScheme.primary 
-                          : textColor ?? Colors.white,
-                    )
-                  :   const SizedBox(),
-              showIcon
-                  ?   const SizedBox(width: kDefaultPadding)
-                  :   const SizedBox(),
-              Text(
-                text,
-                style: theme.textTheme.bodyLarge!.copyWith(
-                    color: isSecondary
-                        ? bgColor ?? Theme.of(context).colorScheme.primary 
-                        : textColor ?? Colors.white),
-              ),
-            ],
-          ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Visibility(
+                  visible: iconData !=null,
+                  replacement: SvgPicture.asset(
+                    iconPath??"",
+                    colorFilter: overrideIconColor!
+                        ? ColorFilter.mode(
+                            labelColor,
+                            BlendMode.srcIn, // the blend mode
+                          )
+                        : null,
+                  ),
+                  child: Icon(iconData),
+                ),
+                const SizedBox(width: 12),
+              ],
+            ),
+            Text(label,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(color: labelColor)),
+          ],
         ),
       ),
     );

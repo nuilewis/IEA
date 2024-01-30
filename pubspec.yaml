@@ -38,7 +38,7 @@ dependencies:
   firebase_auth: ^4.4.2
   google_maps_flutter: ^2.2.6
   google_sign_in: ^6.1.0
-  fluentui_icons: ^1.0.0
+  fluentui_system_icons: ^1.1.225
   fpdart: ^1.1.0
   gap: ^3.0.1
 

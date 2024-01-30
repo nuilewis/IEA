@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../widgets/button.dart';
 import '../widgets/custom_card.dart';
 import '../widgets/header.dart';
 import 'components/display_flow_rate.dart';
@@ -44,35 +43,35 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     const SizedBox(
                     height: kDefaultPadding * 3,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 160,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                            const SensorMetaData(),
-                            const SizedBox(width: kDefaultPadding2x),
+                            SensorMetaData(),
+                            SizedBox(width: kDefaultPadding2x),
 
                           ///Current Flow Rate
-                            const DisplayFlowRate(
+                            DisplayFlowRate(
                             flowRate: FlowRate(flowRate: 10, velocity: 10),
                           ),
-                            const SizedBox(
+                            SizedBox(
                             width: kDefaultPadding2x,
                           ),
 
                           ///Normal or Abnormal
-                            const FlowStatus(
+                            FlowStatus(
                             isNormal: true,
                           ),
-                            const SizedBox(width: kDefaultPadding2x),
-                          CustomButton(
-                            onPressed: () {},
-                            text: "Locate On Map",
-                            showIcon: true,
-                            iconLink: "assets/svg/map_pin.svg",
-                          )
+                            SizedBox(width: kDefaultPadding2x),
+                          // CustomButton(
+                          //   onPressed: () {},
+                          //   text: "Locate On Map",
+                          //   showIcon: true,
+                          //   iconLink: "assets/svg/map_pin.svg",
+                          // )
                         ],
                       ),
                     ),

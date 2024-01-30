@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:water_project/core/constants.dart';
-import 'package:water_project/screens/widgets/button.dart';
 
 
 class AddProject extends StatefulWidget {
@@ -124,19 +123,19 @@ class _AddProjectState extends State<AddProject> {
                                   },
                                 ),
                                 //   SizedBox(height: kDefaultPadding/2),
-                                Padding(
-                                  padding:   const EdgeInsets.only(left: 293),
-                                  child: CustomButton(
-                                    onPressed: () {
-                                      if (formKey.currentState!.validate()) {
-                                        ///TODO: add methods to sign the user in
-                                      }
-                                    },
-                                    text: "SignUp",
-                                    textColor: Colors.white,
-                                    bgColor: Theme.of(context).colorScheme.primary,
-                                  ),
-                                ),
+                                // Padding(
+                                //   padding:   const EdgeInsets.only(left: 293),
+                                //   child: CustomButton(
+                                //     onPressed: () {
+                                //       if (formKey.currentState!.validate()) {
+                                //         ///TODO: add methods to sign the user in
+                                //       }
+                                //     },
+                                //     text: "SignUp",
+                                //     textColor: Colors.white,
+                                //     bgColor: Theme.of(context).colorScheme.primary,
+                                //   ),
+                                // ),
                                   const SizedBox(height: kDefaultPadding),
                               ],
                             ),

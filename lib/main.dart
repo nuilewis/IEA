@@ -86,15 +86,14 @@ class _MyAppState extends State<MyApp> {
       ],
       child: Consumer<AuthProvider>(
         builder: (context, authData, child) {
-          print("authentication state");
-          print(authData.authState.toString());
+
           return MaterialApp(
             scrollBehavior: MyCustomScrollBehavior(),
             theme: AppThemeData.lightTheme,
             darkTheme: AppThemeData.darkTheme,
-            themeMode: ThemeMode.system,
+            themeMode: ThemeMode.light,
             debugShowCheckedModeBanner: false,
-            home: const LoginScreen(),
+            home: const SignUpScreen(),
             routes: {
               DetailsScreen.id: (context) => const DetailsScreen(),
               LoginScreen.id: (context) => const LoginScreen(),
