@@ -1,6 +1,6 @@
-import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:water_project/models/auth_models.dart';
 
 import '../core/enums/app_state_enum.dart';

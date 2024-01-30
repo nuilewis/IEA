@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:water_project/services/projects/project_firestore_service.dart';
 
 import '../core/connection_checker/connection_checker.dart';
