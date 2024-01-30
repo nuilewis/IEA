@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'components/signup_form.dart';
+import 'components/components.dart';
 
-class SignUpScreen extends StatelessWidget {
-  static const id = "sign up screen";
-  const SignUpScreen({super.key});
-
+class AddProjectScreen extends StatelessWidget {
+  static const id = "add project screen";
+  const AddProjectScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Row(
         mainAxisSize: MainAxisSize.min,
@@ -24,7 +24,7 @@ class SignUpScreen extends StatelessWidget {
           ),
           Expanded(
             flex: screenSize.width > 700 ? 1 : 3,
-            child: const Center(child: SignUpForm()),
+            child: const Center(child: AddProjectForm(),),
           ),
         ],
       ),

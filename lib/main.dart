@@ -10,7 +10,7 @@ import 'package:water_project/screens/details_screen/details_screen.dart';
 import 'package:water_project/screens/maps_screen/maps_screen.dart';
 
 import 'firebase_options.dart';
-import 'screens/add_project.dart';
+import 'screens/projects_screen/add_project_screen.dart';
 import 'screens/projects_screen/proeject_screen.dart';
 
 import 'services/services.dart';
@@ -93,13 +93,13 @@ class _MyAppState extends State<MyApp> {
             darkTheme: AppThemeData.darkTheme,
             themeMode: ThemeMode.light,
             debugShowCheckedModeBanner: false,
-            home: const SignUpScreen(),
+            home: const AddProjectScreen(),
             routes: {
               DetailsScreen.id: (context) => const DetailsScreen(),
               LoginScreen.id: (context) => const LoginScreen(),
               SignUpScreen.id: (context) => const SignUpScreen(),
               MapsScreen.id: (context) => const MapsScreen(),
-              AddProject.id: (context) => const AddProject(),
+              AddProjectScreen.id: (context) => const AddProjectScreen(),
               ProjectScreen.id: (context) => const ProjectScreen(),
             },
           );
