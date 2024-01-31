@@ -96,7 +96,7 @@ class _SensorDetailsScreenState extends State<SensorDetailsScreen> {
                             borderRadius: BorderRadius.circular(20),
                             color: Theme.of(context).cardColor,
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               "Map goes here",
                             ),
@@ -113,7 +113,7 @@ class _SensorDetailsScreenState extends State<SensorDetailsScreen> {
                 ),
                 const Gap(16),
                 Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   height: MediaQuery.sizeOf(context).height *.5,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(32),
@@ -129,7 +129,7 @@ class _SensorDetailsScreenState extends State<SensorDetailsScreen> {
 
                               children: [
                                 Icon(FluentIcons.calendar_24_regular, color: _isChipSelected? AppColours.white : Theme.of(context).iconTheme.color,),
-                                Gap(8),
+                                const Gap(8),
                                 Text("This Week", style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: _isChipSelected? AppColours.white : Theme.of(context).iconTheme.color,),),
                               ],
                             ),
@@ -145,7 +145,7 @@ class _SensorDetailsScreenState extends State<SensorDetailsScreen> {
                             elevation: 0,
                             backgroundColor: AppColours.blue90,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-                            padding: EdgeInsets.all(12),
+                            padding: const EdgeInsets.all(12),
                             selectedColor: Theme.of(context).colorScheme.primary,
                             labelStyle: Theme.of(context).textTheme.bodyMedium,
                            selected: _isChipSelected,
@@ -153,7 +153,7 @@ class _SensorDetailsScreenState extends State<SensorDetailsScreen> {
 
                           )
                         ],
-                      ), Expanded(
+                      ), const Expanded(
                         child: Center(
                           child: Text(
                             "Graph goes here",
