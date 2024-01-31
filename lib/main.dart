@@ -6,6 +6,7 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 import 'package:provider/provider.dart';
 import 'package:water_project/screens/projects/proeject_screen.dart';
 import 'package:water_project/screens/projects/sensor_details_screen.dart';
+import 'package:water_project/screens/widgets/navigation_rail.dart';
 import 'firebase_options.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/signup_screen.dart';
@@ -92,7 +93,7 @@ class _MyAppState extends State<MyApp> {
             darkTheme: AppThemeData.darkTheme,
             themeMode: ThemeMode.light,
             debugShowCheckedModeBanner: false,
-            home: const SensorDetailsScreen(),
+            home: const NavRailScreen(),
             routes: {
               SensorDetailsScreen.id: (context) => const SensorDetailsScreen(),
               HomeScreen.id: (context) => const HomeScreen(),

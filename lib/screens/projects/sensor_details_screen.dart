@@ -56,7 +56,8 @@ class _SensorDetailsScreenState extends State<SensorDetailsScreen> {
                                       .copyWith(
                                       color: Theme.of(context)
                                           .colorScheme
-                                          .primary)),
+                                          .primary),),
+
                               TextSpan(
                                   text: " m/s2",
                                   style: Theme.of(context)
@@ -65,10 +66,11 @@ class _SensorDetailsScreenState extends State<SensorDetailsScreen> {
                                       .copyWith(
                                       color: Theme.of(context)
                                           .colorScheme
-                                          .primary))
+                                          .primary),)
                             ],),
                           ),),
                     ),
+                    const Gap(16),
                     Expanded(
                       flex: 1,
                       child: TopCard(
