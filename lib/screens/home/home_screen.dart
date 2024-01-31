@@ -1,12 +1,11 @@
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:water_project/core/constants.dart';
 import 'package:water_project/models/models.dart';
-import 'package:water_project/screens/widgets/button.dart';
 
 import '../widgets/header.dart';
 import 'components/add_project_button.dart';
+import 'components/project_card.dart';
 import 'components/top_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -21,15 +20,15 @@ class HomeScreen extends StatelessWidget {
         height: MediaQuery.sizeOf(context).height,
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 64),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ///Header
                 const Gap(16),
-                Align(
+                const Align(
                     alignment: Alignment.centerRight,
-                    child: const Header()),
+                    child: Header()),
 
 
                 Text("At a Glance", style:  Theme.of(context).textTheme.headlineSmall,),
@@ -100,8 +99,8 @@ class HomeScreen extends StatelessWidget {
                     Expanded(
                       flex: 1,
                         child: AddProjectButton(onPressed: (){})),
-                    Gap(16),
-                    Spacer(),
+                    const Gap(16),
+                    const Spacer(),
                   ],
                 )
               ],
@@ -113,50 +112,7 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class ProjectCard extends StatelessWidget {
-  final Project project;
-  const ProjectCard({super.key, required this.project});
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Theme.of(context).cardColor
-
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(project.name, style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold)),
-          const Gap(8),
-          Text(project.description,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.bodyMedium),
-          Gap(16),
-          const Spacer(),
-          Align(
-            alignment: Alignment.centerRight,
-            child: SizedBox(
-              width: 200,
-              child: CustomButton(
-                label: "View Project",
-                iconData: FluentIcons.arrow_right_24_regular,
-                onPressed: () {
-                  ///Todo:Navigate to the project details page
-                },
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
 
 
 

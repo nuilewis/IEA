@@ -91,7 +91,7 @@ class _MyAppState extends State<MyApp> {
             darkTheme: AppThemeData.darkTheme,
             themeMode: ThemeMode.light,
             debugShowCheckedModeBanner: false,
-            home: const HomeScreen(),
+            home: const MapsScreen(),
             routes: {
               HomeScreen.id: (context) => const HomeScreen(),
               LoginScreen.id: (context) => const LoginScreen(),
