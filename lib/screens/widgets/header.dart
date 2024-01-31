@@ -1,74 +1,43 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../core/core.dart';
+import 'package:gap/gap.dart';
 
 class Header extends StatelessWidget {
-    const Header({
-    super.key,
-  });
+  const Header({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           decoration: BoxDecoration(
-              color: Theme.of(context).cardColor,
-              borderRadius: BorderRadius.circular(kDefaultPadding2x)),
-          padding:   const EdgeInsets.symmetric(
-              vertical: kDefaultPadding, horizontal: kDefaultPadding2x),
-          child: Text(
-            "Monday 22 December",
-            style: Theme.of(context).textTheme.bodyLarge,
+            color: Theme.of(context).cardColor,
+            borderRadius: BorderRadius.circular(48),
           ),
+          child: const Text("Monday, 28th January, 2024"),
         ),
-
-        ///Notifaction Icon
-
-          const SizedBox(width: kDefaultPadding2x),
-
-        ///Notification Button
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            shape:   const CircleBorder(),
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            elevation: 10,
-          ),
-          onPressed: () {
-            ///Todo: show notifcations tray
-          },
-          child: Stack(
-            children: [
-              Padding(
-                padding:   const EdgeInsets.all(12),
-                child: SvgPicture.asset("assets/svg/notification_icon.svg"),
-              ),
-            ],
-          ),
-        ),
-          const SizedBox(width: kDefaultPadding2x),
+        const Gap(16),
+        IconButton.filled(
+            style: IconButton.styleFrom(
+                backgroundColor: Theme.of(context).cardColor,
+                elevation: 0,
+                fixedSize: const Size(36, 36)),
+            onPressed: () {},
+            icon: const Icon(FluentIcons.alert_24_regular)),
+        const Gap(16),
         Text(
           "John Doe",
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
-          const SizedBox(width: kDefaultPadding2x),
-        Container(
-          padding:   const EdgeInsets.all(4),
-          decoration: BoxDecoration(
-              color: Colors.transparent,
-              border:
-                  Border.all(width: 2, color: Theme.of(context).colorScheme.primary ),
-              shape: BoxShape.circle),
-          child: CircleAvatar(
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            minRadius: kDefaultPadding,
-            maxRadius: kDefaultPadding2x - 8,
-          ),
-        )
+        const Gap(16),
+        const CircleAvatar(
+          backgroundImage: AssetImage("assets/images/profile.png"),
+          radius: 28,
+        ),
       ],
     );
   }
 }
+

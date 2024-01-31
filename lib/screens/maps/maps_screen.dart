@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../core/core.dart';
-import '../widgets/navigation_rail.dart';
 
 class MapsScreen extends StatelessWidget {
   static const  id = "maps screen";
@@ -11,7 +10,6 @@ class MapsScreen extends StatelessWidget {
     return const Scaffold(
         body: Row(
       children:   [
-        Expanded(flex: 3, child: NavigationRailDrawer()),
         Expanded(flex: 9, child: Maps()),
         Expanded(flex: 4, child: SensorInfo()),
       ],

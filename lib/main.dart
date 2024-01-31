@@ -4,15 +4,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:provider/provider.dart';
-import 'package:water_project/screens/auth_screens/login_screen.dart';
-import 'package:water_project/screens/auth_screens/signup_screen.dart';
-import 'package:water_project/screens/details_screen/details_screen.dart';
-import 'package:water_project/screens/maps_screen/maps_screen.dart';
-
+import 'package:water_project/screens/projects/proeject_screen.dart';
 import 'firebase_options.dart';
-import 'screens/projects_screen/add_project_screen.dart';
-import 'screens/projects_screen/proeject_screen.dart';
-
+import 'screens/auth/login_screen.dart';
+import 'screens/auth/signup_screen.dart';
+import 'screens/home/home_screen.dart';
+import 'screens/maps/maps_screen.dart';
+import 'screens/projects/add_project_screen.dart';
 import 'services/services.dart';
 import 'providers/providers.dart';
 import 'repositories/repositories.dart';
@@ -93,9 +91,9 @@ class _MyAppState extends State<MyApp> {
             darkTheme: AppThemeData.darkTheme,
             themeMode: ThemeMode.light,
             debugShowCheckedModeBanner: false,
-            home: const AddProjectScreen(),
+            home: const HomeScreen(),
             routes: {
-              DetailsScreen.id: (context) => const DetailsScreen(),
+              HomeScreen.id: (context) => const HomeScreen(),
               LoginScreen.id: (context) => const LoginScreen(),
               SignUpScreen.id: (context) => const SignUpScreen(),
               MapsScreen.id: (context) => const MapsScreen(),
