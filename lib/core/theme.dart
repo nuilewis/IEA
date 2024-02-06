@@ -227,6 +227,8 @@ class AppThemeData {
         thumbColor: AppColours.white,
         overlayColor: Colors.transparent,
         overlayShape: RoundSliderOverlayShape(overlayRadius: 0)),
+
+
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.dark,
       seedColor: AppColours.blueSeed,

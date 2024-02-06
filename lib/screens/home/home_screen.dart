@@ -26,13 +26,18 @@ class HomeScreen extends StatelessWidget {
               children: [
                 ///Header
                 const Gap(16),
-                const Align(
-                    alignment: Alignment.centerRight,
-                    child: Header()),
-
-
-                Text("At a Glance", style:  Theme.of(context).textTheme.headlineSmall,),
+                const Align(alignment: Alignment.centerRight, child: Header()),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.onPrimaryContainer
+                  ),
+                ),
+                Text(
+                  "At a Glance",
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
                 const Gap(16),
+
                 /// Top Cards
                 Row(
                   children: [
@@ -40,7 +45,12 @@ class HomeScreen extends StatelessWidget {
                       child: TopCard(
                         label: "Projects",
                         child: Text("02",
-                            style: Theme.of(context).textTheme.displayLarge!.copyWith(color: Theme.of(context).colorScheme.primary)),
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayLarge!
+                                .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary)),
                       ),
                     ),
                     const Gap(16),
@@ -51,11 +61,22 @@ class HomeScreen extends StatelessWidget {
                             text: TextSpan(children: [
                               TextSpan(
                                   text: "02",
-                                  style:
-                                      Theme.of(context).textTheme.displayLarge!.copyWith(color: Theme.of(context).colorScheme.primary)),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displayLarge!
+                                      .copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary)),
                               TextSpan(
                                   text: " m/s2",
-                                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.primary))
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary))
                             ]),
                           )),
                     ),
@@ -75,15 +96,21 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 const Gap(32),
+
                 ///Projects Card
-                Text("Projects", style:  Theme.of(context).textTheme.headlineSmall,),
+                Text(
+                  "Projects",
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
                 const Gap(16),
                 GridView.builder(
                   itemCount: 3,
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                   // childAspectRatio: 2,
-                      crossAxisCount: 2, crossAxisSpacing: 12, mainAxisSpacing: 12),
+                      // childAspectRatio: 2,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12),
                   itemBuilder: (context, index) {
                     return const ProjectCard(
                         project: Project(
@@ -97,8 +124,7 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      flex: 1,
-                        child: AddProjectButton(onPressed: (){})),
+                        flex: 1, child: AddProjectButton(onPressed: () {})),
                     const Gap(16),
                     const Spacer(),
                   ],
@@ -111,9 +137,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-

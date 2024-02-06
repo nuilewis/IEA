@@ -6,28 +6,17 @@ import '../core/errors/failure.dart';
 import '../models/auth_models.dart';
 import '../services/auth/auth_service.dart';
 
-abstract class AuthRepository {
-  Future<Either<Failure, User?>> signInWithEmail(
-      {required SignInParameters parameters});
-  Future<Either<Failure, User?>> signInWithGoogle();
-  Future<Either<Failure, User?>> registerWithEmail(
-      {required RegisterParameters parameters});
-  Future<Either<Failure, void>> updateAccountInfo();
-  Future<Either<Failure, void>> deleteAccount(User user);
 
-  Future<Either<Failure, Stream<User?>>> getAuthStateChanges();
-}
-
-class AuthRepositoryImplementation implements AuthRepository {
+class AuthRepository {
   final AuthService authService;
   final ConnectionChecker connectionChecker;
 
-  AuthRepositoryImplementation({
+  AuthRepository({
     required this.authService,
     required this.connectionChecker,
   });
 
-  @override
+
   Future<Either<Failure, void>> deleteAccount(User user) async {
     if (await connectionChecker.isConnected) {
       try {
@@ -46,7 +35,7 @@ class AuthRepositoryImplementation implements AuthRepository {
       return const Left(Failure.network());    }
   }
 
-  @override
+
   Future<Either<Failure, User?>> registerWithEmail(
       {required RegisterParameters parameters}) async {
     if (await connectionChecker.isConnected) {
@@ -67,7 +56,7 @@ class AuthRepositoryImplementation implements AuthRepository {
       return const Left(Failure.network());    }
   }
 
-  @override
+
   Future<Either<Failure, User?>> signInWithEmail(
       {required SignInParameters parameters}) async {
     if (await connectionChecker.isConnected) {
@@ -88,7 +77,7 @@ class AuthRepositoryImplementation implements AuthRepository {
       return const Left(Failure.network());    }
   }
 
-  @override
+
   Future<Either<Failure, void>> updateAccountInfo() async {
     if (await connectionChecker.isConnected) {
       try {
@@ -107,7 +96,7 @@ class AuthRepositoryImplementation implements AuthRepository {
       return const Left(Failure.network());    }
   }
 
-  @override
+
   Future<Either<Failure, User?>> signInWithGoogle() async {
     if (await connectionChecker.isConnected) {
       try {
@@ -130,7 +119,7 @@ class AuthRepositoryImplementation implements AuthRepository {
       return const Left(Failure.network());    }
   }
 
-  @override
+
   Future<Either<Failure, Stream<User?>>> getAuthStateChanges() async {
     try {
       Stream<User?> authStateStream = authService.getAuthStateChanges();

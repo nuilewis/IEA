@@ -6,21 +6,14 @@ import '../core/connection_checker/connection_checker.dart';
 import '../core/errors/failure.dart';
 import '../models/project_model.dart';
 
-abstract class ProjectRepository {
-  Future<Either<Failure, void>> createProject(Project project);
-  Future<Either<Failure, void>> updateProject(Project project);
-  Future<Either<Failure, void>> deleteProject(Project project);
-  Future<Either<Failure, List<Project>>> getProjects();
-}
 
-class ProjectRepositoryImplementation implements ProjectRepository {
+class ProjectRepository {
   final ProjectFirestoreService projectFirestoreService;
   final ConnectionChecker connectionChecker;
 
-  ProjectRepositoryImplementation(
+  ProjectRepository(
       {required this.projectFirestoreService, required this.connectionChecker});
 
-  @override
   Future<Either<Failure, void>> createProject(Project project) async {
     if (await connectionChecker.isConnected) {
       try {
@@ -37,7 +30,6 @@ class ProjectRepositoryImplementation implements ProjectRepository {
       return const Left(Failure.network());    }
   }
 
-  @override
   Future<Either<Failure, void>> deleteProject(Project project) async {
     if (await connectionChecker.isConnected) {
       try {
@@ -54,7 +46,6 @@ class ProjectRepositoryImplementation implements ProjectRepository {
       return const Left(Failure.network());    }
   }
 
-  @override
   Future<Either<Failure, List<Project>>> getProjects() async {
     if (await connectionChecker.isConnected) {
       try {
@@ -86,7 +77,6 @@ class ProjectRepositoryImplementation implements ProjectRepository {
       return const Left(Failure.network());    }
   }
 
-  @override
   Future<Either<Failure, void>> updateProject(Project project) async {
     if (await connectionChecker.isConnected) {
       try {

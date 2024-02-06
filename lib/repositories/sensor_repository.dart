@@ -9,24 +9,18 @@ import '../models/sensor_model.dart';
 import '../services/sensors/sensor_firestore_service.dart';
 import '../services/sensors/sensor_realtime_db_service.dart';
 
-abstract class SensorRepository {
-  Future<Either<Failure, List<Sensor>>> getSensorInformation(
-      {required Project project});
-  Future<Either<Failure, Stream<DatabaseEvent>>> getSensorFlowRateData(
-      Sensor sensor);
-}
 
-class SensorRepositoryImplementation implements SensorRepository {
+
+class SensorRepository {
   final SensorFirestoreService sensorFireStoreService;
   final SensorRealtimeDBService sensorRealTimeDatabaseService;
   final ConnectionChecker connectionChecker;
 
-  SensorRepositoryImplementation({
+  SensorRepository({
     required this.sensorFireStoreService,
     required this.sensorRealTimeDatabaseService,
     required this.connectionChecker,
   });
-  @override
   Future<Either<Failure, Stream<DatabaseEvent>>> getSensorFlowRateData(
       Sensor senor) async {
     if (await connectionChecker.isConnected) {
@@ -46,7 +40,6 @@ class SensorRepositoryImplementation implements SensorRepository {
       return const Left(Failure.network());    }
   }
 
-  @override
   Future<Either<Failure, List<Sensor>>> getSensorInformation(
       {required Project project}) async {
     if (await connectionChecker.isConnected) {
