@@ -23,11 +23,27 @@ import 'core/core.dart';
 final ConnectionChecker _connectionChecker =
     ConnectionChecker(InternetConnection());
 
+/// Setting up Dependencies
 final AuthRepository authRepository = AuthRepository(
     authService: AuthService(), connectionChecker: _connectionChecker);
 final ChangeNotifierProvider authProvider =
     ChangeNotifierProvider<AuthProvider>(
         (ref) => AuthProvider(authRepository: authRepository));
+
+final SensorRepository sensorRepository = SensorRepository(
+    sensorFireStoreService: SensorFirestoreService(),
+    sensorRealTimeDatabaseService: SensorRealtimeDBService(),
+    connectionChecker: _connectionChecker);
+final ChangeNotifierProvider sensorProvider =
+    ChangeNotifierProvider<SensorProvider>(
+        (ref) => SensorProvider(sensorRepository: sensorRepository));
+
+final ProjectRepository projectRepository = ProjectRepository(
+    projectFirestoreService: ProjectFirestoreService(),
+    connectionChecker: _connectionChecker);
+final ChangeNotifierProvider projectProvider =
+    ChangeNotifierProvider<ProjectProvider>(
+        (ref) => ProjectProvider(projectRepository: projectRepository));
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
