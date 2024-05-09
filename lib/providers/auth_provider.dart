@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:water_project/models/auth_models.dart';
 
@@ -8,7 +8,7 @@ import '../core/enums/auth_state_enum.dart';
 import '../core/errors/failure.dart';
 import '../repositories/auth_repository.dart';
 
-class AuthProvider extends Notifier {
+class AuthProvider extends ChangeNotifier {
   @override
   build() => null;
 
@@ -40,7 +40,6 @@ class AuthProvider extends Notifier {
 
   Future<void> registerWithEmail(RegisterParameters parameters) async {
     appState = AppState.submitting;
-
 
     Either<Failure, User?> result =
         await authRepository.registerWithEmail(parameters: parameters);
@@ -87,7 +86,6 @@ class AuthProvider extends Notifier {
     }, (success) {
       appState = AppState.success;
       authState = AuthState.authenticated;
-
     });
   }
 
